@@ -1,0 +1,28 @@
+# Local always-on deployment for the Windows machine.
+#   docker compose up -d --build      # start (and rebuild on code changes)
+#   docker compose logs -f            # watch
+#   docker compose down               # stop
+#
+# restart: unless-stopped + Docker Desktop "start on login" == autostart on boot.
+services:
+  badminton:
+    build: .
+    container_name: badminton-bros
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      # Set in .env (compose loads it automatically). Empty == read-only site.
+      BADMINTON_EDIT_PASSWORD: ${BADMINTON_EDIT_PASSWORD:-}
+      BADMINTON_MAX_UPLOAD_BYTES: ${BADMINTON_MAX_UPLOAD_BYTES:-8388608}
+    volumes:
+      # Private data repo (real Excel, roster, aliases, full git history).
+      - ./data:/app/data
+      # So the regenerated, sanitized data.json lands on the host for publishing.
+      - ./web:/app/web
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/api/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

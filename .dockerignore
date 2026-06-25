@@ -1,0 +1,11 @@
+.git
+out/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.ruff_cache/
+*.log
+.env
+web/node_modules/
+.DS_Store

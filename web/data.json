@@ -1,0 +1,6682 @@
+{
+  "group_name": "Badminton Bros",
+  "generated_at": "2026-06-15T12:59:48",
+  "source": "excel",
+  "counts": {
+    "players": 29,
+    "matches": 178,
+    "tournaments": 19
+  },
+  "players": [
+    {
+      "player": "Tong",
+      "games": 36,
+      "wins": 30,
+      "losses": 6,
+      "sets_won": 63,
+      "sets_lost": 19,
+      "points_for": 1616,
+      "points_against": 1364,
+      "third_set_games": 10,
+      "win_ratio": 0.833,
+      "points_per_set": 19.71,
+      "third_set_ratio": 0.278
+    },
+    {
+      "player": "Junya",
+      "games": 35,
+      "wins": 15,
+      "losses": 20,
+      "sets_won": 35,
+      "sets_lost": 41,
+      "points_for": 1328,
+      "points_against": 1401,
+      "third_set_games": 6,
+      "win_ratio": 0.429,
+      "points_per_set": 17.47,
+      "third_set_ratio": 0.171
+    },
+    {
+      "player": "Maila",
+      "games": 34,
+      "wins": 15,
+      "losses": 19,
+      "sets_won": 37,
+      "sets_lost": 41,
+      "points_for": 1350,
+      "points_against": 1395,
+      "third_set_games": 10,
+      "win_ratio": 0.441,
+      "points_per_set": 17.31,
+      "third_set_ratio": 0.294
+    },
+    {
+      "player": "Dao",
+      "games": 27,
+      "wins": 12,
+      "losses": 15,
+      "sets_won": 29,
+      "sets_lost": 35,
+      "points_for": 1120,
+      "points_against": 1144,
+      "third_set_games": 10,
+      "win_ratio": 0.444,
+      "points_per_set": 17.5,
+      "third_set_ratio": 0.37
+    },
+    {
+      "player": "Chau",
+      "games": 31,
+      "wins": 11,
+      "losses": 20,
+      "sets_won": 32,
+      "sets_lost": 38,
+      "points_for": 1175,
+      "points_against": 1238,
+      "third_set_games": 8,
+      "win_ratio": 0.355,
+      "points_per_set": 16.79,
+      "third_set_ratio": 0.258
+    },
+    {
+      "player": "Thy",
+      "games": 16,
+      "wins": 11,
+      "losses": 5,
+      "sets_won": 23,
+      "sets_lost": 14,
+      "points_for": 673,
+      "points_against": 617,
+      "third_set_games": 5,
+      "win_ratio": 0.688,
+      "points_per_set": 18.19,
+      "third_set_ratio": 0.312
+    },
+    {
+      "player": "Tanisha",
+      "games": 14,
+      "wins": 10,
+      "losses": 4,
+      "sets_won": 23,
+      "sets_lost": 10,
+      "points_for": 627,
+      "points_against": 530,
+      "third_set_games": 5,
+      "win_ratio": 0.714,
+      "points_per_set": 19.0,
+      "third_set_ratio": 0.357
+    },
+    {
+      "player": "Veikko",
+      "games": 15,
+      "wins": 8,
+      "losses": 7,
+      "sets_won": 16,
+      "sets_lost": 15,
+      "points_for": 548,
+      "points_against": 572,
+      "third_set_games": 2,
+      "win_ratio": 0.533,
+      "points_per_set": 17.68,
+      "third_set_ratio": 0.133
+    },
+    {
+      "player": "Tum",
+      "games": 10,
+      "wins": 7,
+      "losses": 3,
+      "sets_won": 15,
+      "sets_lost": 7,
+      "points_for": 405,
+      "points_against": 372,
+      "third_set_games": 2,
+      "win_ratio": 0.7,
+      "points_per_set": 18.41,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Nghi Le",
+      "games": 9,
+      "wins": 7,
+      "losses": 2,
+      "sets_won": 15,
+      "sets_lost": 7,
+      "points_for": 419,
+      "points_against": 344,
+      "third_set_games": 4,
+      "win_ratio": 0.778,
+      "points_per_set": 19.05,
+      "third_set_ratio": 0.444
+    },
+    {
+      "player": "Matti",
+      "games": 22,
+      "wins": 6,
+      "losses": 16,
+      "sets_won": 15,
+      "sets_lost": 34,
+      "points_for": 830,
+      "points_against": 929,
+      "third_set_games": 6,
+      "win_ratio": 0.273,
+      "points_per_set": 16.94,
+      "third_set_ratio": 0.273
+    },
+    {
+      "player": "Bom",
+      "games": 8,
+      "wins": 6,
+      "losses": 2,
+      "sets_won": 13,
+      "sets_lost": 5,
+      "points_for": 351,
+      "points_against": 316,
+      "third_set_games": 2,
+      "win_ratio": 0.75,
+      "points_per_set": 19.5,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Santeri",
+      "games": 15,
+      "wins": 5,
+      "losses": 10,
+      "sets_won": 17,
+      "sets_lost": 16,
+      "points_for": 588,
+      "points_against": 555,
+      "third_set_games": 3,
+      "win_ratio": 0.333,
+      "points_per_set": 17.82,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "games": 13,
+      "wins": 5,
+      "losses": 8,
+      "sets_won": 14,
+      "sets_lost": 18,
+      "points_for": 581,
+      "points_against": 581,
+      "third_set_games": 6,
+      "win_ratio": 0.385,
+      "points_per_set": 18.16,
+      "third_set_ratio": 0.462
+    },
+    {
+      "player": "Nga Pham",
+      "games": 11,
+      "wins": 4,
+      "losses": 7,
+      "sets_won": 10,
+      "sets_lost": 14,
+      "points_for": 427,
+      "points_against": 464,
+      "third_set_games": 2,
+      "win_ratio": 0.364,
+      "points_per_set": 17.79,
+      "third_set_ratio": 0.182
+    },
+    {
+      "player": "Toni",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "sets_won": 8,
+      "sets_lost": 12,
+      "points_for": 325,
+      "points_against": 371,
+      "third_set_games": 4,
+      "win_ratio": 0.5,
+      "points_per_set": 16.25,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Yudai",
+      "games": 4,
+      "wins": 4,
+      "losses": 0,
+      "sets_won": 8,
+      "sets_lost": 1,
+      "points_for": 181,
+      "points_against": 153,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.11,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Dhirav",
+      "games": 9,
+      "wins": 3,
+      "losses": 6,
+      "sets_won": 6,
+      "sets_lost": 15,
+      "points_for": 325,
+      "points_against": 410,
+      "third_set_games": 3,
+      "win_ratio": 0.333,
+      "points_per_set": 15.48,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Boris",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 4,
+      "points_for": 204,
+      "points_against": 185,
+      "third_set_games": 1,
+      "win_ratio": 0.6,
+      "points_per_set": 18.55,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Khai",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 4,
+      "points_for": 204,
+      "points_against": 185,
+      "third_set_games": 1,
+      "win_ratio": 0.6,
+      "points_per_set": 18.55,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Tommi Ruoho",
+      "games": 3,
+      "wins": 3,
+      "losses": 0,
+      "sets_won": 6,
+      "sets_lost": 1,
+      "points_for": 143,
+      "points_against": 113,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.43,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Emilia Ojala",
+      "games": 8,
+      "wins": 2,
+      "losses": 6,
+      "sets_won": 5,
+      "sets_lost": 13,
+      "points_for": 299,
+      "points_against": 356,
+      "third_set_games": 2,
+      "win_ratio": 0.25,
+      "points_per_set": 16.61,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Pihla Mäkelä",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "sets_won": 5,
+      "sets_lost": 10,
+      "points_for": 259,
+      "points_against": 270,
+      "third_set_games": 1,
+      "win_ratio": 0.286,
+      "points_per_set": 17.27,
+      "third_set_ratio": 0.143
+    },
+    {
+      "player": "Chau's Partner",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_won": 4,
+      "sets_lost": 7,
+      "points_for": 161,
+      "points_against": 203,
+      "third_set_games": 1,
+      "win_ratio": 0.4,
+      "points_per_set": 14.64,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Chau's Partner 2",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_won": 4,
+      "sets_lost": 7,
+      "points_for": 161,
+      "points_against": 203,
+      "third_set_games": 1,
+      "win_ratio": 0.4,
+      "points_per_set": 14.64,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Phan Thuc",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 2,
+      "points_for": 148,
+      "points_against": 112,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 16.44,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Hien Köhler",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 2,
+      "sets_lost": 5,
+      "points_for": 95,
+      "points_against": 131,
+      "third_set_games": 1,
+      "win_ratio": 0.333,
+      "points_per_set": 13.57,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Thisara",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 1,
+      "sets_lost": 4,
+      "points_for": 81,
+      "points_against": 100,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 16.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Oskari Kruth",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 17,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    }
+  ],
+  "tournaments_list": [
+    "ABC-luokkamestaruuskisat",
+    "Aurora Team Tournament 2026",
+    "Badminton United Mestaruuskilpailu",
+    "Clear Kesäyön turnaus 2026",
+    "Clear Premier Elite",
+    "Espoo Women's Open 2026",
+    "FZ Forza BadU Premier Eliitti",
+    "HBC Nelinpelikisat",
+    "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+    "Kunnon Kevätnelinpeliä 2026",
+    "Kunnon Talvinelinpeliä 2026",
+    "Ling-Mei Sulkaset Eliitti 2026",
+    "Meilahti lohkokisa toukokuu 2026",
+    "Osukon Härkäkisat",
+    "SMASH Kansallinen",
+    "Tampereen Kansalliset 2026",
+    "VBE2026",
+    "Yonex Finnish International 2026",
+    "Ystävänpäivän poolikisat"
+  ],
+  "player_tournament": [
+    {
+      "player": "Bom",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 7,
+      "wins": 5,
+      "losses": 2,
+      "sets_won": 11,
+      "sets_lost": 5,
+      "points_for": 309,
+      "points_against": 285,
+      "third_set_games": 2,
+      "win_ratio": 0.714,
+      "points_per_set": 19.31,
+      "third_set_ratio": 0.286
+    },
+    {
+      "player": "Bom",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 31,
+      "third_set_games": 0,
+      "win_ratio": 1.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Boris",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 4,
+      "points_for": 204,
+      "points_against": 185,
+      "third_set_games": 1,
+      "win_ratio": 0.6,
+      "points_per_set": 18.55,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Chau",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 6,
+      "wins": 3,
+      "losses": 3,
+      "sets_won": 6,
+      "sets_lost": 8,
+      "points_for": 212,
+      "points_against": 261,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 15.14,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Chau",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 4,
+      "sets_lost": 0,
+      "points_for": 84,
+      "points_against": 39,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Chau",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 2,
+      "sets_lost": 5,
+      "points_for": 107,
+      "points_against": 123,
+      "third_set_games": 1,
+      "win_ratio": 0.333,
+      "points_per_set": 15.29,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Chau",
+      "tournament": "Clear Premier Elite",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 1,
+      "sets_lost": 2,
+      "points_for": 50,
+      "points_against": 58,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 16.67,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Chau",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "sets_won": 7,
+      "sets_lost": 11,
+      "points_for": 313,
+      "points_against": 356,
+      "third_set_games": 2,
+      "win_ratio": 0.375,
+      "points_per_set": 17.39,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Chau",
+      "tournament": "Meilahti lohkokisa toukokuu 2026",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 3,
+      "sets_lost": 3,
+      "points_for": 116,
+      "points_against": 107,
+      "third_set_games": 0,
+      "win_ratio": 0.333,
+      "points_per_set": 19.33,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Chau",
+      "tournament": "Osukon Härkäkisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 27,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 13.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Chau",
+      "tournament": "VBE2026",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "sets_won": 9,
+      "sets_lost": 7,
+      "points_for": 266,
+      "points_against": 252,
+      "third_set_games": 2,
+      "win_ratio": 0.429,
+      "points_per_set": 16.62,
+      "third_set_ratio": 0.286
+    },
+    {
+      "player": "Chau's Partner",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_won": 4,
+      "sets_lost": 7,
+      "points_for": 161,
+      "points_against": 203,
+      "third_set_games": 1,
+      "win_ratio": 0.4,
+      "points_per_set": 14.64,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Chau's Partner 2",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_won": 4,
+      "sets_lost": 7,
+      "points_for": 161,
+      "points_against": 203,
+      "third_set_games": 1,
+      "win_ratio": 0.4,
+      "points_per_set": 14.64,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Dao",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 10,
+      "wins": 5,
+      "losses": 5,
+      "sets_won": 12,
+      "sets_lost": 12,
+      "points_for": 446,
+      "points_against": 412,
+      "third_set_games": 4,
+      "win_ratio": 0.5,
+      "points_per_set": 18.58,
+      "third_set_ratio": 0.4
+    },
+    {
+      "player": "Dao",
+      "tournament": "Espoo Women's Open 2026",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_won": 7,
+      "sets_lost": 3,
+      "points_for": 183,
+      "points_against": 165,
+      "third_set_games": 2,
+      "win_ratio": 0.75,
+      "points_per_set": 18.3,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Dao",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 20,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 10.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Dao",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "sets_won": 1,
+      "sets_lost": 8,
+      "points_for": 140,
+      "points_against": 183,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 15.56,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Dao",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "sets_won": 9,
+      "sets_lost": 10,
+      "points_for": 331,
+      "points_against": 342,
+      "third_set_games": 3,
+      "win_ratio": 0.5,
+      "points_per_set": 17.42,
+      "third_set_ratio": 0.375
+    },
+    {
+      "player": "Dhirav",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 93,
+      "points_against": 91,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 18.6,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Dhirav",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 4,
+      "sets_lost": 6,
+      "points_for": 161,
+      "points_against": 193,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 16.1,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Dhirav",
+      "tournament": "Osukon Härkäkisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 29,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 14.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Dhirav",
+      "tournament": "SMASH Kansallinen",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 42,
+      "points_against": 84,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 10.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Emilia Ojala",
+      "tournament": "Clear Premier Elite",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 2,
+      "sets_lost": 4,
+      "points_for": 98,
+      "points_against": 122,
+      "third_set_games": 0,
+      "win_ratio": 0.333,
+      "points_per_set": 16.33,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Emilia Ojala",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 39,
+      "points_against": 44,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 19.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Emilia Ojala",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 26,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 13.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Emilia Ojala",
+      "tournament": "Yonex Finnish International 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 3,
+      "sets_lost": 3,
+      "points_for": 110,
+      "points_against": 106,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 18.33,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Emilia Ojala",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 26,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 13.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Hien Köhler",
+      "tournament": "Espoo Women's Open 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 72,
+      "points_against": 89,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 14.4,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Hien Köhler",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 23,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 11.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 2,
+      "points_for": 77,
+      "points_against": 76,
+      "third_set_games": 0,
+      "win_ratio": 0.5,
+      "points_per_set": 19.25,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 1,
+      "sets_lost": 2,
+      "points_for": 51,
+      "points_against": 68,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 17.0,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "Clear Premier Elite",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "sets_won": 5,
+      "sets_lost": 7,
+      "points_for": 223,
+      "points_against": 232,
+      "third_set_games": 2,
+      "win_ratio": 0.4,
+      "points_per_set": 18.58,
+      "third_set_ratio": 0.4
+    },
+    {
+      "player": "Junya",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_won": 6,
+      "sets_lost": 1,
+      "points_for": 145,
+      "points_against": 112,
+      "third_set_games": 1,
+      "win_ratio": 0.667,
+      "points_per_set": 20.71,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Junya",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 37,
+      "points_against": 84,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 9.25,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "sets_won": 0,
+      "sets_lost": 6,
+      "points_for": 71,
+      "points_against": 126,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 11.83,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 5,
+      "sets_lost": 4,
+      "points_for": 177,
+      "points_against": 153,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 19.67,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Junya",
+      "tournament": "Osukon Härkäkisat",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 2,
+      "points_for": 62,
+      "points_against": 78,
+      "third_set_games": 0,
+      "win_ratio": 0.5,
+      "points_per_set": 15.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "SMASH Kansallinen",
+      "games": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_won": 4,
+      "sets_lost": 2,
+      "points_for": 119,
+      "points_against": 84,
+      "third_set_games": 0,
+      "win_ratio": 0.667,
+      "points_per_set": 19.83,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Junya",
+      "tournament": "Tampereen Kansalliset 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 86,
+      "points_against": 106,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 17.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Junya",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "sets_won": 8,
+      "sets_lost": 8,
+      "points_for": 280,
+      "points_against": 282,
+      "third_set_games": 0,
+      "win_ratio": 0.5,
+      "points_per_set": 17.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Khai",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 4,
+      "points_for": 204,
+      "points_against": 185,
+      "third_set_games": 1,
+      "win_ratio": 0.6,
+      "points_per_set": 18.55,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 3,
+      "sets_lost": 2,
+      "points_for": 104,
+      "points_against": 78,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 20.8,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 2,
+      "sets_lost": 4,
+      "points_for": 97,
+      "points_against": 118,
+      "third_set_games": 2,
+      "win_ratio": 0.0,
+      "points_per_set": 16.17,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 35,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 17.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_won": 5,
+      "sets_lost": 2,
+      "points_for": 145,
+      "points_against": 119,
+      "third_set_games": 1,
+      "win_ratio": 0.667,
+      "points_per_set": 20.71,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "VBE2026",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "sets_won": 2,
+      "sets_lost": 7,
+      "points_for": 136,
+      "points_against": 170,
+      "third_set_games": 1,
+      "win_ratio": 0.25,
+      "points_per_set": 15.11,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 1,
+      "points_for": 64,
+      "points_against": 54,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 21.33,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Maila",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 3,
+      "points_for": 183,
+      "points_against": 151,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 18.3,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Maila",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 1,
+      "sets_lost": 2,
+      "points_for": 51,
+      "points_against": 68,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 17.0,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Maila",
+      "tournament": "Clear Premier Elite",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 98,
+      "points_against": 96,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 19.6,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Maila",
+      "tournament": "Espoo Women's Open 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 72,
+      "points_against": 89,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 14.4,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Maila",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 3,
+      "wins": 3,
+      "losses": 0,
+      "sets_won": 6,
+      "sets_lost": 1,
+      "points_for": 145,
+      "points_against": 97,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.71,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Maila",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 7,
+      "wins": 4,
+      "losses": 3,
+      "sets_won": 9,
+      "sets_lost": 6,
+      "points_for": 254,
+      "points_against": 249,
+      "third_set_games": 1,
+      "win_ratio": 0.571,
+      "points_per_set": 16.93,
+      "third_set_ratio": 0.143
+    },
+    {
+      "player": "Maila",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "sets_won": 0,
+      "sets_lost": 6,
+      "points_for": 71,
+      "points_against": 126,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 11.83,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Maila",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 5,
+      "sets_lost": 4,
+      "points_for": 177,
+      "points_against": 153,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 19.67,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Maila",
+      "tournament": "Tampereen Kansalliset 2026",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 3,
+      "points_for": 86,
+      "points_against": 106,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 17.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Maila",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 6,
+      "wins": 1,
+      "losses": 5,
+      "sets_won": 3,
+      "sets_lost": 10,
+      "points_for": 213,
+      "points_against": 260,
+      "third_set_games": 1,
+      "win_ratio": 0.167,
+      "points_per_set": 16.38,
+      "third_set_ratio": 0.167
+    },
+    {
+      "player": "Matti",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 8,
+      "wins": 2,
+      "losses": 6,
+      "sets_won": 5,
+      "sets_lost": 12,
+      "points_for": 285,
+      "points_against": 323,
+      "third_set_games": 2,
+      "win_ratio": 0.25,
+      "points_per_set": 16.76,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Matti",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 28,
+      "third_set_games": 0,
+      "win_ratio": 1.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Matti",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "sets_won": 3,
+      "sets_lost": 9,
+      "points_for": 186,
+      "points_against": 226,
+      "third_set_games": 2,
+      "win_ratio": 0.2,
+      "points_per_set": 15.5,
+      "third_set_ratio": 0.4
+    },
+    {
+      "player": "Matti",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "sets_won": 5,
+      "sets_lost": 9,
+      "points_for": 249,
+      "points_against": 265,
+      "third_set_games": 2,
+      "win_ratio": 0.333,
+      "points_per_set": 17.79,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Matti",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 68,
+      "points_against": 87,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 17.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Nga Pham",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "sets_won": 5,
+      "sets_lost": 10,
+      "points_for": 252,
+      "points_against": 305,
+      "third_set_games": 1,
+      "win_ratio": 0.286,
+      "points_per_set": 16.8,
+      "third_set_ratio": 0.143
+    },
+    {
+      "player": "Nga Pham",
+      "tournament": "Meilahti lohkokisa toukokuu 2026",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 3,
+      "sets_lost": 3,
+      "points_for": 116,
+      "points_against": 107,
+      "third_set_games": 0,
+      "win_ratio": 0.333,
+      "points_per_set": 19.33,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Nga Pham",
+      "tournament": "VBE2026",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 1,
+      "points_for": 59,
+      "points_against": 52,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 19.67,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "Espoo Women's Open 2026",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_won": 7,
+      "sets_lost": 3,
+      "points_for": 183,
+      "points_against": 165,
+      "third_set_games": 2,
+      "win_ratio": 0.75,
+      "points_per_set": 18.3,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 27,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 13.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 13,
+      "third_set_games": 0,
+      "win_ratio": 1.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 1,
+      "points_for": 61,
+      "points_against": 37,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.33,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "VBE2026",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 33,
+      "third_set_games": 0,
+      "win_ratio": 1.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Nghi Le",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "sets_won": 2,
+      "sets_lost": 1,
+      "points_for": 64,
+      "points_against": 54,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 21.33,
+      "third_set_ratio": 1.0
+    },
+    {
+      "player": "Oskari Kruth",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 0,
+      "points_for": 42,
+      "points_against": 17,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 21.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Phan Thuc",
+      "tournament": "VBE2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 2,
+      "points_for": 148,
+      "points_against": 112,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 16.44,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Pihla Mäkelä",
+      "tournament": "Clear Premier Elite",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 71,
+      "points_against": 87,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 17.75,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Pihla Mäkelä",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 22,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 11.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Pihla Mäkelä",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 5,
+      "sets_lost": 4,
+      "points_for": 166,
+      "points_against": 141,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 18.44,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Santeri",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "sets_won": 9,
+      "sets_lost": 2,
+      "points_for": 217,
+      "points_against": 155,
+      "third_set_games": 1,
+      "win_ratio": 0.2,
+      "points_per_set": 19.73,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Santeri",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 7,
+      "wins": 4,
+      "losses": 3,
+      "sets_won": 8,
+      "sets_lost": 8,
+      "points_for": 276,
+      "points_against": 271,
+      "third_set_games": 2,
+      "win_ratio": 0.571,
+      "points_per_set": 17.25,
+      "third_set_ratio": 0.286
+    },
+    {
+      "player": "Santeri",
+      "tournament": "Osukon Härkäkisat",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "sets_won": 0,
+      "sets_lost": 2,
+      "points_for": 27,
+      "points_against": 42,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 13.5,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Santeri",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 68,
+      "points_against": 87,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 17.0,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Tanisha",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "games": 3,
+      "wins": 2,
+      "losses": 1,
+      "sets_won": 5,
+      "sets_lost": 3,
+      "points_for": 141,
+      "points_against": 134,
+      "third_set_games": 2,
+      "win_ratio": 0.667,
+      "points_per_set": 17.62,
+      "third_set_ratio": 0.667
+    },
+    {
+      "player": "Tanisha",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 3,
+      "wins": 3,
+      "losses": 0,
+      "sets_won": 6,
+      "sets_lost": 1,
+      "points_for": 145,
+      "points_against": 97,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.71,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Tanisha",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 5,
+      "wins": 4,
+      "losses": 1,
+      "sets_won": 9,
+      "sets_lost": 2,
+      "points_for": 217,
+      "points_against": 165,
+      "third_set_games": 1,
+      "win_ratio": 0.8,
+      "points_per_set": 19.73,
+      "third_set_ratio": 0.2
+    },
+    {
+      "player": "Tanisha",
+      "tournament": "Ystävänpäivän poolikisat",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "sets_won": 3,
+      "sets_lost": 4,
+      "points_for": 124,
+      "points_against": 134,
+      "third_set_games": 1,
+      "win_ratio": 0.333,
+      "points_per_set": 17.71,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Thisara",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 1,
+      "sets_lost": 4,
+      "points_for": 81,
+      "points_against": 100,
+      "third_set_games": 1,
+      "win_ratio": 0.0,
+      "points_per_set": 16.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Thy",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 6,
+      "wins": 6,
+      "losses": 0,
+      "sets_won": 12,
+      "sets_lost": 2,
+      "points_for": 284,
+      "points_against": 208,
+      "third_set_games": 2,
+      "win_ratio": 1.0,
+      "points_per_set": 20.29,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Thy",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_won": 6,
+      "sets_lost": 3,
+      "points_for": 169,
+      "points_against": 148,
+      "third_set_games": 1,
+      "win_ratio": 0.75,
+      "points_per_set": 18.78,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Thy",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "sets_won": 0,
+      "sets_lost": 4,
+      "points_for": 57,
+      "points_against": 84,
+      "third_set_games": 0,
+      "win_ratio": 0.0,
+      "points_per_set": 14.25,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Thy",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 5,
+      "sets_lost": 5,
+      "points_for": 163,
+      "points_against": 177,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 16.3,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Tommi Ruoho",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "games": 3,
+      "wins": 3,
+      "losses": 0,
+      "sets_won": 6,
+      "sets_lost": 1,
+      "points_for": 143,
+      "points_against": 113,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.43,
+      "third_set_ratio": 0.333
+    },
+    {
+      "player": "Tong",
+      "tournament": "Clear Premier Elite",
+      "games": 9,
+      "wins": 7,
+      "losses": 2,
+      "sets_won": 15,
+      "sets_lost": 5,
+      "points_for": 389,
+      "points_against": 355,
+      "third_set_games": 2,
+      "win_ratio": 0.778,
+      "points_per_set": 19.45,
+      "third_set_ratio": 0.222
+    },
+    {
+      "player": "Tong",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 3,
+      "sets_lost": 2,
+      "points_for": 86,
+      "points_against": 99,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 17.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Tong",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 4,
+      "wins": 4,
+      "losses": 0,
+      "sets_won": 8,
+      "sets_lost": 1,
+      "points_for": 181,
+      "points_against": 153,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.11,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Tong",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "games": 8,
+      "wins": 7,
+      "losses": 1,
+      "sets_won": 14,
+      "sets_lost": 4,
+      "points_for": 361,
+      "points_against": 278,
+      "third_set_games": 2,
+      "win_ratio": 0.875,
+      "points_per_set": 20.06,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Tong",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "games": 8,
+      "wins": 8,
+      "losses": 0,
+      "sets_won": 16,
+      "sets_lost": 2,
+      "points_for": 373,
+      "points_against": 265,
+      "third_set_games": 2,
+      "win_ratio": 1.0,
+      "points_per_set": 20.72,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Tong",
+      "tournament": "Yonex Finnish International 2026",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "sets_won": 7,
+      "sets_lost": 5,
+      "points_for": 226,
+      "points_against": 214,
+      "third_set_games": 2,
+      "win_ratio": 0.6,
+      "points_per_set": 18.83,
+      "third_set_ratio": 0.4
+    },
+    {
+      "player": "Toni",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 4,
+      "sets_lost": 6,
+      "points_for": 164,
+      "points_against": 178,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 16.4,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Toni",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "sets_won": 4,
+      "sets_lost": 6,
+      "points_for": 161,
+      "points_against": 193,
+      "third_set_games": 2,
+      "win_ratio": 0.5,
+      "points_per_set": 16.1,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Tum",
+      "tournament": "Clear Premier Elite",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_won": 6,
+      "sets_lost": 2,
+      "points_for": 153,
+      "points_against": 128,
+      "third_set_games": 0,
+      "win_ratio": 0.75,
+      "points_per_set": 19.12,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Tum",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "sets_won": 3,
+      "sets_lost": 2,
+      "points_for": 86,
+      "points_against": 99,
+      "third_set_games": 1,
+      "win_ratio": 0.5,
+      "points_per_set": 17.2,
+      "third_set_ratio": 0.5
+    },
+    {
+      "player": "Tum",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "sets_won": 6,
+      "sets_lost": 3,
+      "points_for": 166,
+      "points_against": 145,
+      "third_set_games": 1,
+      "win_ratio": 0.75,
+      "points_per_set": 18.44,
+      "third_set_ratio": 0.25
+    },
+    {
+      "player": "Veikko",
+      "tournament": "Aurora Team Tournament 2026",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "sets_won": 5,
+      "sets_lost": 10,
+      "points_for": 239,
+      "points_against": 287,
+      "third_set_games": 0,
+      "win_ratio": 0.375,
+      "points_per_set": 15.93,
+      "third_set_ratio": 0.0
+    },
+    {
+      "player": "Veikko",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "games": 7,
+      "wins": 5,
+      "losses": 2,
+      "sets_won": 11,
+      "sets_lost": 5,
+      "points_for": 309,
+      "points_against": 285,
+      "third_set_games": 2,
+      "win_ratio": 0.714,
+      "points_per_set": 19.31,
+      "third_set_ratio": 0.286
+    },
+    {
+      "player": "Yudai",
+      "tournament": "HBC Nelinpelikisat",
+      "games": 4,
+      "wins": 4,
+      "losses": 0,
+      "sets_won": 8,
+      "sets_lost": 1,
+      "points_for": 181,
+      "points_against": 153,
+      "third_set_games": 1,
+      "win_ratio": 1.0,
+      "points_per_set": 20.11,
+      "third_set_ratio": 0.25
+    }
+  ],
+  "matches": [
+    {
+      "date": "2026-01-03",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "WS",
+      "level": "V",
+      "round": "16",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Nelly Määttä"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "16",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Alicia Gras",
+        "Tyko Aakko"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          23,
+          21
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "WS",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Pihla Mäkelä"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Silja Soikkeli",
+        "Jaakko Mäenpää"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          6,
+          21
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-04",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "WS",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Aino Övermark"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          27,
+          29
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-04",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Sanni Lehtinen",
+        "Jussi Soraluoma"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-04",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "WS",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Emilia Ojala"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-04",
+      "tournament": "Hämeenlinnan Sulkapalloilijoiden 50 v. Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Iina Suutarinen",
+        "Anton Kaisti"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          19,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "XD",
+      "level": "B",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Charlotta Nyström",
+        "Christoffer Segercrantz"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          6,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "XD",
+      "level": "B",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Alina Hult",
+        "Akseli Hämeenheimo"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          9,
+          21
+        ],
+        [
+          8,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "WD",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Quinn Dao",
+        "Nuengruethai Ounjai"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          10
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "WD",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Aditri Mittal",
+        "Sanvi Duggirala"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "MD",
+      "level": "A",
+      "round": "Pool",
+      "team1": [
+        "Tong",
+        "Yudai"
+      ],
+      "team2": [
+        "Jyri Aalto",
+        "Topi Simola"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          22,
+          20
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-10",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "MD",
+      "level": "A",
+      "round": "Pool",
+      "team1": [
+        "Tong",
+        "Yudai"
+      ],
+      "team2": [
+        "Trung Anh Hoang",
+        "Phuc Le Vinh"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          15
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "WD",
+      "level": "C",
+      "round": "QF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Ella Tolonen",
+        "Florence Pelet"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          15
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "WD",
+      "level": "C",
+      "round": "SF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Eva Funck",
+        "Maiju Wigelius"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "WD",
+      "level": "C",
+      "round": "F",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Ninna Tilli",
+        "Laura Vokkolainen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "MD",
+      "level": "A",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Yudai"
+      ],
+      "team2": [
+        "Akseli Hämeenheimo",
+        "Isak Melleri"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "tournament": "HBC Nelinpelikisat",
+      "category": "MD",
+      "level": "A",
+      "round": "F",
+      "team1": [
+        "Tong",
+        "Yudai"
+      ],
+      "team2": [
+        "Lauri Valli",
+        "Jarmo Raninen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Matti",
+        "Thisara"
+      ],
+      "team2": [
+        "Dang Nguyen",
+        "Lan Nguyen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Matti",
+        "Thisara"
+      ],
+      "team2": [
+        "Markus Kääriäinen",
+        "Jyrki Pennanen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          21,
+          16
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Toni",
+        "Dhirav"
+      ],
+      "team2": [
+        "Jarmo Brandt",
+        "Patrik Granvik"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          12,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Toni",
+        "Dhirav"
+      ],
+      "team2": [
+        "Harri Peltola",
+        "Jarmo Vuollet"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "32",
+      "team1": [
+        "Toni",
+        "Dhirav"
+      ],
+      "team2": [
+        "Tung Mai Phuoc",
+        "Hoang Nguyen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          23,
+          21
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Toni",
+        "Dhirav"
+      ],
+      "team2": [
+        "Seung Jung Choi",
+        "Kwan Li"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          9,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Anna Sandvik",
+        "Veronika Solovian"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Nina Karlsson",
+        "Marit Melander"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Minna Pasenius",
+        "Eeva Somerkoski"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          7
+        ],
+        [
+          9,
+          21
+        ],
+        [
+          22,
+          20
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "SF",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Nghi Le",
+        "Nuengruethai Ounjai"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          21,
+          19
+        ],
+        [
+          6,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Santoshkumar Pandurangan",
+        "Kalidass Rathinam"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          16
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Mikko Karjalainen",
+        "Tuomas Tiainen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Prasanth Sivaprakasam",
+        "Adithiya Venkasetan"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          20,
+          22
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Minna Pasenius",
+        "Heikki Laaksonen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Kirsi-Marja Pitkänen",
+        "Tomi Pitkänen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          16,
+          21
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "16",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Dang Nguyen",
+        "Quang Thai Tran"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Kristina Niiranen",
+        "Tuomas Tiainen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          16
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-01-24",
+      "tournament": "Kunnon Talvinelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Shi Qiong Lu",
+        "Seung Jung Choi"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MD",
+      "level": "Harraste",
+      "round": "Pool",
+      "team1": [
+        "Matti",
+        "Santeri"
+      ],
+      "team2": [
+        "Jarmo Könönen",
+        "Teemu Varonen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MD",
+      "level": "Harraste",
+      "round": "Pool",
+      "team1": [
+        "Matti",
+        "Santeri"
+      ],
+      "team2": [
+        "Paul Balonglong",
+        "Glenn Bueta"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          22,
+          24
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "XD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Nuengruethai Ounjai",
+        "Bom Wongsakorn Sertsandee"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "XD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Mia Petra",
+        "Sauli Sundell"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "XD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Janet Mico",
+        "Ceasar Cotting"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MS",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Mikko Ojala"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MS",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Christoffer Sundberg"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MS",
+      "level": "Kilpa",
+      "round": "QF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Tuure Hurme"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          25,
+          23
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "XD",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Tommi Ruoho"
+      ],
+      "team2": [
+        "Pihla Mäkelä",
+        "Iiro Koivula"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "WS",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "WD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Nha Nguyen",
+        "Anh Le"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          24,
+          22
+        ],
+        [
+          12,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "WD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Mia Petra",
+        "Mirva Salonen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "WD",
+      "level": "Kilpa",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Eeva Rissanen",
+        "Riikka Vihonen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          12,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MS",
+      "level": "Kilpa",
+      "round": "SF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Samu Laita"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ystävänpäivän poolikisat",
+      "category": "MS",
+      "level": "Kilpa",
+      "round": "F",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Hannu Aro"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          8,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "WS",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Pihla Mäkelä"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "WS",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Yelyzaveta Gusarenko"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          20,
+          22
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "WD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Pihla Mäkelä"
+      ],
+      "team2": [
+        "Sanni Lehtinen",
+        "Unni Parikka"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "XD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Tommi Ruoho"
+      ],
+      "team2": [
+        "Carina Nieminen",
+        "Miikka Karkaus"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "WD",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong",
+        "Pihla Mäkelä"
+      ],
+      "team2": [
+        "Alicia Gras",
+        "Lumi Tran"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          7
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "tournament": "Ling-Mei Sulkaset Eliitti 2026",
+      "category": "XD",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong",
+        "Tommi Ruoho"
+      ],
+      "team2": [
+        "Essi Rantanen",
+        "Sami Pajunen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          22,
+          20
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Osukon Härkäkisat",
+      "category": "MD",
+      "level": "C",
+      "round": "16",
+      "team1": [
+        "Santeri",
+        "Chau"
+      ],
+      "team2": [
+        "Lukas Holm",
+        "Jaakko Lehtinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Osukon Härkäkisat",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Aki Martikainen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          22,
+          20
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Nghi Le"
+      ],
+      "team2": [
+        "Yu-Shan Huang",
+        "Bernadette Quinn"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          22,
+          20
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "C",
+      "round": "16",
+      "team1": [
+        "Maila",
+        "Hien Köhler"
+      ],
+      "team2": [
+        "Ulla Haikonen",
+        "Sanna Lehikoinen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "C",
+      "round": "QF",
+      "team1": [
+        "Maila",
+        "Hien Köhler"
+      ],
+      "team2": [
+        "Dharshikasri Baskaran",
+        "Aditri Mittal"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Osukon Härkäkisat",
+      "category": "MS",
+      "level": "B",
+      "round": "QF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Vesa Koivula"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          8,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Osukon Härkäkisat",
+      "category": "MS",
+      "level": "B",
+      "round": "32",
+      "team1": [
+        "Dhirav"
+      ],
+      "team2": [
+        "Topias Laine"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Dao",
+        "Nghi Le"
+      ],
+      "team2": [
+        "Ginni Kaur",
+        "Sophie Stöhr"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          8
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Dao",
+        "Nghi Le"
+      ],
+      "team2": [
+        "Senja Ihalainen",
+        "Veronika Solovian"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "tournament": "Espoo Women's Open 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "SF",
+      "team1": [
+        "Dao",
+        "Nghi Le"
+      ],
+      "team2": [
+        "Sampada Chakraborty",
+        "Aswathy Raghunath"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          22,
+          20
+        ],
+        [
+          8,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "B",
+      "round": "32",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Niina Glumov",
+        "Mehdi Javan"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          23
+        ],
+        [
+          21,
+          15
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Aaron Virtanen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          16
+        ],
+        [
+          22,
+          20
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "V",
+      "round": "16",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Alicia Gras",
+        "Tyko Aakko"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          9
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Marika Tuominen",
+        "Rami Hiipakka"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          23
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "WS",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Anaya Kandala"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          24,
+          22
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "MD",
+      "level": "C",
+      "round": "16",
+      "team1": [
+        "Junya",
+        "Chau"
+      ],
+      "team2": [
+        "Lakshitha Ekayanake",
+        "Soumya Tripathy"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          9,
+          21
+        ],
+        [
+          21,
+          15
+        ],
+        [
+          20,
+          22
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "WD",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Emilia Ojala"
+      ],
+      "team2": [
+        "Pihla Mäkelä",
+        "Helena Santalahti"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          24,
+          22
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "MS",
+      "level": "B",
+      "round": "QF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Casimir Aalto"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Yelyzaveta Gusarenko",
+        "Ananda Galvani Daniswara"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "tournament": "Clear Premier Elite",
+      "category": "WS",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Pihla Mäkelä"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "tournament": "Clear Premier Elite",
+      "category": "WD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Emilia Ojala"
+      ],
+      "team2": [
+        "Noora Nokkala",
+        "Iina Suutarinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          12,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Emilia Ojala",
+        "Jaakko Mäenpää"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          15
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "tournament": "Clear Premier Elite",
+      "category": "WS",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Yelyzaveta Gusarenko"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          12,
+          21
+        ],
+        [
+          21,
+          18
+        ],
+        [
+          25,
+          23
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "tournament": "Clear Premier Elite",
+      "category": "XD",
+      "level": "V",
+      "round": "F",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Iina Suutarinen",
+        "Anton Kaisti"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Chau"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          18,
+          21
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          7,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Veikko"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          4
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          22,
+          20
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Veikko"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          10
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Veikko",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Dao",
+        "Veikko"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "WD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          23
+        ],
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau's Partner",
+        "Chau"
+      ],
+      "team2": [
+        "Dao",
+        "Matti"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          19
+        ],
+        [
+          9,
+          21
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau's Partner",
+        "Chau"
+      ],
+      "team2": [],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau's Partner 2",
+        "Chau"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          7,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Chau's Partner 2",
+        "Chau"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          8,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "tournament": "Aurora Team Tournament 2026",
+      "category": "",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Chau's Partner 2",
+        "Chau"
+      ],
+      "team2": [],
+      "result": "LOSS",
+      "sets": [
+        [
+          9,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-28",
+      "tournament": "SMASH Kansallinen",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Dhirav"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          10
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-28",
+      "tournament": "SMASH Kansallinen",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Dhirav"
+      ],
+      "team2": [
+        "Junya"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-03-28",
+      "tournament": "SMASH Kansallinen",
+      "category": "MS",
+      "level": "B",
+      "round": "QF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Risto Lampén"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "category": "MD",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Santeri"
+      ],
+      "team2": [
+        "Seung Jung Choi",
+        "Kwan Li"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          9
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "category": "MD",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Santeri"
+      ],
+      "team2": [
+        "Jaakko Hoffström",
+        "Aapo Vistilä"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "category": "MS",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Santeri"
+      ],
+      "team2": [
+        "Anitta Luostarinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "category": "MS",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Santeri"
+      ],
+      "team2": [
+        "Nikolas Syrén"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "tournament": "Badminton United Mestaruuskilpailu",
+      "category": "MS",
+      "level": "C",
+      "round": "Pool",
+      "team1": [
+        "Santeri"
+      ],
+      "team2": [
+        "Suresh Shivam Sundar"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          9
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-19",
+      "tournament": "Tampereen Kansalliset 2026",
+      "category": "XD",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Kirsi Niilola",
+        "Janne Papunen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          22,
+          24
+        ],
+        [
+          25,
+          23
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-19",
+      "tournament": "Tampereen Kansalliset 2026",
+      "category": "XD",
+      "level": "B",
+      "round": "QF",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Oona Hyttinen",
+        "Jussi Heimovirta"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          8,
+          21
+        ],
+        [
+          10,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "tournament": "Yonex Finnish International 2026",
+      "category": "WS",
+      "level": "I",
+      "round": "Q32",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Marelle Salu"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "tournament": "Yonex Finnish International 2026",
+      "category": "WS",
+      "level": "I",
+      "round": "32",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Sakshi Kurbkhelgi"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "tournament": "Yonex Finnish International 2026",
+      "category": "WS",
+      "level": "I",
+      "round": "Q16",
+      "team1": [
+        "Tong"
+      ],
+      "team2": [
+        "Alicia Gras"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-24",
+      "tournament": "Yonex Finnish International 2026",
+      "category": "WD",
+      "level": "I",
+      "round": "16",
+      "team1": [
+        "Tong",
+        "Emilia Ojala"
+      ],
+      "team2": [
+        "Sarah Asfar",
+        "Oona Tapola"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          21,
+          10
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-04-25",
+      "tournament": "Yonex Finnish International 2026",
+      "category": "WD",
+      "level": "I",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Emilia Ojala"
+      ],
+      "team2": [
+        "Noora Nokkala",
+        "Iina Suutarinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          19
+        ],
+        [
+          16,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "MS",
+      "level": "B",
+      "round": "32",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Anton Sundqvist"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          16
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Aaro Romppainen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "Meilahti lohkokisa toukokuu 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Fanny Rikberg",
+        "Minh Cao"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          20,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "Meilahti lohkokisa toukokuu 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Johanna Pohjoisvirta",
+        "Pekka Kalmari"
+      ],
+      "result": "DRAW",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "Meilahti lohkokisa toukokuu 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Ginni Kaur",
+        "Tuomas Yrjänheikki"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "WD",
+      "level": "C",
+      "round": "QF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Sara Sundelin",
+        "Elma Vuorinen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "XD",
+      "level": "B",
+      "round": "32",
+      "team1": [
+        "Maila",
+        "Oskari Kruth"
+      ],
+      "team2": [
+        "Sara Tuomala",
+        "Artturi Björk"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          8
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "WD",
+      "level": "C",
+      "round": "SF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Vilte Andersson",
+        "Leni Andersson"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "tournament": "ABC-luokkamestaruuskisat",
+      "category": "WD",
+      "level": "C",
+      "round": "F",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Heli Laitinen",
+        "Kaisa Saksinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          21,
+          18
+        ],
+        [
+          6,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "MS",
+      "level": "C",
+      "round": "64",
+      "team1": [
+        "Dhirav"
+      ],
+      "team2": [
+        "Eetu Niinimäki"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "MS",
+      "level": "C",
+      "round": "32",
+      "team1": [
+        "Dhirav"
+      ],
+      "team2": [
+        "Kristian Hildén"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "MS",
+      "level": "B",
+      "round": "32",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Tan Nguyen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "MS",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Kari Laipio"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          25,
+          23
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "MS",
+      "level": "B",
+      "round": "QF",
+      "team1": [
+        "Junya"
+      ],
+      "team2": [
+        "Aakash Gamage"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "WD",
+      "level": "C",
+      "round": "QF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Ulla Haikonen",
+        "Sanna Lehikoinen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          11
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "WD",
+      "level": "C",
+      "round": "SF",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Hien Köhler",
+        "Nuengruethai Ounjai"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "WD",
+      "level": "C",
+      "round": "F",
+      "team1": [
+        "Maila",
+        "Tanisha"
+      ],
+      "team2": [
+        "Linh Hoang",
+        "Phuong Truong"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          12
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "QF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Emilia Ojala",
+        "Jaakko Mäenpää"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          23,
+          21
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "tournament": "FZ Forza BadU Premier Eliitti",
+      "category": "XD",
+      "level": "V",
+      "round": "SF",
+      "team1": [
+        "Tong",
+        "Tum"
+      ],
+      "team2": [
+        "Oona Tapola",
+        "Jesper Paul"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          14,
+          21
+        ],
+        [
+          7,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Ananda Sha",
+        "Arunkumar Margabandu"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          8,
+          21
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Tomi Laine",
+        "Kari Laipio"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Lassi Kaarna",
+        "Anssi Pekkarinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          8,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Toni",
+        "Matti"
+      ],
+      "team2": [
+        "Loc Hoang",
+        "Thinh Le"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          9,
+          21
+        ],
+        [
+          4,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Toni",
+        "Matti"
+      ],
+      "team2": [
+        "Lauri Lilja",
+        "Viktor Tågestad"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Toni",
+        "Matti"
+      ],
+      "team2": [
+        "Bahman Amrahi",
+        "Taha Heidari"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Nga Pham"
+      ],
+      "team2": [
+        "Boris",
+        "Khai"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Boris",
+        "Khai"
+      ],
+      "team2": [
+        "Chau",
+        "Nga Pham"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          14
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Nga Pham"
+      ],
+      "team2": [
+        "Camilla Sonck",
+        "Simo Säynätkari"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          8,
+          21
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Boris",
+        "Khai"
+      ],
+      "team2": [
+        "Duong Duy",
+        "Kiet Vo"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          7
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Nga Pham"
+      ],
+      "team2": [
+        "Duong Duy",
+        "Kiet Vo"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          22,
+          20
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Boris",
+        "Khai"
+      ],
+      "team2": [
+        "Camilla Sonck",
+        "Simo Säynätkari"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          12,
+          21
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Tung Mai",
+        "Thao Nguyen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          16
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Omid Esmaeili",
+        "Shayan Taheri"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          23,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Sethuram Muthaiah",
+        "Prabagarane Pannerselvam"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "WD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Hanna Hämäläinen",
+        "Minna Pasenius"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "WD",
+      "level": "Kunto",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Dao"
+      ],
+      "team2": [
+        "Eva Funck",
+        "Maiju Wigelius"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          18,
+          21
+        ],
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "32",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Dexter Balmeo",
+        "Wendel Nuevas"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          12,
+          21
+        ],
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          9
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Marvin Kauppila",
+        "Alexey Otavin"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          26,
+          24
+        ],
+        [
+          21,
+          13
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "QF",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Tuan Hoang",
+        "Yen Vo"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          23,
+          21
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "SF",
+      "team1": [
+        "Veikko",
+        "Bom"
+      ],
+      "team2": [
+        "Prottoy Akbar",
+        "Mike Gu"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Boris",
+        "Khai"
+      ],
+      "team2": [
+        "Johnny Bui",
+        "Toni Chau"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          19
+        ],
+        [
+          14,
+          21
+        ],
+        [
+          16,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Veronika Solovian",
+        "Markus Kääriäinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          21,
+          19
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Krista Iltanen",
+        "Henri Iltanen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          17
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Ada Laitinen",
+        "Pieter Vermeylen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          21,
+          15
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Dao",
+        "Matti"
+      ],
+      "team2": [
+        "Arezoo Esmaeili",
+        "Shayan Taheri"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "tournament": "Kunnon Kevätnelinpeliä 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Nga Pham",
+        "Chau"
+      ],
+      "team2": [
+        "Nuengruethai Ounjai",
+        "Kwan Li"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          21,
+          23
+        ],
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "tournament": "VBE2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Khánh Linh Nguyen",
+        "Chau"
+      ],
+      "team2": [
+        "Nghi Le",
+        "Danh Nguyen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "tournament": "VBE2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Khánh Linh Nguyen",
+        "Chau"
+      ],
+      "team2": [
+        "Hoa Minh Quang",
+        "Thao Nguyen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          17
+        ],
+        [
+          17,
+          21
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "tournament": "VBE2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Khánh Linh Nguyen",
+        "Chau"
+      ],
+      "team2": [
+        "Thi Truc Nhi Tran",
+        "Truong Son Tran"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          16,
+          21
+        ],
+        [
+          10,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "tournament": "VBE2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Phan Thuc"
+      ],
+      "team2": [
+        "Vu Minh Nguyen",
+        "Bach Tue Dinh"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          11
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "tournament": "VBE2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Phan Thuc"
+      ],
+      "team2": [
+        "Dam Trung",
+        "Quoc Bao Bui"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          5
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "tournament": "VBE2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Phan Thuc"
+      ],
+      "team2": [
+        "Dinh Duy Duong",
+        "Tuan Kiet Vo"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          15,
+          3
+        ],
+        [
+          21,
+          19
+        ]
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "tournament": "VBE2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "16",
+      "team1": [
+        "Chau",
+        "Phan Thuc"
+      ],
+      "team2": [
+        "Pham Triet",
+        "Huynh Tung"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          14,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Santeri"
+      ],
+      "team2": [
+        "Tuan Nguyen",
+        "Khanh Trung"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          11,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Santeri"
+      ],
+      "team2": [
+        "Kari Korjus",
+        "Jalmari Polari"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          14,
+          21
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          9
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau",
+        "Santeri"
+      ],
+      "team2": [
+        "Atte Kulmala",
+        "Miko Männistö"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          17,
+          21
+        ],
+        [
+          13,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Santeri"
+      ],
+      "team2": [
+        "Dona",
+        "Son Nguyen"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          25,
+          23
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Santeri"
+      ],
+      "team2": [
+        "Marja-Leena Ylönen",
+        "Hirppa"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          12
+        ],
+        [
+          21,
+          10
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Thy",
+        "Santeri"
+      ],
+      "team2": [
+        "Helmi Saari",
+        "Phong Lam"
+      ],
+      "result": "WIN",
+      "sets": [
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          14
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "XD",
+      "level": "Rento",
+      "round": "F",
+      "team1": [
+        "Thy",
+        "Santeri"
+      ],
+      "team2": [
+        "Johanna Pohjoisvirta",
+        "Matti Hyrkäs"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          19,
+          21
+        ],
+        [
+          9,
+          21
+        ]
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "XD",
+      "level": "B",
+      "round": "16",
+      "team1": [
+        "Maila",
+        "Junya"
+      ],
+      "team2": [
+        "Vilma Luukkanen",
+        "Eetu"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          11,
+          21
+        ],
+        [
+          28,
+          26
+        ],
+        [
+          12,
+          21
+        ]
+      ]
+    }
+  ]
+}

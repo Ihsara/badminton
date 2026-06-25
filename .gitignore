@@ -1,0 +1,30 @@
+# ── Secrets — never commit ──────────────────────────────────────────────
+.env
+.env.local
+*.secret
+out/auth_state.json
+
+# ── Private data (its own nested git repo: data/.git) ───────────────────
+# The real Excel, players.csv (nickname→real-name→profile GUID) and the
+# full roster live ONLY in the private repo under data/. The public repo
+# never tracks them. The publishable, GUID-free web/data.json is the one
+# exception below and IS committed.
+data/
+
+# ── Python ──────────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# ── OS ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Output / scratch ────────────────────────────────────────────────────
+*.log
+out/
+
+# ── Docker / local ──────────────────────────────────────────────────────
+*.pid

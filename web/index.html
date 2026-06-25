@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Badminton Bros — Almanac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#/">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 2 6 14h12L12 2Z" fill="currentColor" opacity=".9" />
+            <circle cx="12" cy="18.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+        </span>
+        <span class="brand__name">Badminton&nbsp;Bros</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#/" data-route="">Group</a>
+        <a href="#/players" data-route="players">Players</a>
+        <a href="#/h2h" data-route="h2h">Head&#8209;to&#8209;head</a>
+        <a href="#/tournaments" data-route="tournaments">Tournaments</a>
+        <a href="#/maintain" data-route="maintain" id="nav-maintain" hidden>Maintain</a>
+      </nav>
+      <div class="meta" id="meta"></div>
+    </header>
+
+    <div id="banner" class="banner" hidden></div>
+
+    <main id="app" class="app"><div class="loading">Loading the almanac…</div></main>
+
+    <footer class="foot">
+      <span id="foot-meta"></span>
+      <span class="foot__dot">·</span>
+      <span>data from badmintonfinland.tournamentsoftware.com</span>
+    </footer>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+    <script src="./maintain.js"></script>
+  </body>
+</html>

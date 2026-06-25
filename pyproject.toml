@@ -1,0 +1,39 @@
+[project]
+name = "badminton-tracker"
+version = "0.1.0"
+description = "Track the friend group's badminton results from badmintonfinland.tournamentsoftware.com"
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.49",
+    "openpyxl>=3.1",
+    "python-dotenv>=1.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "python-multipart>=0.0.12",
+]
+
+[project.scripts]
+badminton = "badminton_tracker.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/badminton_tracker"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+# FastAPI uses callables (File()/Form()) as argument defaults by design.
+"src/badminton_tracker/server.py" = ["B008"]
