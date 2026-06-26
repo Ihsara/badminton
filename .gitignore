@@ -28,3 +28,8 @@ out/
 
 # ── Docker / local ──────────────────────────────────────────────────────
 *.pid
+
+# ── Claude Code machine-local scaffolding (not part of the public repo) ──
+.claude/
+context/
+CLAUDE.md
