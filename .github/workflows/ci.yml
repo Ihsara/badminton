@@ -1,0 +1,28 @@
+name: CI
+
+# Quality gate that keeps `main` deployable. The home server auto-redeploys
+# whatever is on main (windows/redeploy.bat), so a broken push must be caught
+# here first: lint with ruff (project rule) and prove the Docker image builds.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Lint (ruff)
+        run: uv run ruff check .
+
+      - name: Build the deployable image
+        run: docker build -t badminton:ci .

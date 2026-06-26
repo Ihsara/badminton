@@ -124,6 +124,50 @@ banner when the tunnel is down. Leave `apiBase: ""` for snapshot-only.
 
 ---
 
+## 6. Auto-redeploy the server on code changes (CI/CD)
+
+You edit code on your machine and push; the home PC redeploys itself. No inbound
+ports, no secrets on the PC — the PC only **pulls** from the public repo.
+
+```
+  edit code  --push-->  GitHub (Ihsara/badminton, main)
+                              |
+                     CI: ruff + docker build   <- bad code never reaches "deployable"
+                              |
+   PC scheduled task (every 5 min):
+     git fetch -> new commit? -> ff-only pull -> docker compose up -d --build
+                              |
+                    health-check /api/health
+                       ok? keep : roll back to the previous commit
+```
+
+**CI** (`.github/workflows/ci.yml`) runs on every push/PR: `ruff check` + a real
+`docker build`. If it fails, fix it before the PC picks the commit up.
+
+**CD** is `windows\redeploy.bat`, registered as the `BadmintonBrosRedeploy`
+scheduled task by `install-autostart.ps1` (re-run that script once to add it):
+
+```
+powershell -ExecutionPolicy Bypass -File windows\install-autostart.ps1
+```
+
+It only rebuilds when there is a new commit, takes **fast-forward pulls only**
+(if local `publish.bat` commits and an upstream push diverge, it refuses and
+leaves the running server alone), and **rolls back automatically** if the
+rebuilt container fails its health check. Watch what it does:
+
+```
+type windows\redeploy.log          REM last redeploy output
+```
+
+Notes:
+- `data/` is bind-mounted and gitignored, so redeploys never touch the private
+  data repo or its history.
+- The PC must be on for a redeploy to land; it catches up on the next 5-min poll.
+- Want it faster / on-demand? Run `windows\redeploy.bat` by hand anytime.
+
+---
+
 ## Privacy checklist before going public
 
 - [ ] `gh auth status` shows **Ihsara** active (not longchautran/Kesko).
