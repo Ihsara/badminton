@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from badminton_tracker.export import dedupe_matches, match_id
+from badminton_tracker.aliases import apply
+from badminton_tracker.export import dedupe_matches, match_id, roster_from_names
+from badminton_tracker.stats import player_stats
 
 
 def _m(team1, team2, result, sets, *, date="2026-03-28", tournament="SMASH",
@@ -82,3 +84,43 @@ def test_dedupe_preserves_order_and_kept_payloads():
     kept, _ = dedupe_matches([a, b, other])
     assert kept[0] is a  # first occurrence wins
     assert other in kept
+
+
+# ---- roster collapse after aliasing -----------------------------------------
+
+
+def _stat_match(p1, o1):
+    """A minimal singles match in the internal (non-payload) shape player_stats reads."""
+    return {
+        "date": "2026-07-04", "tournament": "Stadin", "category": "WD", "level": "C",
+        "round": "Pool", "player_1": p1, "player_2": "", "opponent_1": o1,
+        "opponent_2": "", "result": "WIN",
+        "set_1_own": 21, "set_1_opp": 10, "set_2_own": 21, "set_2_opp": 12,
+        "set_3_own": None, "set_3_opp": None,
+    }
+
+
+def test_aliased_spellings_collapse_to_one_roster_entry():
+    """Two raw spellings that alias to the same display name (Thy Nguyen / Thy
+    NGUYEN → Thy) must yield ONE stats page, not a duplicate row per spelling.
+    Mirrors the dict.fromkeys de-dup in export.export_from_excel."""
+    mapping = {"Thy Nguyen": "Thy", "Thy NGUYEN": "Thy"}
+    raw_friends = ["Thy Nguyen", "Thy NGUYEN", "Maila"]
+    display = list(dict.fromkeys(apply(f, mapping) for f in raw_friends))
+    assert display == ["Thy", "Maila"]  # collapsed, order preserved
+
+    matches = [
+        {**_stat_match("Thy", "Stranger A")},
+        {**_stat_match("Thy", "Stranger B")},
+    ]
+    stats = player_stats(matches, roster_from_names(display))
+    thy_rows = [s for s in stats if s["player"] == "Thy"]
+    assert len(thy_rows) == 1
+    assert thy_rows[0]["games"] == 2
+
+
+def test_distinct_person_not_collapsed_by_partial_name():
+    """'Thy Le' is a different person from 'Thy' and must NOT be merged."""
+    mapping = {"Thy Nguyen": "Thy"}
+    display = list(dict.fromkeys(apply(f, mapping) for f in ["Thy Nguyen", "Thy Le"]))
+    assert display == ["Thy", "Thy Le"]

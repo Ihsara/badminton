@@ -1,9 +1,9 @@
 {
   "group_name": "Badminton Bros",
-  "generated_at": "2026-06-28T23:11:20",
+  "generated_at": "2026-06-28T23:41:24",
   "source": "excel",
   "counts": {
-    "players": 62,
+    "players": 60,
     "matches": 513,
     "tournaments": 60
   },
@@ -49,34 +49,6 @@
       "win_ratio": 0.519,
       "points_per_set": 17.62,
       "third_set_ratio": 0.215
-    },
-    {
-      "player": "Thy Nguyen",
-      "games": 51,
-      "wins": 27,
-      "losses": 24,
-      "sets_won": 56,
-      "sets_lost": 54,
-      "points_for": 1881,
-      "points_against": 1904,
-      "third_set_games": 12,
-      "win_ratio": 0.529,
-      "points_per_set": 17.1,
-      "third_set_ratio": 0.235
-    },
-    {
-      "player": "Thy NGUYEN",
-      "games": 51,
-      "wins": 27,
-      "losses": 24,
-      "sets_won": 56,
-      "sets_lost": 54,
-      "points_for": 1881,
-      "points_against": 1904,
-      "third_set_games": 12,
-      "win_ratio": 0.529,
-      "points_per_set": 17.1,
-      "third_set_ratio": 0.235
     },
     {
       "player": "Tanisha",
@@ -135,20 +107,6 @@
       "third_set_ratio": 0.264
     },
     {
-      "player": "Khánh Linh Nguyen",
-      "games": 40,
-      "wins": 19,
-      "losses": 21,
-      "sets_won": 41,
-      "sets_lost": 45,
-      "points_for": 1463,
-      "points_against": 1523,
-      "third_set_games": 10,
-      "win_ratio": 0.475,
-      "points_per_set": 17.01,
-      "third_set_ratio": 0.25
-    },
-    {
       "player": "Thy",
       "games": 32,
       "wins": 19,
@@ -164,45 +122,45 @@
     },
     {
       "player": "Thao Le",
-      "games": 25,
-      "wins": 17,
+      "games": 26,
+      "wins": 18,
       "losses": 8,
-      "sets_won": 35,
+      "sets_won": 37,
       "sets_lost": 19,
-      "points_for": 1041,
-      "points_against": 860,
+      "points_for": 1083,
+      "points_against": 874,
       "third_set_games": 8,
-      "win_ratio": 0.68,
-      "points_per_set": 19.28,
-      "third_set_ratio": 0.32
+      "win_ratio": 0.692,
+      "points_per_set": 19.34,
+      "third_set_ratio": 0.308
     },
     {
       "player": "Nghi Le",
-      "games": 21,
-      "wins": 16,
+      "games": 22,
+      "wins": 17,
       "losses": 5,
-      "sets_won": 32,
+      "sets_won": 34,
       "sets_lost": 15,
-      "points_for": 908,
-      "points_against": 727,
+      "points_for": 950,
+      "points_against": 741,
       "third_set_games": 7,
-      "win_ratio": 0.762,
-      "points_per_set": 19.32,
-      "third_set_ratio": 0.333
+      "win_ratio": 0.773,
+      "points_per_set": 19.39,
+      "third_set_ratio": 0.318
     },
     {
       "player": "Phuc Le Vinh",
-      "games": 21,
-      "wins": 16,
+      "games": 22,
+      "wins": 17,
       "losses": 5,
-      "sets_won": 32,
+      "sets_won": 34,
       "sets_lost": 15,
-      "points_for": 908,
-      "points_against": 727,
+      "points_for": 950,
+      "points_against": 741,
       "third_set_games": 7,
-      "win_ratio": 0.762,
-      "points_per_set": 19.32,
-      "third_set_ratio": 0.333
+      "win_ratio": 0.773,
+      "points_per_set": 19.39,
+      "third_set_ratio": 0.318
     },
     {
       "player": "Hien Köhler",
@@ -259,6 +217,20 @@
       "win_ratio": 0.342,
       "points_per_set": 16.51,
       "third_set_ratio": 0.158
+    },
+    {
+      "player": "Khánh Linh Nguyen",
+      "games": 27,
+      "wins": 13,
+      "losses": 14,
+      "sets_won": 30,
+      "sets_lost": 29,
+      "points_for": 1061,
+      "points_against": 1033,
+      "third_set_games": 7,
+      "win_ratio": 0.481,
+      "points_per_set": 17.98,
+      "third_set_ratio": 0.259
     },
     {
       "player": "Elias Kvist",
@@ -2683,31 +2655,16 @@
     {
       "player": "Khánh Linh Nguyen",
       "tournament": "Kunnon Sulkaa 2025",
-      "games": 7,
-      "wins": 4,
-      "losses": 3,
-      "sets_won": 8,
-      "sets_lost": 8,
-      "points_for": 273,
-      "points_against": 279,
-      "third_set_games": 2,
-      "win_ratio": 0.571,
-      "points_per_set": 17.06,
-      "third_set_ratio": 0.286
-    },
-    {
-      "player": "Khánh Linh Nguyen",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 6,
+      "games": 2,
       "wins": 1,
-      "losses": 5,
-      "sets_won": 0,
-      "sets_lost": 10,
-      "points_for": 89,
-      "points_against": 210,
+      "losses": 1,
+      "sets_won": 2,
+      "sets_lost": 2,
+      "points_for": 70,
+      "points_against": 75,
       "third_set_games": 0,
-      "win_ratio": 0.167,
-      "points_per_set": 8.9,
+      "win_ratio": 0.5,
+      "points_per_set": 17.5,
       "third_set_ratio": 0.0
     },
     {
@@ -2773,17 +2730,17 @@
     {
       "player": "Khánh Linh Nguyen",
       "tournament": "RSL Aurora Badminton Tournament",
-      "games": 4,
-      "wins": 3,
+      "games": 2,
+      "wins": 1,
       "losses": 1,
-      "sets_won": 7,
+      "sets_won": 2,
       "sets_lost": 2,
-      "points_for": 179,
-      "points_against": 145,
-      "third_set_games": 1,
-      "win_ratio": 0.75,
-      "points_per_set": 19.89,
-      "third_set_ratio": 0.25
+      "points_for": 69,
+      "points_against": 69,
+      "third_set_games": 0,
+      "win_ratio": 0.5,
+      "points_per_set": 17.25,
+      "third_set_ratio": 0.0
     },
     {
       "player": "Khánh Linh Nguyen",
@@ -4183,16 +4140,16 @@
     {
       "player": "Nghi Le",
       "tournament": "Vifinton Youth 2024",
-      "games": 1,
-      "wins": 0,
+      "games": 2,
+      "wins": 1,
       "losses": 1,
-      "sets_won": 0,
+      "sets_won": 2,
       "sets_lost": 2,
-      "points_for": 28,
-      "points_against": 42,
+      "points_for": 70,
+      "points_against": 56,
       "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 14.0,
+      "win_ratio": 0.5,
+      "points_per_set": 17.5,
       "third_set_ratio": 0.0
     },
     {
@@ -4918,16 +4875,16 @@
     {
       "player": "Phuc Le Vinh",
       "tournament": "Vifinton Youth 2024",
-      "games": 1,
-      "wins": 0,
+      "games": 2,
+      "wins": 1,
       "losses": 1,
-      "sets_won": 0,
+      "sets_won": 2,
       "sets_lost": 2,
-      "points_for": 28,
-      "points_against": 42,
+      "points_for": 70,
+      "points_against": 56,
       "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 14.0,
+      "win_ratio": 0.5,
+      "points_per_set": 17.5,
       "third_set_ratio": 0.0
     },
     {
@@ -5848,16 +5805,16 @@
     {
       "player": "Thao Le",
       "tournament": "Vifinton Youth 2024",
-      "games": 1,
-      "wins": 0,
+      "games": 2,
+      "wins": 1,
       "losses": 1,
-      "sets_won": 0,
+      "sets_won": 2,
       "sets_lost": 2,
-      "points_for": 28,
-      "points_against": 42,
+      "points_for": 70,
+      "points_against": 56,
       "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 14.0,
+      "win_ratio": 0.5,
+      "points_per_set": 17.5,
       "third_set_ratio": 0.0
     },
     {
@@ -6024,456 +5981,6 @@
       "win_ratio": 1.0,
       "points_per_set": 21.0,
       "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Aurora Team Tournament 2026",
-      "games": 6,
-      "wins": 6,
-      "losses": 0,
-      "sets_won": 12,
-      "sets_lost": 2,
-      "points_for": 284,
-      "points_against": 208,
-      "third_set_games": 2,
-      "win_ratio": 1.0,
-      "points_per_set": 20.29,
-      "third_set_ratio": 0.333
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Clear Kesäyön turnaus 2026",
-      "games": 5,
-      "wins": 4,
-      "losses": 1,
-      "sets_won": 8,
-      "sets_lost": 3,
-      "points_for": 211,
-      "points_against": 169,
-      "third_set_games": 1,
-      "win_ratio": 0.8,
-      "points_per_set": 19.18,
-      "third_set_ratio": 0.2
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "FZ Forza BadU Premier Eliitti",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 1,
-      "sets_lost": 2,
-      "points_for": 50,
-      "points_against": 57,
-      "third_set_games": 1,
-      "win_ratio": 0.0,
-      "points_per_set": 16.67,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Kunnon Kevätnelinpeliä 2026",
-      "games": 3,
-      "wins": 0,
-      "losses": 3,
-      "sets_won": 0,
-      "sets_lost": 6,
-      "points_for": 92,
-      "points_against": 126,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 15.33,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Kunnon Sulkaa 2025",
-      "games": 7,
-      "wins": 4,
-      "losses": 3,
-      "sets_won": 8,
-      "sets_lost": 8,
-      "points_for": 273,
-      "points_against": 279,
-      "third_set_games": 2,
-      "win_ratio": 0.571,
-      "points_per_set": 17.06,
-      "third_set_ratio": 0.286
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 6,
-      "wins": 1,
-      "losses": 5,
-      "sets_won": 0,
-      "sets_lost": 10,
-      "points_for": 89,
-      "points_against": 210,
-      "third_set_games": 0,
-      "win_ratio": 0.167,
-      "points_per_set": 8.9,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Kunnon Talvinelinpeliä 2026",
-      "games": 7,
-      "wins": 4,
-      "losses": 3,
-      "sets_won": 10,
-      "sets_lost": 7,
-      "points_for": 308,
-      "points_against": 296,
-      "third_set_games": 3,
-      "win_ratio": 0.571,
-      "points_per_set": 18.12,
-      "third_set_ratio": 0.429
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Mansen Sulan Ylöjärven kansallinen",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 22,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Meilahti lohkokisa syyskuu 2025",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 0,
-      "sets_lost": 0,
-      "points_for": 0,
-      "points_against": 0,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": null,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "RSL Aurora Badminton Tournament",
-      "games": 4,
-      "wins": 3,
-      "losses": 1,
-      "sets_won": 7,
-      "sets_lost": 2,
-      "points_for": 179,
-      "points_against": 145,
-      "third_set_games": 1,
-      "win_ratio": 0.75,
-      "points_per_set": 19.89,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 48,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 12.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Stadin Sulan kesäkisat 6.7.2024",
-      "games": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_won": 2,
-      "sets_lost": 2,
-      "points_for": 63,
-      "points_against": 70,
-      "third_set_games": 0,
-      "win_ratio": 0.5,
-      "points_per_set": 15.75,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "VBE2026",
-      "games": 4,
-      "wins": 1,
-      "losses": 3,
-      "sets_won": 2,
-      "sets_lost": 7,
-      "points_for": 136,
-      "points_against": 170,
-      "third_set_games": 1,
-      "win_ratio": 0.25,
-      "points_per_set": 15.11,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Vifinton Youth 2024",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 14,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy NGUYEN",
-      "tournament": "Ystävänpäivän poolikisat",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 1,
-      "points_for": 64,
-      "points_against": 54,
-      "third_set_games": 1,
-      "win_ratio": 1.0,
-      "points_per_set": 21.33,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Aurora Team Tournament 2026",
-      "games": 6,
-      "wins": 6,
-      "losses": 0,
-      "sets_won": 12,
-      "sets_lost": 2,
-      "points_for": 284,
-      "points_against": 208,
-      "third_set_games": 2,
-      "win_ratio": 1.0,
-      "points_per_set": 20.29,
-      "third_set_ratio": 0.333
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Clear Kesäyön turnaus 2026",
-      "games": 5,
-      "wins": 4,
-      "losses": 1,
-      "sets_won": 8,
-      "sets_lost": 3,
-      "points_for": 211,
-      "points_against": 169,
-      "third_set_games": 1,
-      "win_ratio": 0.8,
-      "points_per_set": 19.18,
-      "third_set_ratio": 0.2
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "FZ Forza BadU Premier Eliitti",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 1,
-      "sets_lost": 2,
-      "points_for": 50,
-      "points_against": 57,
-      "third_set_games": 1,
-      "win_ratio": 0.0,
-      "points_per_set": 16.67,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Kunnon Kevätnelinpeliä 2026",
-      "games": 3,
-      "wins": 0,
-      "losses": 3,
-      "sets_won": 0,
-      "sets_lost": 6,
-      "points_for": 92,
-      "points_against": 126,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 15.33,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Kunnon Sulkaa 2025",
-      "games": 7,
-      "wins": 4,
-      "losses": 3,
-      "sets_won": 8,
-      "sets_lost": 8,
-      "points_for": 273,
-      "points_against": 279,
-      "third_set_games": 2,
-      "win_ratio": 0.571,
-      "points_per_set": 17.06,
-      "third_set_ratio": 0.286
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 6,
-      "wins": 1,
-      "losses": 5,
-      "sets_won": 0,
-      "sets_lost": 10,
-      "points_for": 89,
-      "points_against": 210,
-      "third_set_games": 0,
-      "win_ratio": 0.167,
-      "points_per_set": 8.9,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Kunnon Talvinelinpeliä 2026",
-      "games": 7,
-      "wins": 4,
-      "losses": 3,
-      "sets_won": 10,
-      "sets_lost": 7,
-      "points_for": 308,
-      "points_against": 296,
-      "third_set_games": 3,
-      "win_ratio": 0.571,
-      "points_per_set": 18.12,
-      "third_set_ratio": 0.429
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Mansen Sulan Ylöjärven kansallinen",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 22,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Meilahti lohkokisa syyskuu 2025",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 0,
-      "sets_lost": 0,
-      "points_for": 0,
-      "points_against": 0,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": null,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "RSL Aurora Badminton Tournament",
-      "games": 4,
-      "wins": 3,
-      "losses": 1,
-      "sets_won": 7,
-      "sets_lost": 2,
-      "points_for": 179,
-      "points_against": 145,
-      "third_set_games": 1,
-      "win_ratio": 0.75,
-      "points_per_set": 19.89,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 48,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 12.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Stadin Sulan kesäkisat 6.7.2024",
-      "games": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_won": 2,
-      "sets_lost": 2,
-      "points_for": 63,
-      "points_against": 70,
-      "third_set_games": 0,
-      "win_ratio": 0.5,
-      "points_per_set": 15.75,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "VBE2026",
-      "games": 4,
-      "wins": 1,
-      "losses": 3,
-      "sets_won": 2,
-      "sets_lost": 7,
-      "points_for": 136,
-      "points_against": 170,
-      "third_set_games": 1,
-      "win_ratio": 0.25,
-      "points_per_set": 15.11,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Vifinton Youth 2024",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 14,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Thy Nguyen",
-      "tournament": "Ystävänpäivän poolikisat",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 1,
-      "points_for": 64,
-      "points_against": 54,
-      "third_set_games": 1,
-      "win_ratio": 1.0,
-      "points_per_set": 21.33,
-      "third_set_ratio": 1.0
     },
     {
       "player": "Tommi Heinisaari",
@@ -7958,7 +7465,7 @@
         "Tanisha"
       ],
       "team2": [
-        "Quinn Dao",
+        "Dao",
         "Nuengruethai Ounjai"
       ],
       "result": "WIN",
@@ -7972,7 +7479,7 @@
           10
         ]
       ],
-      "id": "05b15ed10591"
+      "id": "2493e6096c4f"
     },
     {
       "date": "2026-01-10",
@@ -14778,7 +14285,7 @@
       "level": "Beginner/Aloittelijat",
       "round": "Pool",
       "team1": [
-        "Thy Nguyen",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -14796,7 +14303,7 @@
           14
         ]
       ],
-      "id": "797bf6dbddd1"
+      "id": "3612b0bc2a91"
     },
     {
       "date": "2025-05-31",
@@ -14805,11 +14312,11 @@
       "level": "Beginner/Aloittelijat",
       "round": "Pool",
       "team1": [
-        "Thy Nguyen",
+        "Thy",
         "Dao"
       ],
       "team2": [
-        "Quinn Dao",
+        "Dao",
         "Leyre Montero"
       ],
       "result": "WIN",
@@ -14823,7 +14330,7 @@
           14
         ]
       ],
-      "id": "4cf4e167ba04"
+      "id": "a6be080f0f06"
     },
     {
       "date": "2025-05-31",
@@ -14832,7 +14339,7 @@
       "level": "Beginner/Aloittelijat",
       "round": "SF",
       "team1": [
-        "Thy Nguyen",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -14854,7 +14361,7 @@
           22
         ]
       ],
-      "id": "614babbbc8ae"
+      "id": "8c51f776b658"
     },
     {
       "date": "2025-06-14",
@@ -15748,7 +15255,7 @@
       "round": "Pool",
       "team1": [
         "Santeri",
-        "Thy NGUYEN"
+        "Thy"
       ],
       "team2": [
         "Nik ZAKIRIN",
@@ -15765,7 +15272,7 @@
           21
         ]
       ],
-      "id": "efc0fab8f523"
+      "id": "38d4bfd3f779"
     },
     {
       "date": "2025-09-13",
@@ -15775,7 +15282,7 @@
       "round": "Pool",
       "team1": [
         "Santeri",
-        "Thy NGUYEN"
+        "Thy"
       ],
       "team2": [
         "Jani SÖDERLUND",
@@ -15792,7 +15299,7 @@
           21
         ]
       ],
-      "id": "3a6d0116eeee"
+      "id": "d8be64027a42"
     },
     {
       "date": "2025-09-13",
@@ -15802,7 +15309,7 @@
       "round": "Pool",
       "team1": [
         "Santeri",
-        "Thy NGUYEN"
+        "Thy"
       ],
       "team2": [
         "Tomi MÄKINEN",
@@ -15819,7 +15326,7 @@
           21
         ]
       ],
-      "id": "1f181c236c65"
+      "id": "db10e937e2f5"
     },
     {
       "date": "2025-09-13",
@@ -15985,7 +15492,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -16003,7 +15510,7 @@
           21
         ]
       ],
-      "id": "e7a6ada232bd"
+      "id": "77864e0917da"
     },
     {
       "date": "2025-09-13",
@@ -16012,7 +15519,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -16021,7 +15528,7 @@
       ],
       "result": "WIN",
       "sets": [],
-      "id": "a599426573af"
+      "id": "e0fdec6ee3af"
     },
     {
       "date": "2025-09-13",
@@ -16030,7 +15537,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -16048,7 +15555,7 @@
           21
         ]
       ],
-      "id": "5d1e38a8b506"
+      "id": "995b165f184c"
     },
     {
       "date": "2025-09-13",
@@ -16259,7 +15766,7 @@
       ],
       "team2": [
         "Nuengruethai Ounjai",
-        "Quinn Dao"
+        "Dao"
       ],
       "result": "WIN",
       "sets": [
@@ -16272,7 +15779,7 @@
           18
         ]
       ],
-      "id": "8f591ac5129c"
+      "id": "c706660b4c6b"
     },
     {
       "date": "2025-09-20",
@@ -17348,7 +16855,7 @@
         "Tanisha"
       ],
       "team2": [
-        "Quinn Dao"
+        "Dao"
       ],
       "result": "WIN",
       "sets": [
@@ -17361,7 +16868,7 @@
           10
         ]
       ],
-      "id": "d4890721801f"
+      "id": "466c3223b886"
     },
     {
       "date": "2025-10-24",
@@ -17819,7 +17326,7 @@
       "level": "rento",
       "round": "Pool",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -17841,7 +17348,7 @@
           10
         ]
       ],
-      "id": "da5921840b6f"
+      "id": "4e2ea5c9a5c2"
     },
     {
       "date": "2025-11-01",
@@ -17850,7 +17357,7 @@
       "level": "rento",
       "round": "Pool",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -17868,7 +17375,7 @@
           21
         ]
       ],
-      "id": "e8cceee13dfe"
+      "id": "dcbd000249b6"
     },
     {
       "date": "2025-11-01",
@@ -17877,7 +17384,7 @@
       "level": "rento",
       "round": "QF",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -17899,7 +17406,7 @@
           6
         ]
       ],
-      "id": "4672832a21e7"
+      "id": "e6fbd36d345b"
     },
     {
       "date": "2025-11-01",
@@ -17962,7 +17469,7 @@
       "level": "rento",
       "round": "SF",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -17980,7 +17487,7 @@
           20
         ]
       ],
-      "id": "22b318c97edc"
+      "id": "c2a7dbb2da42"
     },
     {
       "date": "2025-11-02",
@@ -17989,7 +17496,7 @@
       "level": "rento",
       "round": "F",
       "team1": [
-        "Thy NGUYEN",
+        "Thy",
         "Dao"
       ],
       "team2": [
@@ -18007,7 +17514,7 @@
           21
         ]
       ],
-      "id": "539e3a162b61"
+      "id": "c0306019f1cc"
     },
     {
       "date": "2025-11-08",
@@ -18259,7 +17766,7 @@
         "Nuengruethai Ounjai"
       ],
       "team2": [
-        "Quinn Dao",
+        "Dao",
         "Thanh-Thao Le"
       ],
       "result": "LOSS",
@@ -18277,7 +17784,7 @@
           21
         ]
       ],
-      "id": "2a094af9e5e3"
+      "id": "39bea87ab963"
     },
     {
       "date": "2025-11-15",
@@ -20796,7 +20303,7 @@
         "Phương Anh Lê"
       ],
       "team2": [
-        "Thy Lê",
+        "Thy Le",
         "Tina Phan"
       ],
       "result": "LOSS",
@@ -20810,7 +20317,7 @@
           21
         ]
       ],
-      "id": "c204707f9e50"
+      "id": "b4dca4cd1b3c"
     },
     {
       "date": "2024-11-09",
