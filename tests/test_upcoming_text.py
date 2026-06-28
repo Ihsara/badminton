@@ -20,6 +20,18 @@ UPCOMING = {
     }]
 }
 
+PROJECTED_ONLY = {
+    "tournaments": [{
+        "name": "Stadin", "start_date": "2026-03-14", "end_date": "2026-03-15",
+        "entries": [
+            {"player": "Chau", "event": "MS B", "path": [
+                {"round": "SF", "state": "projected", "opponent": "Winner of QF",
+                 "day": "2026-03-15", "session": "afternoon"},
+            ]},
+        ],
+    }]
+}
+
 
 def test_includes_tournament_header():
     out = format_chat_text(UPCOMING, {"horizon": "next", "fields": {"court", "opponent"}})
@@ -56,3 +68,24 @@ def test_court_field_toggle_off_hides_court():
     out = format_chat_text(UPCOMING, {"players": ["Vu Luu"], "horizon": "next",
                                       "fields": {"opponent"}})
     assert "K5" not in out
+
+
+def test_horizon_full_alone_shows_projected():
+    # horizon=="full" surfaces projected rounds even without "projected" in fields.
+    out = format_chat_text(UPCOMING, {"players": ["Chau"], "horizon": "full",
+                                      "fields": {"court", "opponent"}})
+    assert "SF" in out
+
+
+def test_projected_field_alone_shows_next_projected_when_no_scheduled():
+    # In next-mode with no scheduled node, "projected" in fields surfaces the next projected round.
+    out = format_chat_text(PROJECTED_ONLY, {"players": ["Chau"], "horizon": "next",
+                                            "fields": {"court", "opponent", "projected"}})
+    assert "SF" in out
+
+
+def test_next_mode_hides_projected_when_field_off_and_no_scheduled():
+    # Same projected-only entry, but "projected" NOT in fields and horizon=="next" -> hidden.
+    out = format_chat_text(PROJECTED_ONLY, {"players": ["Chau"], "horizon": "next",
+                                            "fields": {"court", "opponent"}})
+    assert "SF" not in out
