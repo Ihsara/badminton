@@ -211,7 +211,7 @@ private `data/` repo (`git -C data add upcoming_state.json && git -C data commit
 
 - [ ] `gh auth status` shows **Ihsara** active (not longchautran/Kesko).
 - [ ] Public repo commit author is `Ihsara`, not your Kesko email.
-- [ ] `git -C ~/badminton ls-files | grep -E 'data/|\.env'` → empty.
+- [ ] `git -C ~/badminton ls-files | grep -E 'data/|\.env|upcoming_state'` → empty.
 - [ ] `web/data.json` contains no profile GUIDs (it doesn't — verified by build).
 - [ ] `web/upcoming.json` contains no profile/tournament GUIDs — verify with:
       `grep -E '[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}' web/upcoming.json`
