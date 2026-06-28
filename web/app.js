@@ -2,6 +2,7 @@
 
 const app = document.getElementById("app");
 let DB = null;
+let UPC = null;  // upcoming-tournament data (may be absent on bare deploys)
 
 /* ---------------- data helpers ---------------- */
 
@@ -30,6 +31,63 @@ function playerMatches(name) {
   }
   out.sort((a, b) => (a.m.date < b.m.date ? 1 : -1));
   return out;
+}
+
+function upcomingActive() {
+  if (!UPC || !UPC.tournaments) return false;
+  const today = new Date().toISOString().slice(0, 10);
+  return UPC.tournaments.some((t) => t.start_date && t.end_date &&
+    t.start_date <= today && today <= t.end_date);
+}
+
+function upcClock(iso, notBefore) {
+  if (!iso) return "";
+  const hhmm = iso.length >= 16 ? iso.slice(11, 16) : "";
+  return notBefore && hhmm ? "~" + hhmm : hhmm;
+}
+
+// Mirrors src/badminton_tracker/upcoming_text.py::format_chat_text
+function formatChatText(upc, opts) {
+  const players = opts.players || null;
+  const tours = opts.tournaments || null;
+  const horizon = opts.horizon || "next";
+  const fields = new Set(opts.fields || ["court", "opponent"]);
+  const showProjected = fields.has("projected") || horizon === "full";
+  const lineFor = (player, event, n) => {
+    const parts = [`${player} (${event}): ${n.round}`];
+    if (n.state === "scheduled" || n.state === "done") {
+      const clk = upcClock(n.time, n.time_kind === "not_before");
+      if (clk) parts.push(clk);
+      if (fields.has("court") && n.court) parts.push("Court " + n.court);
+      if (fields.has("opponent") && n.opponent) parts.push("vs " + n.opponent);
+    } else {
+      const when = n.session || n.day || "";
+      parts.push(`${n.opponent || "TBD"} (${when})`.trim());
+    }
+    return parts.join(" ");
+  };
+  const relevant = (path) => {
+    const up = path.filter((n) => n.state === "scheduled" || n.state === "projected");
+    if (horizon === "next") {
+      const sched = up.find((n) => n.state === "scheduled");
+      return sched ? [sched] : up.slice(0, 1);
+    }
+    return up;
+  };
+  const out = [];
+  for (const t of (upc.tournaments || [])) {
+    if (tours && !tours.includes(t.name)) continue;
+    const lines = [];
+    for (const e of (t.entries || [])) {
+      if (players && !players.includes(e.player)) continue;
+      for (const n of relevant(e.path)) {
+        if (n.state === "projected" && !showProjected) continue;
+        lines.push(lineFor(e.player, e.event, n));
+      }
+    }
+    if (lines.length) { out.push("🏸 " + t.name); out.push(...lines); }
+  }
+  return out.join("\n");
 }
 
 function countBy(views, keyFn) {
@@ -546,6 +604,10 @@ async function boot() {
       browsers block <code>fetch</code> from <code>file://</code>.</div>`;
     return;
   }
+
+  // Upcoming timeline data — prefer live container, fall back to published snapshot.
+  try { UPC = await fetchJSON((API_BASE ? API_BASE : ".") + "/upcoming.json", 4000); }
+  catch (_) { try { UPC = await fetchJSON("./upcoming.json"); } catch (_) { UPC = null; } }
 
   setMeta();
   if (liveTried && !live && snap) {
