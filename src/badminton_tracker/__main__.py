@@ -27,6 +27,8 @@ def main() -> None:
     p_upc = sub.add_parser("upcoming", help="scrape upcoming draws/schedule -> web/upcoming.json")
     p_upc.add_argument("--watch", action="store_true", help="loop, self-pacing the refresh")
 
+    sub.add_parser("identity-seed", help="build people.csv + person_aliases.csv from players.csv")
+
     args = parser.parse_args()
 
     if args.command == "discover":
@@ -70,6 +72,13 @@ def main() -> None:
             watch(run_upcoming)
         else:
             run_upcoming()
+
+    elif args.command == "identity-seed":
+        from .identity_seed import seed_identity
+
+        n_people, n_aliases = seed_identity()
+        print(f"Seeded {n_people} people, {n_aliases} aliases. "
+              "Review data/people.csv + data/person_aliases.csv, then commit to the data/ repo.")
 
 
 if __name__ == "__main__":
