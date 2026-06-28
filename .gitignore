@@ -11,6 +11,11 @@ out/auth_state.json
 # exception below and IS committed.
 data/
 
+# Private identity model — lives only in the nested data/ repo (rule #4)
+data/people.csv
+data/person_aliases.csv
+data/discovery_candidates.csv
+
 # ── Python ──────────────────────────────────────────────────────────────
 .venv/
 __pycache__/

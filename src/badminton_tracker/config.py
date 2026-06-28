@@ -29,6 +29,14 @@ SOURCE_XLSX = DATA_DIR / "Badminton Bro Tournament Log v2.xlsx"
 # binary .xlsx so `git -C data diff` shows row-level deltas.
 MATCHES_MIRROR_CSV = DATA_DIR / "matches_mirror.csv"
 
+# ── Identity model (PRIVATE — never published; gitignored by the public repo) ──
+# One row per person (person_id, real_name, has_profile, notes):
+PEOPLE_CSV = DATA_DIR / "people.csv"
+# Many rows: every nickname/realname/GUID a person is known by:
+PERSON_ALIASES_CSV = DATA_DIR / "person_aliases.csv"
+# Name-based discovery review queue (human confirms each before it joins identity):
+DISCOVERY_CANDIDATES_CSV = DATA_DIR / "discovery_candidates.csv"
+
 # Upcoming-tournament pipeline (parallel to the historical one).
 # Public, GUID-free artifact served beside data.json:
 UPCOMING_JSON = ROOT / "web" / "upcoming.json"
