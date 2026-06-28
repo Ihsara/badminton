@@ -35,6 +35,38 @@ def write_queue(rows, path=None) -> None:
             w.writerow({k: r.get(k, "") for k in QUEUE_FIELDS})
 
 
+# The returned alias dicts match identity.ALIAS_FIELDS:
+# person_id, alias, kind, guid, source_tournament, confidence.
+def fold_decisions(queue_rows, existing_aliases):
+    """Turn decided queue rows into alias rows; return (new_aliases, remaining_queue).
+
+    A row whose `decision` holds a person_id is consumed: it becomes a confirmed
+    nickname alias (unless that (person_id, alias) already exists — idempotent).
+    Undecided rows (blank `decision`) stay in the queue.
+    """
+    have = {(a["person_id"], a["alias"].lower()) for a in existing_aliases}
+    new_aliases = []
+    remaining = []
+    for r in queue_rows:
+        decision = (r.get("decision") or "").strip()
+        if not decision:
+            remaining.append(r)
+            continue
+        key = (decision, (r.get("seen_name") or "").strip().lower())
+        if key in have:
+            continue  # already linked; consume without duplicating
+        have.add(key)
+        new_aliases.append({
+            "person_id": decision,
+            "alias": (r.get("seen_name") or "").strip(),
+            "kind": "nickname",
+            "guid": "",
+            "source_tournament": (r.get("where_seen") or "").strip(),
+            "confidence": "confirmed",
+        })
+    return new_aliases, remaining
+
+
 def split_sightings(sightings, known_names, queued_names):
     """Partition sightings into (known_hits, new_candidates).
 

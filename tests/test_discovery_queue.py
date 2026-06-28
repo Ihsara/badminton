@@ -70,3 +70,31 @@ def test_queue_round_trip(tmp_path):
 
 def test_load_missing_queue_is_empty(tmp_path):
     assert dq.load_queue(path=tmp_path / "nope.csv") == []
+
+
+def test_fold_decisions_creates_alias_and_clears_row():
+    queue = [
+        {"seen_name": "eyyy", "kind": "participant", "where_seen": "Kaarina May 2026",
+         "alongside": "", "suggested_person_id": "p001", "confidence": "fuzzy", "decision": "p001"},
+        {"seen_name": "Mystery", "kind": "opponent", "where_seen": "x",
+         "alongside": "y", "suggested_person_id": "", "confidence": "new", "decision": ""},
+    ]
+    new_aliases, remaining = dq.fold_decisions(queue, existing_aliases=[])
+    assert len(new_aliases) == 1
+    a = new_aliases[0]
+    assert a["person_id"] == "p001" and a["alias"] == "eyyy"
+    assert a["kind"] == "nickname" and a["confidence"] == "confirmed"
+    assert a["source_tournament"] == "Kaarina May 2026"
+    # Undecided row stays queued; decided row removed.
+    assert [r["seen_name"] for r in remaining] == ["Mystery"]
+
+
+def test_fold_is_idempotent_against_existing_aliases():
+    queue = [{"seen_name": "Eyyy", "kind": "participant", "where_seen": "K",
+              "alongside": "", "suggested_person_id": "p001",
+              "confidence": "fuzzy", "decision": "p001"}]
+    existing = [{"person_id": "p001", "alias": "eyyy", "kind": "nickname",
+                 "guid": "", "source_tournament": "", "confidence": "confirmed"}]
+    new_aliases, remaining = dq.fold_decisions(queue, existing_aliases=existing)
+    assert new_aliases == []          # already linked, no duplicate
+    assert remaining == []            # still consumed from the queue

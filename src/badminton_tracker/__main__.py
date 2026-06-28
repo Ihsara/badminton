@@ -28,6 +28,8 @@ def main() -> None:
     p_upc.add_argument("--watch", action="store_true", help="loop, self-pacing the refresh")
 
     sub.add_parser("identity-seed", help="build people.csv + person_aliases.csv from players.csv")
+    sub.add_parser("identity-confirm",
+                   help="fold decided discovery_candidates.csv rows into person_aliases.csv")
 
     args = parser.parse_args()
 
@@ -79,6 +81,19 @@ def main() -> None:
         n_people, n_aliases = seed_identity()
         print(f"Seeded {n_people} people, {n_aliases} aliases. "
               "Review data/people.csv + data/person_aliases.csv, then commit to the data/ repo.")
+
+    elif args.command == "identity-confirm":
+        from . import identity
+        from .discovery_queue import fold_decisions, load_queue, write_queue
+
+        queue = load_queue()
+        existing = identity.load_person_aliases()
+        new_aliases, remaining = fold_decisions(queue, existing)
+        if new_aliases:
+            identity.write_person_aliases(existing + new_aliases)
+        write_queue(remaining)
+        print(f"Confirmed {len(new_aliases)} new alias(es); {len(remaining)} row(s) still pending. "
+              "Commit data/person_aliases.csv + data/discovery_candidates.csv to the data/ repo.")
 
 
 if __name__ == "__main__":
