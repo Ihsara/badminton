@@ -606,8 +606,14 @@ async function boot() {
   }
 
   // Upcoming timeline data — prefer live container, fall back to published snapshot.
-  try { UPC = await fetchJSON((API_BASE ? API_BASE : ".") + "/upcoming.json", 4000); }
-  catch (_) { try { UPC = await fetchJSON("./upcoming.json"); } catch (_) { UPC = null; } }
+  // Only probe the live container when one is configured, so a static deploy
+  // (API_BASE === "") doesn't fetch the same "./upcoming.json" twice.
+  try {
+    if (API_BASE) UPC = await fetchJSON(API_BASE + "/upcoming.json", 4000);
+    if (!UPC) UPC = await fetchJSON("./upcoming.json", 4000);
+  } catch (_) {
+    try { UPC = await fetchJSON("./upcoming.json", 4000); } catch (_) { UPC = null; }
+  }
 
   setMeta();
   if (liveTried && !live && snap) {
