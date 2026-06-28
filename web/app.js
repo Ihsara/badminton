@@ -2,6 +2,7 @@
 
 const app = document.getElementById("app");
 let DB = null;
+let UPC = null;  // upcoming-tournament data (may be absent on bare deploys)
 
 /* ---------------- data helpers ---------------- */
 
@@ -30,6 +31,63 @@ function playerMatches(name) {
   }
   out.sort((a, b) => (a.m.date < b.m.date ? 1 : -1));
   return out;
+}
+
+function upcomingActive() {
+  if (!UPC || !UPC.tournaments) return false;
+  const today = new Date().toISOString().slice(0, 10);
+  return UPC.tournaments.some((t) => t.start_date && t.end_date &&
+    t.start_date <= today && today <= t.end_date);
+}
+
+function upcClock(iso, notBefore) {
+  if (!iso) return "";
+  const hhmm = iso.length >= 16 ? iso.slice(11, 16) : "";
+  return notBefore && hhmm ? "~" + hhmm : hhmm;
+}
+
+// Mirrors src/badminton_tracker/upcoming_text.py::format_chat_text
+function formatChatText(upc, opts) {
+  const players = opts.players || null;
+  const tours = opts.tournaments || null;
+  const horizon = opts.horizon || "next";
+  const fields = new Set(opts.fields || ["court", "opponent"]);
+  const showProjected = fields.has("projected") || horizon === "full";
+  const lineFor = (player, event, n) => {
+    const parts = [`${player} (${event}): ${n.round}`];
+    if (n.state === "scheduled" || n.state === "done") {
+      const clk = upcClock(n.time, n.time_kind === "not_before");
+      if (clk) parts.push(clk);
+      if (fields.has("court") && n.court) parts.push("Court " + n.court);
+      if (fields.has("opponent") && n.opponent) parts.push("vs " + n.opponent);
+    } else {
+      const when = n.session || n.day || "";
+      parts.push(`${n.opponent || "TBD"} (${when})`.trim());
+    }
+    return parts.join(" ");
+  };
+  const relevant = (path) => {
+    const up = path.filter((n) => n.state === "scheduled" || n.state === "projected");
+    if (horizon === "next") {
+      const sched = up.find((n) => n.state === "scheduled");
+      return sched ? [sched] : up.slice(0, 1);
+    }
+    return up;
+  };
+  const out = [];
+  for (const t of (upc.tournaments || [])) {
+    if (tours && !tours.includes(t.name)) continue;
+    const lines = [];
+    for (const e of (t.entries || [])) {
+      if (players && !players.includes(e.player)) continue;
+      for (const n of relevant(e.path)) {
+        if (n.state === "projected" && !showProjected) continue;
+        lines.push(lineFor(e.player, e.event, n));
+      }
+    }
+    if (lines.length) { out.push("🏸 " + t.name); out.push(...lines); }
+  }
+  return out.join("\n");
 }
 
 function countBy(views, keyFn) {
@@ -136,12 +194,31 @@ function pMatchRow(v) {
 /* ---------------- views ---------------- */
 
 function viewGroup() {
+  let upcHero = "";
+  if (upcomingActive()) {
+    const next = [];
+    for (const t of UPC.tournaments) {
+      for (const e of (t.entries || [])) {
+        const n = e.path.find((x) => x.state === "scheduled");
+        if (n) next.push(`${esc(e.player)} · ${esc(n.round)} ${
+          n.time ? upcClock(n.time, n.time_kind === "not_before") : ""}${
+          n.court ? " · Court " + esc(n.court) : ""}`);
+      }
+    }
+    if (next.length) {
+      upcHero = `<a class="up-takeover rise" href="#/upcoming">
+        <span class="up-takeover__tag">Happening now</span>
+        <span class="up-takeover__list">${next.slice(0, 4).join("  ·  ")}</span>
+        <span class="tag">see timeline →</span></a>`;
+    }
+  }
+
   const c = DB.counts;
   const top = DB.players.slice(0, 12);
   const recent = [...DB.matches].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 8);
   const maxWins = Math.max(...DB.players.map((p) => p.wins), 1);
 
-  app.innerHTML = `
+  app.innerHTML = upcHero + `
     <section class="hero">
       <div>
         <div class="eyebrow rise">Finland · ${esc(DB.tournaments_list.length)} tournaments logged</div>
@@ -459,6 +536,134 @@ function emptyMini(msg) {
   return `<div class="empty" style="padding:24px">${esc(msg)}</div>`;
 }
 
+/* ---------------- upcoming timeline view ---------------- */
+
+function viewUpcoming() {
+  if (!UPC || !UPC.tournaments || !UPC.tournaments.length) {
+    return notFound("No upcoming tournaments tracked right now.");
+  }
+  // Filter state lives on the URL-free module scope; default = all players.
+  const allPlayers = [...new Set(UPC.tournaments.flatMap(
+    (t) => (t.entries || []).map((e) => e.player)))];
+  window.__upcFilter = window.__upcFilter || new Set(allPlayers);
+  const sel = window.__upcFilter;
+
+  const stateClass = (s) => "tl__node tl__node--" + s;
+  const nodeTime = (n) => {
+    if (n.time) return upcClock(n.time, n.time_kind === "not_before") +
+      (n.court ? " · Court " + esc(n.court) : "");
+    if (n.day) return esc(n.session || n.day);
+    return "";
+  };
+  const heroFor = (e) => {
+    const next = e.path.find((n) => n.state === "scheduled");
+    if (!next) return "";
+    const opp = next.opponent ? "vs " + esc(next.opponent) : "";
+    return `<div class="hero-up">
+      <div class="hero-up__lead">⏱ NEXT · ${esc(e.player)} · ${esc(next.round)}</div>
+      <div class="hero-up__opp">${opp}</div>
+      <div class="hero-up__meta">${nodeTime(next)}</div>
+      <div class="hero-up__cd" data-time="${esc(next.time || "")}"></div>
+    </div>`;
+  };
+  const pathHtml = (e) => e.path.map((n, i) => {
+    const prevDone = i > 0 && e.path[i - 1].state === "done";
+    const here = n.state !== "done" && prevDone ? `<div class="tl__here">you are here</div>` : "";
+    const right = n.state === "done"
+      ? `<span class="tl__res">${esc(n.result || "")}</span>`
+      : `<span class="tl__opp">${esc(n.opponent || "TBD")}</span>`;
+    return `${here}<div class="${stateClass(n.state)}">
+      <span class="tl__round">${esc(n.round)}</span>
+      ${right}
+      <span class="tl__when">${nodeTime(n)}</span></div>`;
+  }).join("");
+
+  const chips = allPlayers.map((p) =>
+    `<button class="chip ${sel.has(p) ? "chip--on" : ""}" data-p="${esc(p)}">${esc(p)}</button>`
+  ).join("");
+
+  const blocks = UPC.tournaments.map((t) => {
+    const entries = (t.entries || []).filter((e) => sel.has(e.player));
+    if (!entries.length) return "";
+    const hero = entries.map(heroFor).join("");
+    const paths = entries.map((e) =>
+      `<div class="tl"><div class="tl__title">${esc(e.player)} · ${esc(e.event)}</div>${pathHtml(e)}</div>`
+    ).join("");
+    return `<section class="block">
+      <div class="block__head"><h2 class="section-title">${esc(t.name)}</h2>
+        <span class="tag">${esc(t.start_date || "")}–${esc(t.end_date || "")}</span></div>
+      ${hero}${paths}</section>`;
+  }).join("");
+
+  app.innerHTML = `
+    <div class="upc-bar">
+      <div class="chips">${chips}</div>
+      <button class="tag" id="upc-export">Copy for chat</button>
+    </div>
+    <div id="upc-export-panel" class="upc-panel" hidden></div>
+    ${blocks || `<div class="empty" style="padding:60px">No matches for the selected players.</div>`}
+  `;
+
+  // Chip toggles
+  app.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+    const p = b.dataset.p;
+    if (sel.has(p)) sel.delete(p); else sel.add(p);
+    viewUpcoming();
+  }));
+
+  // Live countdowns — genuinely live, updating every 30s.
+  // Clear any intervals from a previous render (chip toggle re-runs viewUpcoming,
+  // replacing app.innerHTML; the old DOM nodes are gone but the setInterval callbacks
+  // would still fire against stale closures without this cleanup).
+  (window.__upcTimers || []).forEach((id) => clearInterval(id));
+  window.__upcTimers = [];
+  app.querySelectorAll(".hero-up__cd").forEach((el) => {
+    const iso = el.dataset.time;
+    if (!iso) return;
+    const tick = () => {
+      const diff = new Date(iso) - new Date();
+      if (diff <= 0) { el.textContent = "starting / underway"; return; }
+      const h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000);
+      el.textContent = `Starts in ~${h ? h + "h " : ""}${m}m · be there ~${
+        new Date(new Date(iso) - 30 * 60000).toTimeString().slice(0, 5)}`;
+    };
+    tick();
+    window.__upcTimers.push(setInterval(tick, 30000));
+  });
+
+  // Export panel
+  document.getElementById("upc-export").addEventListener("click", () =>
+    renderUpcExport(allPlayers, sel));
+}
+
+function renderUpcExport(allPlayers, sel) {
+  const panel = document.getElementById("upc-export-panel");
+  panel.hidden = false;
+  panel.innerHTML = `
+    <label><input type="radio" name="horizon" value="next" checked> Next match only</label>
+    <label><input type="radio" name="horizon" value="full"> Full path to final</label>
+    <label><input type="checkbox" class="fld" value="court" checked> Court</label>
+    <label><input type="checkbox" class="fld" value="opponent" checked> Opponent</label>
+    <label><input type="checkbox" class="fld" value="projected"> Projected rounds</label>
+    <button class="tag" id="upc-copy">Copy</button>
+    <pre id="upc-preview" class="upc-preview"></pre>`;
+  const build = () => {
+    const horizon = panel.querySelector('input[name="horizon"]:checked').value;
+    const fields = [...panel.querySelectorAll(".fld:checked")].map((c) => c.value);
+    const txt = formatChatText(UPC, { players: [...sel], horizon, fields });
+    panel.querySelector("#upc-preview").textContent = txt;
+    return txt;
+  };
+  panel.querySelectorAll("input").forEach((i) => i.addEventListener("change", build));
+  document.getElementById("upc-copy").addEventListener("click", () => {
+    const txt = build();
+    navigator.clipboard.writeText(txt).then(() => {
+      document.getElementById("upc-copy").textContent = "Copied!";
+    });
+  });
+  build();
+}
+
 /* ---------------- router ---------------- */
 
 function router() {
@@ -476,6 +681,7 @@ function router() {
     case "tournaments": return viewTournaments();
     case "tournament": return viewTournament(a);
     case "match": return viewMatch(a);
+    case "upcoming": return viewUpcoming();
     case "maintain": return viewMaintain(app);
     default: return notFound("Unknown page.");
   }
@@ -545,6 +751,16 @@ async function boot() {
       If you opened the file directly, run <code>uv run badminton server</code> and open the served URL instead —
       browsers block <code>fetch</code> from <code>file://</code>.</div>`;
     return;
+  }
+
+  // Upcoming timeline data — prefer live container, fall back to published snapshot.
+  // Only probe the live container when one is configured, so a static deploy
+  // (API_BASE === "") doesn't fetch the same "./upcoming.json" twice.
+  try {
+    if (API_BASE) UPC = await fetchJSON(API_BASE + "/upcoming.json", 4000);
+    if (!UPC) UPC = await fetchJSON("./upcoming.json", 4000);
+  } catch (_) {
+    try { UPC = await fetchJSON("./upcoming.json", 4000); } catch (_) { UPC = null; }
   }
 
   setMeta();

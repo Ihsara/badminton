@@ -18,6 +18,14 @@ RUN uv sync --frozen --no-dev --no-install-project
 COPY . .
 RUN uv sync --frozen --no-dev
 
+# The upcoming-tournament watcher (docker-compose `upcoming` service) drives a
+# headless Chromium via Playwright, so the browser + its system libraries must be
+# in the image. `install-deps` pulls the apt packages Chromium needs on
+# bookworm-slim; `install chromium` fetches the browser itself. The web `server`
+# command does not scrape, but both services share this one image.
+RUN uv run playwright install-deps chromium \
+    && uv run playwright install chromium
+
 EXPOSE 8000
 # data/ and web/ are bind-mounted at runtime (see docker-compose.yml) so commits
 # and the regenerated data.json land on the host's private repo.

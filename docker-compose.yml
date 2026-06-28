@@ -26,3 +26,24 @@ services:
       timeout: 5s
       retries: 3
       start_period: 20s
+
+  # Always-on scraper for the upcoming-tournament timeline. Shares the image and
+  # the ./data + ./web mounts with the web service, so the GUID-free
+  # web/upcoming.json it builds lands on the host beside data.json for publishing,
+  # while the private re-fetch state stays in ./data. Self-paces its refresh
+  # (see upcoming_schedule.next_refresh_delay) to stay polite to the live site.
+  upcoming:
+    build: .
+    container_name: badminton-upcoming
+    restart: unless-stopped
+    command: ["uv", "run", "badminton", "upcoming", "--watch"]
+    environment:
+      # Scraper login — set in .env (compose loads it automatically).
+      TOURNAMENTSOFTWARE_USERNAME: ${TOURNAMENTSOFTWARE_USERNAME:-}
+      TOURNAMENTSOFTWARE_PASSWORD: ${TOURNAMENTSOFTWARE_PASSWORD:-}
+      TOURNAMENTSOFTWARE_BASE_URL: ${TOURNAMENTSOFTWARE_BASE_URL:-https://badmintonfinland.tournamentsoftware.com}
+    volumes:
+      # Private data repo (holds upcoming_state.json with the re-fetch GUIDs).
+      - ./data:/app/data
+      # So the regenerated, GUID-free upcoming.json lands on the host for publishing.
+      - ./web:/app/web

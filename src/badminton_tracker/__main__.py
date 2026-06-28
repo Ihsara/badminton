@@ -24,6 +24,9 @@ def main() -> None:
     p_server.add_argument("--port", type=int, default=8000)
     p_server.add_argument("--host", default="0.0.0.0")
 
+    p_upc = sub.add_parser("upcoming", help="scrape upcoming draws/schedule -> web/upcoming.json")
+    p_upc.add_argument("--watch", action="store_true", help="loop, self-pacing the refresh")
+
     args = parser.parse_args()
 
     if args.command == "discover":
@@ -57,6 +60,16 @@ def main() -> None:
         from .server import run
 
         run(host=args.host, port=args.port)
+
+    elif args.command == "upcoming":
+        from .upcoming_build import run_upcoming
+
+        if args.watch:
+            from .upcoming_schedule import watch
+
+            watch(run_upcoming)
+        else:
+            run_upcoming()
 
 
 if __name__ == "__main__":
