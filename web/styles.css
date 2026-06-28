@@ -384,10 +384,17 @@ body::before {
   border: 1px solid var(--line);
   border-radius: 13px;
   transition: 0.16s ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.match {
+  cursor: pointer;
 }
 
 .match:hover {
   border-color: var(--line-strong);
+  transform: translateY(-1px);
 }
 
 .match__date {
@@ -408,9 +415,15 @@ body::before {
   align-items: center;
   gap: 8px;
   font-size: 0.96rem;
-  white-space: nowrap;
+  min-width: 0;
+}
+
+/* The name shrinks and ellipsises; the score never does. */
+.team > b {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .team--win b {
@@ -431,15 +444,29 @@ body::before {
 }
 
 .team .score {
-  font-family: "Space Mono", monospace;
-  font-size: 0.86rem;
-  color: var(--muted);
+  display: flex;
+  gap: 6px;
+  flex: none;
   margin-left: auto;
   padding-left: 12px;
 }
 
-.team--win .score {
-  color: var(--lime);
+.team .setn {
+  font-family: "Space Mono", monospace;
+  font-size: 0.86rem;
+  color: var(--muted);
+  min-width: 1.1em;
+  text-align: center;
+}
+
+.team--win .setn {
+  color: var(--muted);
+}
+
+/* The winning set in each row gets the lime highlight. */
+.setn--win {
+  color: var(--lime) !important;
+  font-weight: 700;
 }
 
 .pill {
@@ -683,6 +710,125 @@ select {
 }
 
 .lose-side {
+  color: var(--muted);
+}
+
+/* ---------- match detail page ---------- */
+.m-detail-hero {
+  margin-top: 16px;
+}
+
+.m-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mscore {
+  display: grid;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.mscore__team {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mscore__names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.mscore__sets {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.mscore__team--win .mscore__names {
+  font-weight: 700;
+}
+
+.bigset {
+  font-family: "Space Mono", monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 1.4em;
+  text-align: center;
+}
+
+.bigset--win {
+  color: var(--lime);
+}
+
+.mscore__div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+  padding: 6px 0;
+  font-family: "Space Mono", monospace;
+}
+
+.mscore__div span {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mscore__div b {
+  font-size: 1.1rem;
+  color: var(--chalk);
+}
+
+.pchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px 4px 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.pchip--link {
+  color: var(--chalk);
+  transition: 0.14s ease;
+}
+
+.pchip--link:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.pchip__av {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  font-family: "Space Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
   color: var(--muted);
 }
 

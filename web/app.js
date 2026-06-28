@@ -90,34 +90,47 @@ const pct = (x) => (x == null ? "–" : Math.round(x * 100) + "%");
 const stagger = () =>
   app.querySelectorAll(".rise").forEach((el, i) => (el.style.animationDelay = Math.min(i * 45, 600) + "ms"));
 
+// Render one team's per-set scores as separate cells, so a 3rd set can never be
+// clipped by the name's overflow (each set gets its own fixed-width cell).
+function scoreCells(sets, idx) {
+  return sets
+    .map(([a, b]) => {
+      const own = idx === 0 ? a : b;
+      const opp = idx === 0 ? b : a;
+      return `<span class="setn ${own > opp ? "setn--win" : ""}">${esc(own)}</span>`;
+    })
+    .join("");
+}
+
 function matchRow(m) {
   const s1won = m.result === "WIN";
-  const score = m.sets.map(([a, b]) => `${a}-${b}`).join("  ");
   const t1 = m.team1.join(" / ");
   const t2 = m.team2.join(" / ");
+  const href = m.id ? `href="#/match/${encodeURIComponent(m.id)}"` : "";
   return `
-    <div class="match rise">
+    <a class="match rise" ${href}>
       <div class="match__date">${fmtDate(m.date)}<br><span class="tag">${esc(m.category)} ${esc(m.level)}</span></div>
       <div class="match__teams">
-        <div class="team ${s1won ? "team--win" : "team--lose"}"><b>${esc(t1)}</b><span class="score">${esc(m.sets.map((s) => s[0]).join(" "))}</span></div>
-        <div class="team ${s1won ? "team--lose" : "team--win"}"><b>${esc(t2)}</b><span class="score">${esc(m.sets.map((s) => s[1]).join(" "))}</span></div>
+        <div class="team ${s1won ? "team--win" : "team--lose"}"><b>${esc(t1)}</b><span class="score">${scoreCells(m.sets, 0)}</span></div>
+        <div class="team ${s1won ? "team--lose" : "team--win"}"><b>${esc(t2)}</b><span class="score">${scoreCells(m.sets, 1)}</span></div>
       </div>
       <div><span class="pill pill--cat">${esc(m.round || "–")}</span></div>
-    </div>`;
+    </a>`;
 }
 
 // perspective match row (for a player page)
 function pMatchRow(v) {
   const m = v.m;
+  const href = m.id ? `href="#/match/${encodeURIComponent(m.id)}"` : "";
   return `
-    <div class="match rise">
+    <a class="match rise" ${href}>
       <div class="match__date">${fmtDate(m.date)}<br><span class="tag">${esc(m.category)} ${esc(m.level)}</span></div>
       <div class="match__teams">
-        <div class="team ${v.won ? "team--win" : "team--lose"}"><b>${esc(v.own.join(" / "))}</b><span class="score">${esc(v.sets.map((s) => s[0]).join(" "))}</span></div>
-        <div class="team ${v.won ? "team--lose" : "team--win"}"><b>${esc(v.opp.join(" / "))}</b><span class="score">${esc(v.sets.map((s) => s[1]).join(" "))}</span></div>
+        <div class="team ${v.won ? "team--win" : "team--lose"}"><b>${esc(v.own.join(" / "))}</b><span class="score">${scoreCells(v.sets, 0)}</span></div>
+        <div class="team ${v.won ? "team--lose" : "team--win"}"><b>${esc(v.opp.join(" / "))}</b><span class="score">${scoreCells(v.sets, 1)}</span></div>
       </div>
-      <div><span class="pill ${v.won ? "pill--cat" : "pill--cat"}">${v.won ? "WON" : "LOST"}</span></div>
-    </div>`;
+      <div><span class="pill pill--cat">${v.won ? "WON" : "LOST"}</span></div>
+    </a>`;
 }
 
 /* ---------------- views ---------------- */
@@ -329,6 +342,114 @@ function viewTournament(name) {
   stagger();
 }
 
+const byId = (id) => DB.matches.find((m) => m.id === id) || null;
+
+// A clickable chip for any player; links to their page only if they're in the roster.
+function playerChip(name) {
+  if (byName(name)) {
+    return `<a class="pchip pchip--link" href="#/player/${encodeURIComponent(name)}">
+      <span class="pchip__av">${esc(initials(name))}</span>${esc(name)}</a>`;
+  }
+  return `<span class="pchip"><span class="pchip__av">${esc(initials(name))}</span>${esc(name)}</span>`;
+}
+
+// All prior meetings between team1 and team2 of this match (as a unit), across the DB.
+function pairingHistory(m) {
+  const setA = new Set(m.team1);
+  const setB = new Set(m.team2);
+  const same = (x, y) => x.length === y.length && x.every((n) => y.includes(n));
+  const out = [];
+  for (const o of DB.matches) {
+    const facing =
+      (same(o.team1, m.team1) && same(o.team2, m.team2)) ||
+      (same(o.team1, m.team2) && same(o.team2, m.team1));
+    if (facing) out.push(o);
+  }
+  out.sort((a, b) => (a.date < b.date ? 1 : -1));
+  // record from team1's point of view
+  let t1wins = 0;
+  for (const o of out) {
+    const oT1isMyT1 = same(o.team1, m.team1);
+    const t1won = oT1isMyT1 ? o.result === "WIN" : o.result === "LOSS";
+    if (t1won) t1wins += 1;
+  }
+  return { list: out, t1wins, t2wins: out.length - t1wins, setA, setB };
+}
+
+function viewMatch(id) {
+  const m = byId(id);
+  if (!m) return notFound("No match with that id.");
+  const won = m.result === "WIN";
+  const t1 = m.team1.length ? m.team1 : ["(unknown)"];
+  const t2 = m.team2.length ? m.team2 : ["(unknown)"];
+  const setsTotal = m.sets.reduce(
+    (a, [x, y]) => [a[0] + (x > y ? 1 : 0), a[1] + (x > y ? 0 : 1)],
+    [0, 0]
+  );
+
+  const hist = pairingHistory(m);
+  const priorList = hist.list.filter((o) => o.id !== m.id);
+
+  // Tournament context: sibling matches in the same event (nearest first by date).
+  const siblings = DB.matches
+    .filter((o) => o.tournament === m.tournament && o.id !== m.id)
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 6);
+
+  const setRow = (label, sets, idx, isWinSide) => `
+    <div class="mscore__team ${isWinSide ? "mscore__team--win" : ""}">
+      <div class="mscore__names">${(idx === 0 ? t1 : t2).map(playerChip).join("")}</div>
+      <div class="mscore__sets">${sets
+        .map(([a, b]) => {
+          const own = idx === 0 ? a : b;
+          const opp = idx === 0 ? b : a;
+          return `<span class="bigset ${own > opp ? "bigset--win" : ""}">${esc(own)}</span>`;
+        })
+        .join("")}</div>
+    </div>`;
+
+  app.innerHTML = `
+    <a class="tag rise" href="#/tournament/${encodeURIComponent(m.tournament)}">← ${esc(m.tournament)}</a>
+    <section class="m-detail-hero rise">
+      <div class="m-detail-meta">
+        <span class="pill pill--cat">${esc(m.category)} ${esc(m.level)}</span>
+        <span class="pill pill--cat">${esc(m.round || "–")}</span>
+        <span class="tag">${esc(fmtDate(m.date))}</span>
+        <span class="tag">${won ? "Result: WIN" : "Result: LOSS"}</span>
+      </div>
+      <div class="mscore">
+        ${setRow("t1", m.sets, 0, won)}
+        <div class="mscore__div"><span>sets</span><b>${setsTotal[0]}–${setsTotal[1]}</b></div>
+        ${setRow("t2", m.sets, 1, !won)}
+      </div>
+    </section>
+
+    <section class="block rise">
+      <div class="block__head"><h2 class="section-title">This pairing</h2>
+        <a class="tag" href="#/h2h/${encodeURIComponent(t1[0])}/${encodeURIComponent(t2[0])}">full H2H →</a></div>
+      <div class="card" style="padding:18px">
+        <div class="scoreline">
+          <div><div class="big ${hist.t1wins >= hist.t2wins ? "win-side" : "lose-side"}">${hist.t1wins}</div>
+            <div class="nm">${esc(t1.join(" / "))}</div></div>
+          <div class="dash">–</div>
+          <div><div class="big ${hist.t2wins > hist.t1wins ? "win-side" : "lose-side"}">${hist.t2wins}</div>
+            <div class="nm">${esc(t2.join(" / "))}</div></div>
+        </div>
+        <p class="empty" style="padding:10px 0 0">${hist.list.length} meeting${hist.list.length === 1 ? "" : "s"} between these teams</p>
+      </div>
+      ${priorList.length ? `<div class="matches" style="margin-top:12px">${priorList.map(matchRow).join("")}</div>`
+        : `<p class="empty" style="padding:14px">No other meetings on record.</p>`}
+    </section>
+
+    ${siblings.length ? `
+    <section class="block rise">
+      <div class="block__head"><h2 class="section-title">Elsewhere in this tournament</h2>
+        <a class="tag" href="#/tournament/${encodeURIComponent(m.tournament)}">all ${esc(m.tournament)} →</a></div>
+      <div class="matches">${siblings.map(matchRow).join("")}</div>
+    </section>` : ""}`;
+  stagger();
+}
+
 function notFound(msg) {
   app.innerHTML = `<div class="empty rise" style="padding:80px">${esc(msg)}<br><br><a class="tag" href="#/">← back to the group</a></div>`;
   stagger();
@@ -354,6 +475,7 @@ function router() {
     case "h2h": return viewH2H(a, b);
     case "tournaments": return viewTournaments();
     case "tournament": return viewTournament(a);
+    case "match": return viewMatch(a);
     case "maintain": return viewMaintain(app);
     default: return notFound("Unknown page.");
   }
