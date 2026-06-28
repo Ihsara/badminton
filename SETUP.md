@@ -168,9 +168,52 @@ Notes:
 
 ---
 
+## 7. The upcoming-tournament watcher
+
+A second always-on service scrapes upcoming draws + order-of-play and builds the
+phone-first timeline shown under **#/upcoming** (and the "Happening now" banner on
+the home page). It runs as the `upcoming` service in `docker-compose.yml`:
+
+```
+docker compose up -d --build        # starts both: badminton + upcoming
+docker compose logs -f upcoming     # watch one scrape + the computed sleep
+```
+
+- It self-paces (`upcoming_schedule.next_refresh_delay`): daily when nothing is
+  near, down to every 15 min when a tracked friend's match is within 2 hours — so
+  it stays polite to tournamentsoftware.com (one reused login, serial requests).
+- It needs the scraper login in `.env`
+  (`TOURNAMENTSOFTWARE_USERNAME` / `TOURNAMENTSOFTWARE_PASSWORD`); compose passes
+  them through. With them empty it exits with a clear "Missing credentials" error
+  and writes nothing.
+- It writes two files via atomic temp-then-rename (never a partial publish):
+  - `web/upcoming.json` — **public, GUID-free** (lands on the host beside
+    `data.json` for publishing).
+  - `data/upcoming_state.json` — **private** re-fetch state (holds the
+    tournament/profile GUIDs); lives only in the private `data/` repo.
+- The image installs headless Chromium (Dockerfile `playwright install chromium`)
+  because the watcher drives a real browser.
+
+**One-off run / first scrape** (outside Docker, needs `uv` + `.env`):
+
+```
+uv run badminton upcoming           # single scrape + build, then exits
+uv run badminton upcoming --watch   # loop, self-pacing (what the container runs)
+```
+
+After the first real scrape, run the privacy gate below before committing
+`web/upcoming.json` to the public repo, and commit `upcoming_state.json` to the
+private `data/` repo (`git -C data add upcoming_state.json && git -C data commit`).
+
+---
+
 ## Privacy checklist before going public
 
 - [ ] `gh auth status` shows **Ihsara** active (not longchautran/Kesko).
 - [ ] Public repo commit author is `Ihsara`, not your Kesko email.
 - [ ] `git -C ~/badminton ls-files | grep -E 'data/|\.env'` → empty.
 - [ ] `web/data.json` contains no profile GUIDs (it doesn't — verified by build).
+- [ ] `web/upcoming.json` contains no profile/tournament GUIDs — verify with:
+      `grep -E '[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}' web/upcoming.json`
+      (no match) and `grep -E 'tournament_guid|player_guid|profile_guid|player-profile' web/upcoming.json` (no match).
+- [ ] `upcoming_state.json` is committed only in the private `data/` repo, never staged in the public repo.
