@@ -27,6 +27,19 @@ def main() -> None:
     p_upc = sub.add_parser("upcoming", help="scrape upcoming draws/schedule -> web/upcoming.json")
     p_upc.add_argument("--watch", action="store_true", help="loop, self-pacing the refresh")
 
+    sub.add_parser("identity-seed", help="build people.csv + person_aliases.csv from players.csv")
+    sub.add_parser("identity-confirm",
+                   help="fold decided discovery_candidates.csv rows into person_aliases.csv")
+
+    p_dn = sub.add_parser("discover-names",
+                          help="harvest friend names into discovery_candidates.csv (review queue)")
+    p_dn.add_argument("--tournament", action="append", default=[], metavar="GUID",
+                      help="also scan this tournament's participant list (repeatable)")
+    p_dn.add_argument("--go", action="store_true",
+                      help="actually scrape participant lists (default is a dry run)")
+    p_dn.add_argument("--max-pages", type=int, default=20,
+                      help="cap on participant-list pages fetched (ban-risk guard)")
+
     args = parser.parse_args()
 
     if args.command == "discover":
@@ -70,6 +83,31 @@ def main() -> None:
             watch(run_upcoming)
         else:
             run_upcoming()
+
+    elif args.command == "identity-seed":
+        from .identity_seed import seed_identity
+
+        n_people, n_aliases = seed_identity()
+        print(f"Seeded {n_people} people, {n_aliases} aliases. "
+              "Review data/people.csv + data/person_aliases.csv, then commit to the data/ repo.")
+
+    elif args.command == "identity-confirm":
+        from . import identity
+        from .discovery_queue import fold_decisions, load_queue, write_queue
+
+        queue = load_queue()
+        existing = identity.load_person_aliases()
+        new_aliases, remaining = fold_decisions(queue, existing)
+        if new_aliases:
+            identity.write_person_aliases(existing + new_aliases)
+        write_queue(remaining)
+        print(f"Confirmed {len(new_aliases)} new alias(es); {len(remaining)} row(s) still pending. "
+              "Commit data/person_aliases.csv + data/discovery_candidates.csv to the data/ repo.")
+
+    elif args.command == "discover-names":
+        from .discover_names import run_discover_names
+
+        run_discover_names(tournament_guids=args.tournament, go=args.go, max_pages=args.max_pages)
 
 
 if __name__ == "__main__":
