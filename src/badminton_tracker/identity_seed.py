@@ -40,7 +40,7 @@ def build_seed(player_rows: list[dict]) -> tuple[list[dict], list[dict]]:
             seen.add(nickname.lower())
             aliases.append({"person_id": pid, "alias": nickname, "kind": "nickname",
                             "guid": "", "source_tournament": "", "confidence": confidence})
-        if full_name and full_name.lower() not in seen and guid:
+        if full_name and full_name.lower() not in seen:
             aliases.append({"person_id": pid, "alias": full_name, "kind": "realname",
                             "guid": guid, "source_tournament": "", "confidence": confidence})
     return people, aliases

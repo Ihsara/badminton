@@ -60,5 +60,5 @@ def test_seed_identity_writes_both_files(tmp_path):
     n_people, n_aliases = identity_seed.seed_identity(
         players_csv=players, people_csv=people_csv, aliases_csv=aliases_csv)
     assert n_people == 3
-    assert n_aliases == 4  # Chau(2) + Dao(1) + Hien(1)
+    assert n_aliases == 5  # Chau(2) + Dao(2) + Hien(1)
     assert people_csv.exists() and aliases_csv.exists()
