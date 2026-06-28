@@ -1,10 +1,10 @@
 {
   "group_name": "Badminton Bros",
-  "generated_at": "2026-06-28T13:54:07",
+  "generated_at": "2026-06-28T20:19:34",
   "source": "excel",
   "counts": {
     "players": 29,
-    "matches": 177,
+    "matches": 181,
     "tournaments": 19
   },
   "players": [
@@ -66,17 +66,17 @@
     },
     {
       "player": "Chau",
-      "games": 31,
+      "games": 35,
       "wins": 11,
-      "losses": 20,
+      "losses": 24,
       "sets_won": 32,
-      "sets_lost": 38,
-      "points_for": 1175,
-      "points_against": 1238,
+      "sets_lost": 46,
+      "points_for": 1302,
+      "points_against": 1406,
       "third_set_games": 8,
-      "win_ratio": 0.355,
-      "points_per_set": 16.79,
-      "third_set_ratio": 0.258
+      "win_ratio": 0.314,
+      "points_per_set": 16.69,
+      "third_set_ratio": 0.229
     },
     {
       "player": "Thy",
@@ -530,17 +530,17 @@
     {
       "player": "Chau",
       "tournament": "Clear Kesäyön turnaus 2026",
-      "games": 3,
+      "games": 7,
       "wins": 1,
-      "losses": 2,
+      "losses": 6,
       "sets_won": 2,
-      "sets_lost": 5,
-      "points_for": 107,
-      "points_against": 123,
+      "sets_lost": 13,
+      "points_for": 234,
+      "points_against": 291,
       "third_set_games": 1,
-      "win_ratio": 0.333,
-      "points_per_set": 15.29,
-      "third_set_ratio": 0.333
+      "win_ratio": 0.143,
+      "points_per_set": 15.6,
+      "third_set_ratio": 0.143
     },
     {
       "player": "Chau",
@@ -6845,6 +6845,106 @@
         ]
       ],
       "id": "f439a4995104"
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MS",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau"
+      ],
+      "team2": [
+        "Länkkis"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          17,
+          21
+        ]
+      ],
+      "id": "8e0b73e45749"
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MS",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau"
+      ],
+      "team2": [
+        "Henri Saarinen"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ],
+      "id": "df69fc556287"
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MS",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau"
+      ],
+      "team2": [
+        "Visa Suonpää"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          15,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ],
+      "id": "6d446fabf276"
+    },
+    {
+      "date": "2026-06-13",
+      "tournament": "Clear Kesäyön turnaus 2026",
+      "category": "MS",
+      "level": "Rento",
+      "round": "Pool",
+      "team1": [
+        "Chau"
+      ],
+      "team2": [
+        "Kalle Papinkivi"
+      ],
+      "result": "LOSS",
+      "sets": [
+        [
+          13,
+          21
+        ],
+        [
+          18,
+          21
+        ]
+      ],
+      "id": "63919366944f"
     }
   ]
 }
