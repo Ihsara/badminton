@@ -1,0 +1,111 @@
+<!--
+  Faithful (sanitized) snapshot of a real player-profile /tournaments page from
+  badmintonfinland.tournamentsoftware.com, captured 2026-06-28. GUIDs are FAKE
+  (this file is committed to the public repo). It exercises the live DOM shape
+  that differs from the original hand-authored fixture:
+    - tournament name + GUID in  <a href="/sport/tournament?id=GUID" class="media__link">
+    - dates in TWO <time datetime="YYYY-MM-DD HH.MM"> tags inside .media__subheading--muted
+      (start = first/00.00, end = second/23.59); a single <time> means a one-day event
+    - one card = one tournament with MULTIPLE events (Luokka:) each followed by its
+      own draw link  /sport/draw.aspx?id=GUID&draw=N  (N = draw index)
+    - the first card is a profile/header card with no dates/luokka/draws (must be skipped)
+    - rounds use Finnish "Kierros N"
+-->
+<div class="content">
+
+  <!-- Header/profile card: NO dates, NO luokka, NO draw links — must be skipped. -->
+  <div class="module module--card">
+    <div class="module__content">
+      <div class="media">
+        <div class="media__content">
+          <h4 class="media__title media__title--medium">
+            <a href="/sport/player.aspx?id=AAAA1111-1111-1111-1111-111111111111&amp;player=58" class="media__link">
+              <span class="nav-link__value">Friend Name</span>
+            </a>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Real tournament card: 2-day range, two events (WD C + WS C), draw index per event. -->
+  <div class="module module--card">
+    <div class="module__content">
+      <div class="media">
+        <div class="media__content">
+          <h4 class="media__title media__title--medium">
+            <a href="/sport/tournament?id=BBBB2222-2222-2222-2222-222222222222" title="FZ Forza BadU Premier Eliitti" class="media__link">
+              <span class="nav-link__value">FZ Forza BadU Premier Eliitti</span>
+            </a>
+          </h4>
+          <small class="media__subheading">
+            <span class="nav-link"><span class="nav-link__value">Badminton United | Helsinki</span></span>
+          </small>
+          <small class="media__subheading media__subheading--muted">
+            <span class="nav-link">
+              <span class="nav-link__value">
+                <time datetime="2026-05-09 00.00">9.5.2026</time>
+                - <time datetime="2026-05-10 23.59">10.5.2026</time>
+              </span>
+            </span>
+          </small>
+        </div>
+      </div>
+
+      <h4 class="module-divider"><span class="module-divider__body">Luokka: WD C</span></h4>
+      <h5 class="module-divider">
+        <span class="module-divider__body">
+          <a href="/sport/draw.aspx?id=BBBB2222-2222-2222-2222-222222222222&amp;draw=19" class="nav-link"><span class="nav-link__value">WD C</span></a>
+        </span>
+      </h5>
+      <ol class="match-group">
+        <li class="match-group__item">
+          <div class="match">
+            <div class="match__header">
+              <ul class="match__header-title"><li class="match__header-title-item">
+                <span class="nav-link"><span class="nav-link__value">Kierros 16</span></span>
+              </li></ul>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+      <h4 class="module-divider"><span class="module-divider__body">Luokka: WS C</span></h4>
+      <h5 class="module-divider">
+        <span class="module-divider__body">
+          <a href="/sport/draw.aspx?id=BBBB2222-2222-2222-2222-222222222222&amp;draw=17" class="nav-link"><span class="nav-link__value">WS C</span></a>
+        </span>
+      </h5>
+    </div>
+  </div>
+
+  <!-- Single-day tournament: ONE <time> tag (start == end). -->
+  <div class="module module--card">
+    <div class="module__content">
+      <div class="media">
+        <div class="media__content">
+          <h4 class="media__title media__title--medium">
+            <a href="/sport/tournament?id=CCCC3333-3333-3333-3333-333333333333" title="Espoo Women's Open 2026" class="media__link">
+              <span class="nav-link__value">Espoo Women's Open 2026</span>
+            </a>
+          </h4>
+          <small class="media__subheading media__subheading--muted">
+            <span class="nav-link">
+              <span class="nav-link__value">
+                <time datetime="2026-02-28 00.00">28.2.2026</time>
+              </span>
+            </span>
+          </small>
+        </div>
+      </div>
+
+      <h4 class="module-divider"><span class="module-divider__body">Luokka: WD C</span></h4>
+      <h5 class="module-divider">
+        <span class="module-divider__body">
+          <a href="/sport/draw.aspx?id=CCCC3333-3333-3333-3333-333333333333&amp;draw=16" class="nav-link"><span class="nav-link__value">WD C</span></a>
+        </span>
+      </h5>
+    </div>
+  </div>
+
+</div>

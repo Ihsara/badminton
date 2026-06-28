@@ -20,8 +20,34 @@ ACCEPT_LABELS = [
 
 
 def dismiss_cookies(page: Page) -> None:
-    """Best-effort dismissal of the nojazz.eu consent iframe overlay."""
+    """Best-effort dismissal of the cookie consent.
+
+    Two shapes appear on this site: a full-page cookie *wall* served at
+    ``/cookiewall/`` (a top-level form whose accept button must be clicked before
+    the requested page — e.g. the login form — is shown), and a nojazz.eu consent
+    *iframe* overlay. Handle the wall first (it blocks the whole page), then the
+    iframe.
+    """
     page.wait_for_timeout(600)
+
+    # Full-page cookie wall: a top-level accept button gates the real page.
+    if "/cookiewall" in (page.url or "").lower():
+        for label in ACCEPT_LABELS:
+            try:
+                btn = page.get_by_role("button", name=label, exact=False).first
+                if btn.count() and btn.is_visible(timeout=800):
+                    btn.click()
+                    # The wall navigates back to the original returnurl.
+                    with contextlib.suppress(Exception):
+                        page.wait_for_url(
+                            lambda u: "/cookiewall" not in u.lower(), timeout=8000
+                        )
+                    page.wait_for_load_state("domcontentloaded")
+                    page.wait_for_timeout(400)
+                    break
+            except Exception:
+                continue
+
     for frame in page.frames:
         url = (frame.url or "").lower()
         if not any(k in url for k in ("consent", "nojazz", "cmp")):

@@ -87,22 +87,27 @@ def run_upcoming() -> dict:  # pragma: no cover - exercised manually (Task 12)
                     continue
                 t = tour_index.get(guid)
                 if t is None:
-                    # Load draws list to find this event's draw index, then the draw + matches.
-                    draws_html, draw_index = _resolve_event_draw(page, guid, ent["event"])
-                    if draw_index:
-                        draw_url = f"{BASE_URL}/tournament/{guid}/draw/{draw_index}"
-                        draw_rounds = parse_draw(_load(page, draw_url))
-                    else:
-                        draw_rounds = []
+                    # Schedule (order-of-play) is per tournament — load it once.
                     schedule = _load_schedule(page, guid, ent)
                     status = "order_published" if schedule else "draw_published"
                     t = {"name": ent["tournament"], "tournament_guid": guid,
                          "venue": "", "start_date": ent["start_date"],
                          "end_date": ent["end_date"], "status": status,
-                         "entries": [], "_rounds": draw_rounds, "_schedule": schedule}
+                         "entries": [], "_schedule": schedule}
                     tour_index[guid] = t
                     raw["tournaments"].append(t)
-                path = build_path(t["_rounds"], t["_schedule"],
+                # Each event has its OWN draw, so resolve per event. Prefer the
+                # draw index the profile card already carries (ent["draw_index"]);
+                # fall back to matching the draws list only when it's absent.
+                draw_index = ent.get("draw_index")
+                if not draw_index:
+                    _draws_html, draw_index = _resolve_event_draw(page, guid, ent["event"])
+                if draw_index:
+                    draw_url = f"{BASE_URL}/tournament/{guid}/draw/{draw_index}"
+                    draw_rounds = parse_draw(_load(page, draw_url))
+                else:
+                    draw_rounds = []
+                path = build_path(draw_rounds, t["_schedule"],
                                   pl["nickname"] or pl["full_name"], ent["event"], today)
                 t["entries"].append({"player": pl["nickname"] or pl["full_name"],
                                      "player_guid": pl["guid"], "event": ent["event"],
@@ -111,7 +116,6 @@ def run_upcoming() -> dict:  # pragma: no cover - exercised manually (Task 12)
         browser.close()
 
     for t in raw["tournaments"]:
-        t.pop("_rounds", None)
         t.pop("_schedule", None)
 
     now_iso = datetime.now().astimezone().isoformat(timespec="seconds")
