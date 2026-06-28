@@ -31,6 +31,15 @@ def main() -> None:
     sub.add_parser("identity-confirm",
                    help="fold decided discovery_candidates.csv rows into person_aliases.csv")
 
+    p_dn = sub.add_parser("discover-names",
+                          help="harvest friend names into discovery_candidates.csv (review queue)")
+    p_dn.add_argument("--tournament", action="append", default=[], metavar="GUID",
+                      help="also scan this tournament's participant list (repeatable)")
+    p_dn.add_argument("--go", action="store_true",
+                      help="actually scrape participant lists (default is a dry run)")
+    p_dn.add_argument("--max-pages", type=int, default=20,
+                      help="cap on participant-list pages fetched (ban-risk guard)")
+
     args = parser.parse_args()
 
     if args.command == "discover":
@@ -94,6 +103,11 @@ def main() -> None:
         write_queue(remaining)
         print(f"Confirmed {len(new_aliases)} new alias(es); {len(remaining)} row(s) still pending. "
               "Commit data/person_aliases.csv + data/discovery_candidates.csv to the data/ repo.")
+
+    elif args.command == "discover-names":
+        from .discover_names import run_discover_names
+
+        run_discover_names(tournament_guids=args.tournament, go=args.go, max_pages=args.max_pages)
 
 
 if __name__ == "__main__":
