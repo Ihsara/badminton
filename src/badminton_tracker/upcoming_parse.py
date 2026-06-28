@@ -16,16 +16,21 @@ class _DrawParser(HTMLParser):
         super().__init__()
         self.rounds: list[dict] = []
         self._cur: dict | None = None
-        self._capture: str | None = None  # 'title' | 'value' | 'time'
+        self._capture: str | None = None  # 'title' | 'value'
         self._buf: list[str] = []
+        self._depth = 0  # nesting depth within the active capture element
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         a = dict(attrs)
         cls = (a.get("class") or "")
-        if "bracket-round__title" in cls:
-            self._capture, self._buf = "title", []
+        if self._capture:
+            # Already capturing: any nested inner tag deepens the element so we
+            # don't flush early on its close-tag.
+            self._depth += 1
+        elif "bracket-round__title" in cls:
+            self._capture, self._buf, self._depth = "title", [], 1
         elif "nav-link__value" in cls and self._cur is not None:
-            self._capture, self._buf = "value", []
+            self._capture, self._buf, self._depth = "value", [], 1
         elif tag == "time" and self._cur is not None:
             dt = a.get("datetime")
             if dt and self._cur.get("scheduled_iso") is None:
@@ -36,6 +41,11 @@ class _DrawParser(HTMLParser):
             self._buf.append(data)
 
     def handle_endtag(self, tag: str) -> None:
+        if not self._capture:
+            return
+        self._depth -= 1
+        if self._depth > 0:
+            return  # still inside a nested inner tag; not the capturing element
         if self._capture == "title":
             label = "".join(self._buf).strip()
             self._cur = {"round_label": label, "slots": [], "scheduled_iso": None}
@@ -43,9 +53,9 @@ class _DrawParser(HTMLParser):
         elif self._capture == "value" and self._cur is not None:
             val = "".join(self._buf).strip()
             if val:
+                # Only the displayed match-group is captured, so slots is 0-2.
                 self._cur["slots"].append(val)
-        if self._capture in ("title", "value"):
-            self._capture = None
+        self._capture = None
 
 
 def parse_draw(html: str) -> list[dict]:
