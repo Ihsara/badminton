@@ -29,6 +29,12 @@ SOURCE_XLSX = DATA_DIR / "Badminton Bro Tournament Log v2.xlsx"
 # binary .xlsx so `git -C data diff` shows row-level deltas.
 MATCHES_MIRROR_CSV = DATA_DIR / "matches_mirror.csv"
 
+# Upcoming-tournament pipeline (parallel to the historical one).
+# Public, GUID-free artifact served beside data.json:
+UPCOMING_JSON = ROOT / "web" / "upcoming.json"
+# Private re-fetch state (holds tournament/profile GUIDs) — lives in data/ repo:
+UPCOMING_STATE_JSON = DATA_DIR / "upcoming_state.json"
+
 # ── Web server / maintenance endpoints ─────────────────────────────────────
 # Shared password protecting the write endpoints (Excel upload, alias edits).
 # Empty string disables writes entirely (read-only deployment).
