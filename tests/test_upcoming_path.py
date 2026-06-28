@@ -57,5 +57,5 @@ def test_build_path_projects_future_round_with_generic_opponent():
     path = build_path(rounds, schedule, "Chau", "MS B", "2026-03-14")
     sf = next(n for n in path if n["round"] == "SF")
     assert sf["state"] == "projected"
-    assert sf["opponent"] in (None, "Winner of QF")
+    assert sf["opponent"] == "Winner of QF"
     assert sf["time"] is None  # never a precise time for projected
