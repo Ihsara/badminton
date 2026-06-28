@@ -611,7 +611,12 @@ function viewUpcoming() {
     viewUpcoming();
   }));
 
-  // Live countdowns
+  // Live countdowns — genuinely live, updating every 30s.
+  // Clear any intervals from a previous render (chip toggle re-runs viewUpcoming,
+  // replacing app.innerHTML; the old DOM nodes are gone but the setInterval callbacks
+  // would still fire against stale closures without this cleanup).
+  (window.__upcTimers || []).forEach((id) => clearInterval(id));
+  window.__upcTimers = [];
   app.querySelectorAll(".hero-up__cd").forEach((el) => {
     const iso = el.dataset.time;
     if (!iso) return;
@@ -623,6 +628,7 @@ function viewUpcoming() {
         new Date(new Date(iso) - 30 * 60000).toTimeString().slice(0, 5)}`;
     };
     tick();
+    window.__upcTimers.push(setInterval(tick, 30000));
   });
 
   // Export panel

@@ -131,14 +131,39 @@ def _load(page, url: str) -> str:  # pragma: no cover
 
 
 def _resolve_event_draw(page, guid: str, event: str):  # pragma: no cover
-    """Return (draws_html, draw_index|None) by matching the event label in the draws list."""
+    """Return (draws_html, draw_index|None) by matching the event label in the draws list.
+
+    Strategy: prefer a full normalized-label match (e.g. "MS B" == "MS B") so that
+    tournaments with multiple draws per discipline (MS A / MS B / MS C) pick the right
+    one.  Only if no full-label match is found do we fall back to the discipline-token
+    contains-match (first token of event in label) to stay resilient against minor
+    label-format differences on the live site.
+    """
     import re
+
+    def _norm(s: str) -> str:
+        return " ".join(s.split()).lower()
+
     html = _load(page, f"{BASE_URL}/sport/draws.aspx?id={guid}")
-    # td.drawname links carry draw={N}; match the row whose text contains the event code.
+    # td.drawname links carry draw={N}; strip inner HTML tags to get the plain label.
+    candidates = []
     for m in re.finditer(r'draw=(\d+)[^>]*>(.*?)</a>', html, re.S):
-        idx, label = m.group(1), re.sub(r"<[^>]+>", " ", m.group(2))
-        if event.split()[0].lower() in label.lower():
+        idx = m.group(1)
+        label = _norm(re.sub(r"<[^>]+>", " ", m.group(2)))
+        candidates.append((idx, label))
+
+    event_norm = _norm(event)
+    # Pass 1: full normalized-label match (preferred — handles MS A vs MS B correctly).
+    for idx, label in candidates:
+        if event_norm == label:
             return html, idx
+
+    # Pass 2: fallback — discipline-token contains-match (preserves old behaviour).
+    token = event.split()[0].lower()
+    for idx, label in candidates:
+        if token in label:
+            return html, idx
+
     return html, None
 
 
