@@ -194,12 +194,31 @@ function pMatchRow(v) {
 /* ---------------- views ---------------- */
 
 function viewGroup() {
+  let upcHero = "";
+  if (upcomingActive()) {
+    const next = [];
+    for (const t of UPC.tournaments) {
+      for (const e of (t.entries || [])) {
+        const n = e.path.find((x) => x.state === "scheduled");
+        if (n) next.push(`${esc(e.player)} · ${esc(n.round)} ${
+          n.time ? upcClock(n.time, n.time_kind === "not_before") : ""}${
+          n.court ? " · Court " + esc(n.court) : ""}`);
+      }
+    }
+    if (next.length) {
+      upcHero = `<a class="up-takeover rise" href="#/upcoming">
+        <span class="up-takeover__tag">Happening now</span>
+        <span class="up-takeover__list">${next.slice(0, 4).join("  ·  ")}</span>
+        <span class="tag">see timeline →</span></a>`;
+    }
+  }
+
   const c = DB.counts;
   const top = DB.players.slice(0, 12);
   const recent = [...DB.matches].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 8);
   const maxWins = Math.max(...DB.players.map((p) => p.wins), 1);
 
-  app.innerHTML = `
+  app.innerHTML = upcHero + `
     <section class="hero">
       <div>
         <div class="eyebrow rise">Finland · ${esc(DB.tournaments_list.length)} tournaments logged</div>
