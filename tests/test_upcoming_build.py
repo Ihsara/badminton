@@ -15,7 +15,7 @@ def test_assemble_strips_guids_and_applies_aliases():
                 "event": "WD B",
                 "path": [{"round": "R32", "state": "scheduled", "opponent": "Some Pair",
                           "court": "K5", "time": "2026-03-14T10:15:00+02:00",
-                          "time_kind": "exact"}],
+                          "time_kind": "exact", "guid": "NESTED-GUID-SENTINEL"}],
             }],
         }]
     }
@@ -25,6 +25,7 @@ def test_assemble_strips_guids_and_applies_aliases():
     blob = repr(out)
     assert "AAAA1111" not in blob  # tournament guid stripped
     assert "player_guid" not in blob  # player guid stripped
+    assert "NESTED-GUID-SENTINEL" not in blob  # guid inside path[] (list->dict) stripped
     assert out["tournaments"][0]["entries"][0]["player"] == "Bonnie"  # alias applied
     assert out["generated_at"] == "2026-03-13T20:00:00+02:00"
 
