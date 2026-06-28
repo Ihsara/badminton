@@ -58,3 +58,35 @@ def test_order_of_play_splits_event_and_round():
 def test_order_of_play_lists_players():
     rows = parse_order_of_play(_read("order_of_play.html"), "2026-03-14")
     assert rows[0]["players"] == ["Chau", "Real Opponent"]
+
+
+def test_find_upcoming_entries_keeps_future_card():
+    from badminton_tracker.upcoming_parse import find_upcoming_entries
+
+    out = find_upcoming_entries(_read("profile_tournaments.html"), "2026-01-01")
+    assert len(out) == 1
+    e = out[0]
+    assert e["tournament"] == "Stadin Mestaruuskilpailut"
+    assert e["event"] == "MS B"
+
+
+def test_find_upcoming_entries_parses_dates_to_iso():
+    from badminton_tracker.upcoming_parse import find_upcoming_entries
+
+    out = find_upcoming_entries(_read("profile_tournaments.html"), "2026-01-01")
+    assert out[0]["start_date"] == "2026-03-14"
+    assert out[0]["end_date"] == "2026-03-15"
+
+
+def test_find_upcoming_entries_extracts_guid_from_href():
+    from badminton_tracker.upcoming_parse import find_upcoming_entries
+
+    out = find_upcoming_entries(_read("profile_tournaments.html"), "2026-01-01")
+    assert out[0]["tournament_guid"] == "AAAA1111-2222-3333-4444-555566667777"
+
+
+def test_find_upcoming_entries_drops_past_card():
+    from badminton_tracker.upcoming_parse import find_upcoming_entries
+
+    out = find_upcoming_entries(_read("profile_tournaments.html"), "2027-01-01")
+    assert out == []

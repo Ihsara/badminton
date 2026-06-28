@@ -150,3 +150,93 @@ def parse_order_of_play(html: str, date_iso: str) -> list[dict]:
     for r in p.rows:
         r["date"] = date_iso
     return p.rows
+
+
+_GUID_RE = re.compile(r"/tournament/([0-9A-Fa-f-]{36})")
+_DATE_RANGE_RE = re.compile(
+    r"(\d{1,2})\.(\d{1,2})\.(\d{4})\s*-\s*(\d{1,2})\.(\d{1,2})\.(\d{4})"
+)
+_SINGLE_DATE_RE = re.compile(r"(\d{1,2})\.(\d{1,2})\.(\d{4})")
+
+
+def _iso(d: str, m: str, y: str) -> str:
+    return f"{int(y):04d}-{int(m):02d}-{int(d):02d}"
+
+
+def _parse_dates(footer: str) -> tuple[str | None, str | None]:
+    m = _DATE_RANGE_RE.search(footer)
+    if m:
+        return _iso(m.group(1), m.group(2), m.group(3)), _iso(m.group(4), m.group(5), m.group(6))
+    s = _SINGLE_DATE_RE.search(footer)
+    if s:
+        iso = _iso(s.group(1), s.group(2), s.group(3))
+        return iso, iso
+    return None, None
+
+
+class _EntriesParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.cards: list[dict] = []
+        self._cur: dict | None = None
+        self._capture: str | None = None  # 'title' | 'footer' | 'luokka'
+        self._buf: list[str] = []
+        self._depth = 0  # nesting depth within the active capture element
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        a = dict(attrs)
+        cls = a.get("class") or ""
+        if self._capture:
+            # Already capturing: any nested inner tag deepens the element so we
+            # don't flush early on its close-tag.
+            self._depth += 1
+        elif "module--card" in cls:
+            self._cur = {"tournament": "", "tournament_guid": None, "event": "",
+                         "start_date": None, "end_date": None}
+            self.cards.append(self._cur)
+        elif "media__title" in cls and self._cur is not None:
+            # Read href attribute for GUID first, then start capture with depth
+            href = a.get("href") or ""
+            m = _GUID_RE.search(href)
+            if m:
+                self._cur["tournament_guid"] = m.group(1)
+            self._capture, self._buf, self._depth = "title", [], 1
+        elif "module__footer" in cls and self._cur is not None:
+            self._capture, self._buf, self._depth = "footer", [], 1
+        elif tag == "h4" and self._cur is not None:
+            self._capture, self._buf, self._depth = "luokka", [], 1
+
+    def handle_data(self, data: str) -> None:
+        if self._capture:
+            self._buf.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if not self._capture:
+            return
+        self._depth -= 1
+        if self._depth > 0:
+            return  # still inside a nested inner tag; not the capturing element
+        text = "".join(self._buf).strip()
+        if self._capture == "title" and self._cur is not None:
+            self._cur["tournament"] = text
+        elif self._capture == "footer" and self._cur is not None:
+            self._cur["start_date"], self._cur["end_date"] = _parse_dates(text)
+        elif (
+            self._capture == "luokka"
+            and self._cur is not None
+            and text.lower().startswith("luokka")
+            and not self._cur["event"]
+        ):
+            self._cur["event"] = text.split(":", 1)[-1].strip()
+        self._capture = None
+
+
+def find_upcoming_entries(html: str, today_iso: str) -> list[dict]:
+    p = _EntriesParser()
+    p.feed(html)
+    out = []
+    for c in p.cards:
+        end = c["end_date"]
+        if end is None or end >= today_iso:
+            out.append(c)
+    return out
