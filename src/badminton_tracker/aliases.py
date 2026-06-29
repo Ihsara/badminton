@@ -47,6 +47,33 @@ def alias_map() -> dict[str, str]:
     return {r["name"]: r["display"] for r in load_aliases() if r["display"]}
 
 
+def casefold_merge_map(names: list[str]) -> dict[str, str]:
+    """Map each name that differs from another only by letter-case to one
+    canonical spelling, so case-only duplicates (e.g. "Paphon Kasemvudhi" and
+    "Paphon KASEMVUDHI") collapse to a single person. The canonical spelling is
+    the variant with the most lowercase letters (proper-case beats ALL-CAPS),
+    ties broken by first appearance. Names with no case-twin are omitted."""
+    groups: dict[str, list[str]] = {}
+    for n in names:
+        if not n:
+            continue
+        groups.setdefault(n.casefold(), [])
+        if n not in groups[n.casefold()]:
+            groups[n.casefold()].append(n)
+
+    def _lower_count(s: str) -> int:
+        return sum(1 for c in s if c.islower())
+
+    out: dict[str, str] = {}
+    for variants in groups.values():
+        if len(variants) < 2:
+            continue
+        canonical = max(variants, key=lambda s: (_lower_count(s), -variants.index(s)))
+        for v in variants:
+            out[v] = canonical
+    return out
+
+
 def apply(name: str, mapping: dict[str, str] | None = None) -> str:
     if not name:
         return name

@@ -8,6 +8,7 @@ import json
 
 from . import aliases
 from .config import ROOT
+from .core_group import is_core
 from .excel_source import friend_names, read_data_matches
 from .stats import player_stats, tournament_stats
 
@@ -125,6 +126,8 @@ def build_payload(matches: list[dict], roster: list[dict], source: str) -> dict:
             deduped.append(raw)
 
     pstats = player_stats(deduped, roster)
+    for p in pstats:
+        p["core"] = is_core(p["player"])
     tstats = tournament_stats(deduped, roster)
     tournaments = sorted({m["tournament"] for m in deduped if m["tournament"]})
     return {
@@ -156,14 +159,19 @@ def apply_aliases(matches: list[dict], mapping: dict[str, str] | None = None) ->
 
     The mapping is GUID-free — the private nickname→real-name→profile linkage
     never reaches data.json. Applied to every name on the court (friends and
-    their opponents), so a relabel shows up everywhere.
+    their opponents), so a relabel shows up everywhere. Case-only duplicates
+    (e.g. "Paphon KASEMVUDHI") are folded to one canonical spelling first.
     """
     mapping = aliases.alias_map() if mapping is None else mapping
+    all_names = [m[k] for m in matches
+                 for k in ("player_1", "player_2", "opponent_1", "opponent_2")]
+    casefold = aliases.casefold_merge_map(all_names)
     out = []
     for m in matches:
         mm = dict(m)
         for key in ("player_1", "player_2", "opponent_1", "opponent_2"):
-            mm[key] = aliases.apply(m[key], mapping)
+            folded = casefold.get(m[key], m[key])
+            mm[key] = aliases.apply(folded, mapping)
         out.append(mm)
     return out
 
@@ -190,10 +198,12 @@ def export_from_excel() -> None:
     aliases.ensure_names(friends)  # seed the editor with the group
     mapping = aliases.alias_map()
     matches = apply_aliases(read_data_matches(), mapping)
-    # Several raw spellings can alias to one display name (e.g. "Thy Nguyen" and
-    # "Thy NGUYEN" → "Thy"). De-duplicate the aliased roster so a person gets a
-    # single stats page, not one duplicate row per spelling. Preserve order.
-    display_names = list(dict.fromkeys(aliases.apply(f, mapping) for f in friends))
+    # Fold case-only twins (e.g. "Paphon KASEMVUDHI") to one spelling, then apply
+    # explicit aliases, so a person gets a single stats page — not one row per
+    # spelling. Preserve order.
+    casefold = aliases.casefold_merge_map(friends)
+    display_names = list(dict.fromkeys(
+        aliases.apply(casefold.get(f, f), mapping) for f in friends))
     roster = roster_from_names(display_names)
     export_json(matches, roster, source="excel")
 

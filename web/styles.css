@@ -274,6 +274,9 @@ body::before {
   flex-direction: column;
 }
 
+.lb--muted { opacity:.62; }
+.lb--muted .lb__row { filter:grayscale(.3); }
+
 .lb__row {
   display: grid;
   grid-template-columns: 42px 1.6fr 1.1fr 90px 70px;
