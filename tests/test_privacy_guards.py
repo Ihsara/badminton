@@ -55,5 +55,7 @@ def test_assemble_upcoming_strips_tournament_and_player_guids():
     }
     pub = assemble_upcoming(raw, {}, "2026-06-28T00:00:00+03:00")
     blob = repr(pub).lower()
-    assert "1a563200" not in blob
+    # tournament GUID is PUBLIC, kept:
+    assert "1a563200" in blob
+    # player GUID is private, stripped:
     assert "d69f71b9" not in blob

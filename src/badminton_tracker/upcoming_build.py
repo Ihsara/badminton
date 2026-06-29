@@ -16,8 +16,10 @@ import tempfile
 from . import aliases
 from .config import BASE_URL, UPCOMING_JSON, UPCOMING_STATE_JSON
 
-# Keys carrying GUIDs that must never reach the public file.
-_GUID_KEYS = ("tournament_guid", "player_guid", "guid", "profile_guid")
+# Keys carrying PLAYER/PROFILE GUIDs that must never reach the public file.
+# The tournament GUID is a public event identifier (it's the tournament's own
+# page id on the site) and is deliberately KEPT so the UI can link out.
+_GUID_KEYS = ("player_guid", "profile_guid", "guid")
 
 
 def _strip_guids(obj):

@@ -23,7 +23,8 @@ def test_assemble_strips_guids_and_applies_aliases():
     out = assemble_upcoming(raw, alias_map, "2026-03-13T20:00:00+02:00")
 
     blob = repr(out)
-    assert "AAAA1111" not in blob  # tournament guid stripped
+    assert "AAAA1111-2222-3333-4444-555566667777" in blob  # tournament guid is PUBLIC, kept
+    assert out["tournaments"][0]["tournament_guid"] == "AAAA1111-2222-3333-4444-555566667777"
     assert "player_guid" not in blob  # player guid stripped
     assert "NESTED-GUID-SENTINEL" not in blob  # guid inside path[] (list->dict) stripped
     assert out["tournaments"][0]["entries"][0]["player"] == "Bonnie"  # alias applied
@@ -39,3 +40,26 @@ def test_assemble_keeps_opponent_names_verbatim():
                           "court": "K1", "time": None, "time_kind": None}]}]}]}
     out = assemble_upcoming(raw, {}, "2026-03-13T20:00:00+02:00")
     assert out["tournaments"][0]["entries"][0]["path"][0]["opponent"] == "Real Opponent"
+
+
+def test_assemble_never_leaks_player_or_profile_guid():
+    raw = {"tournaments": [{
+        "name": "T", "tournament_guid": "1A563200-14BA-4328-955A-922A5EEC6374",
+        "venue": "", "start_date": "2026-07-04", "end_date": "2026-07-04",
+        "status": "order_published",
+        "entries": [{
+            "player": "Chau", "player_guid": "PLAYER-GUID-SENTINEL",
+            "profile_guid": "PROFILE-GUID-SENTINEL", "event": "MS B",
+            "path": [{"round": "R1", "state": "scheduled", "opponent": "X",
+                      "court": None, "time": None, "time_kind": None,
+                      "guid": "NESTED-GUID-SENTINEL"}],
+        }],
+    }]}
+    out = assemble_upcoming(raw, {}, "2026-07-04T08:00:00+03:00")
+    blob = repr(out)
+    assert "PLAYER-GUID-SENTINEL" not in blob
+    assert "PROFILE-GUID-SENTINEL" not in blob
+    assert "NESTED-GUID-SENTINEL" not in blob
+    assert "player_guid" not in blob and "profile_guid" not in blob
+    # tournament guid is allowed through:
+    assert out["tournaments"][0]["tournament_guid"] == "1A563200-14BA-4328-955A-922A5EEC6374"
