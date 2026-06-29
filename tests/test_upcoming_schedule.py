@@ -24,18 +24,18 @@ def test_near_tournament_no_draw_polls_6h():
     assert next_refresh_delay(_state(status="entries"), now) == 21600
 
 
-def test_match_day_order_published_polls_30m():
+def test_match_day_order_published_polls_10m():
     now = datetime(2026, 3, 14, 8, 0, tzinfo=TZ)  # on start day
-    assert next_refresh_delay(_state(status="order_published"), now) == 1800
+    assert next_refresh_delay(_state(status="order_published"), now) == 600
 
 
-def test_friend_match_within_2h_polls_15m():
+def test_friend_match_within_2h_polls_5m():
     now = datetime(2026, 3, 14, 12, 0, tzinfo=TZ)
     st = _state(status="order_published",
                 entries=[{"player": "Chau", "event": "MS B",
                           "path": [{"round": "QF", "state": "scheduled",
                                     "time": "2026-03-14T13:30:00+02:00"}]}])
-    assert next_refresh_delay(st, now) == 900
+    assert next_refresh_delay(st, now) == 300
 
 
 def test_finished_tournament_polls_daily():
@@ -53,3 +53,32 @@ def test_naive_iso_against_aware_now_does_not_crash():
 def test_bad_input_returns_none():
     now = datetime.now().astimezone()
     assert _seconds_until("not-a-time", now) is None
+
+
+def test_watch_backs_off_on_failure_without_propagating():
+    from contextlib import suppress
+
+    from badminton_tracker.upcoming_schedule import SIX_HOURS, watch
+
+    calls = {"run": 0}
+    slept = []
+
+    def run_once():
+        calls["run"] += 1
+        raise RuntimeError("login failed")
+
+    class _Stop(Exception):
+        pass
+
+    def fake_sleep(secs):
+        slept.append(secs)
+        raise _Stop  # break the infinite loop after the first sleep
+
+    def fake_now():
+        return datetime(2026, 1, 1, 12, 0, tzinfo=TZ)
+
+    with suppress(_Stop):
+        watch(run_once, sleep=fake_sleep, now_fn=fake_now)
+
+    assert calls["run"] == 1            # the failure did not propagate out of run_once
+    assert slept == [SIX_HOURS]         # it backed off to the daily-ish floor, not a tight spin

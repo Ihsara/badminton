@@ -2,6 +2,7 @@
 """Rule #4 enforcement: no GUIDs / person_ids may reach public web/*.json."""
 from __future__ import annotations
 
+import json
 import re
 
 import pytest
@@ -18,8 +19,16 @@ def test_public_json_has_no_guid(path):
     if not path.exists():
         pytest.skip(f"{path.name} not generated in this environment")
     text = path.read_text(encoding="utf-8")
-    leaked = GUID_RE.findall(text)
-    assert not leaked, f"{path.name} leaks profile GUID(s): {leaked[:3]}"
+    data = json.loads(text)
+    # Build allow-set of tournament GUIDs that are legitimately public.
+    allowed = {
+        t.get("tournament_guid", "").lower()
+        for t in data.get("tournaments", [])
+        if t.get("tournament_guid")
+    }
+    found = {m.lower() for m in GUID_RE.findall(text)}
+    leaked = found - allowed
+    assert not leaked, f"{path.name} leaks profile GUID(s): {sorted(leaked)[:3]}"
 
 
 @pytest.mark.parametrize("path", PUBLIC_FILES, ids=lambda p: p.name)
@@ -30,7 +39,7 @@ def test_public_json_has_no_person_id(path):
     assert not PERSON_ID_RE.search(text), f"{path.name} leaks a person_id field"
 
 
-def test_assemble_upcoming_strips_tournament_and_player_guids():
+def test_assemble_upcoming_keeps_tournament_strips_player_guids():
     from badminton_tracker.upcoming_build import assemble_upcoming
 
     raw = {
@@ -55,5 +64,7 @@ def test_assemble_upcoming_strips_tournament_and_player_guids():
     }
     pub = assemble_upcoming(raw, {}, "2026-06-28T00:00:00+03:00")
     blob = repr(pub).lower()
-    assert "1a563200" not in blob
+    # tournament GUID is PUBLIC, kept:
+    assert "1a563200" in blob
+    # player GUID is private, stripped:
     assert "d69f71b9" not in blob

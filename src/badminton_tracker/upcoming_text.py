@@ -42,6 +42,26 @@ def _first_relevant(path: list[dict], horizon: str) -> list[dict]:
     return upcoming
 
 
+def _match_sig(event: str, node: dict) -> tuple[str, str, str]:
+    """Identity of a physical match within a tournament. Two tracked friends
+    partnering each other produce two entries with the same (event, time,
+    opponent), so this signature lets us collapse them into one."""
+    return (event, node.get("time") or "", node.get("opponent") or "")
+
+
+def _shared_players(entries: list[dict], event: str, node: dict) -> list[str]:
+    """All tracked players whose path contains a node matching this match
+    signature, sorted. A single-player match returns just that player."""
+    sig = _match_sig(event, node)
+    found = {
+        e["player"]
+        for e in entries
+        for n in e.get("path", [])
+        if _match_sig(e.get("event", ""), n) == sig
+    }
+    return sorted(found)
+
+
 def format_chat_text(upcoming: dict, options: dict) -> str:
     players = options.get("players")
     tours = options.get("tournaments")
@@ -53,16 +73,63 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
     for t in upcoming.get("tournaments", []):
         if tours and t["name"] not in tours:
             continue
+        entries = t.get("entries", [])
         lines: list[str] = []
-        for e in t.get("entries", []):
+        seen: set[tuple[str, tuple[str, str, str]]] = set()
+        for e in entries:
             if players and e["player"] not in players:
                 continue
             nodes = _first_relevant(e["path"], horizon)
             for n in nodes:
                 if n["state"] == "projected" and not show_projected:
                     continue
-                lines.append(_line(e["player"], e["event"], n, fields))
+                # Collapse a match shared by two tracked friends into one line,
+                # attributed to the pair. Projected nodes have no stable
+                # opponent/time signature, so leave them per-player.
+                if n["state"] in ("scheduled", "done"):
+                    shared = [p for p in _shared_players(entries, e["event"], n)
+                              if not players or p in players]
+                    key = (e["event"], _match_sig(e["event"], n))
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    label = " / ".join(shared) if shared else e["player"]
+                else:
+                    label = e["player"]
+                lines.append(_line(label, e["event"], n, fields))
         if lines:
             out.append(f"🏸 {t['name']}")
             out.extend(lines)
     return "\n".join(out)
+
+
+def next_match_per_player(upcoming: dict) -> list[dict]:
+    """One row per (tournament, player) = that player's earliest still-scheduled
+    match, sorted by time then player. Players with no scheduled node are omitted.
+    Mirrors the frontend's nextMatchPerPlayer in app.js."""
+    rows: list[dict] = []
+    for t in upcoming.get("tournaments", []):
+        entries = t.get("entries", [])
+        seen: set[tuple[str, tuple[str, str, str]]] = set()
+        for e in entries:
+            scheduled = [n for n in e.get("path", []) if n.get("state") == "scheduled"]
+            if not scheduled:
+                continue
+            node = min(scheduled, key=lambda n: n.get("time") or "")
+            event = e.get("event", "")
+            # Collapse a match shared by two tracked friends into one row,
+            # attributed to the pair (sorted, " / "-joined).
+            key = (event, _match_sig(event, node))
+            if key in seen:
+                continue
+            seen.add(key)
+            shared = _shared_players(entries, event, node)
+            rows.append({
+                "tournament": t.get("name", ""),
+                "tournament_guid": t.get("tournament_guid"),
+                "player": " / ".join(shared) if len(shared) > 1 else e.get("player", ""),
+                "event": event,
+                "node": node,
+            })
+    rows.sort(key=lambda r: (r["node"].get("time") or "", r["player"]))
+    return rows
