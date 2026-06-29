@@ -46,6 +46,37 @@ function upcClock(iso, notBefore) {
   return notBefore && hhmm ? "~" + hhmm : hhmm;
 }
 
+// The public tournamentsoftware host — fixed and public, used to link out.
+const TS_HOST = "https://badmintonfinland.tournamentsoftware.com";
+
+// Mirrors src/badminton_tracker/upcoming_text.py::next_match_per_player
+function nextMatchPerPlayer(upc) {
+  const rows = [];
+  for (const t of (upc?.tournaments || [])) {
+    for (const e of (t.entries || [])) {
+      const sched = (e.path || []).filter((n) => n.state === "scheduled");
+      if (!sched.length) continue;
+      const node = sched.reduce((a, b) => ((a.time || "") <= (b.time || "") ? a : b));
+      rows.push({ tournament: t.name || "", tournament_guid: t.tournament_guid || null,
+                  player: e.player || "", event: e.event || "", node });
+    }
+  }
+  rows.sort((a, b) => ((a.node.time || "") + a.player).localeCompare((b.node.time || "") + b.player));
+  return rows;
+}
+
+// "updated 3 min ago" from an ISO timestamp; coarse + dependency-free.
+function relTime(iso) {
+  if (!iso) return "";
+  const diff = Date.now() - new Date(iso).getTime();
+  if (isNaN(diff)) return "";
+  const m = Math.round(diff / 60000);
+  if (m < 1) return "just now";
+  if (m < 60) return `${m} min ago`;
+  const h = Math.round(m / 60);
+  return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
+}
+
 // Mirrors src/badminton_tracker/upcoming_text.py::format_chat_text
 function formatChatText(upc, opts) {
   const players = opts.players || null;
@@ -595,12 +626,34 @@ function viewUpcoming() {
       ${hero}${paths}</section>`;
   }).join("");
 
+  const summaryBlocks = (UPC.tournaments || []).map((t) => {
+    const rows = nextMatchPerPlayer({ tournaments: [t] }).filter((r) => sel.has(r.player));
+    if (!rows.length) return "";
+    const link = t.tournament_guid
+      ? `<a class="tag" href="${TS_HOST}/tournament/${esc(t.tournament_guid)}/" target="_blank" rel="noopener">open on tournamentsoftware →</a>`
+      : "";
+    const trs = rows.map((r) => {
+      const clk = upcClock(r.node.time, r.node.time_kind === "not_before");
+      return `<tr>
+        <td class="nextcard__p">${esc(r.player)}</td>
+        <td class="nextcard__t">${esc(clk)}</td>
+        <td class="nextcard__r">${esc(r.node.round)}</td>
+        <td class="nextcard__o">vs ${esc(r.node.opponent || "TBD")}</td>
+        <td class="nextcard__e">${esc(r.event)}</td></tr>`;
+    }).join("");
+    return `<section class="nextcard">
+      <div class="nextcard__head"><h2 class="section-title">${esc(t.name)}</h2>${link}
+        <span class="tag tag--muted">updated ${esc(relTime(UPC.generated_at))}</span></div>
+      <table class="nextcard__tbl"><tbody>${trs}</tbody></table></section>`;
+  }).join("");
+
   app.innerHTML = `
     <div class="upc-bar">
       <div class="chips">${chips}</div>
       <button class="tag" id="upc-export">Copy for chat</button>
     </div>
     <div id="upc-export-panel" class="upc-panel" hidden></div>
+    ${summaryBlocks}
     ${blocks || `<div class="empty" style="padding:60px">No matches for the selected players.</div>`}
   `;
 
