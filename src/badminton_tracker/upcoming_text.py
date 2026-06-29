@@ -74,7 +74,11 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
         if tours and t["name"] not in tours:
             continue
         entries = t.get("entries", [])
-        lines: list[str] = []
+        # Collect (sort_key, line) so lines can be ordered chronologically
+        # within the tournament — entries arrive in scrape order, not by time.
+        # Scheduled/done sort by their time; projected nodes (no precise time)
+        # sort after, by day/session.
+        rows: list[tuple[tuple[int, str], str]] = []
         seen: set[tuple[str, tuple[str, str, str]]] = set()
         for e in entries:
             if players and e["player"] not in players:
@@ -94,12 +98,15 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
                         continue
                     seen.add(key)
                     label = " / ".join(shared) if shared else e["player"]
+                    sort_key = (0, n.get("time") or "")
                 else:
                     label = e["player"]
-                lines.append(_line(label, e["event"], n, fields))
-        if lines:
+                    sort_key = (1, n.get("day") or n.get("session") or "")
+                rows.append((sort_key, _line(label, e["event"], n, fields)))
+        if rows:
+            rows.sort(key=lambda r: r[0])
             out.append(f"🏸 {t['name']}")
-            out.extend(lines)
+            out.extend(line for _, line in rows)
     return "\n".join(out)
 
 
