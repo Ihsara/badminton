@@ -15,8 +15,12 @@ def _clock(iso: str | None, not_before: bool) -> str:
     return ("~" + hhmm) if (not_before and hhmm) else hhmm
 
 
-def _line(player: str, event: str, node: dict, fields: set[str]) -> str:
-    parts = [f"{player} ({event}): {node['round']}"]
+def _line(player: str, event: str, node: dict, fields: set[str],
+          partner: str | None = None) -> str:
+    head = f"{player} ({event})"
+    if partner:
+        head = f"{player} (w/ {partner}) ({event})"
+    parts = [f"{head}: {node['round']}"]
     if node["state"] in ("scheduled", "done"):
         clk = _clock(node.get("time"), node.get("time_kind") == "not_before")
         if clk:
@@ -47,6 +51,16 @@ def _match_sig(event: str, node: dict) -> tuple[str, str, str]:
     partnering each other produce two entries with the same (event, time,
     opponent), so this signature lets us collapse them into one."""
     return (event, node.get("time") or "", node.get("opponent") or "")
+
+
+def _partner_of(node: dict, label: str) -> str | None:
+    """The partner to surface on a single-player match, or None. Skips the case
+    where the recorded partner is just the player under another name (the label
+    already covers them)."""
+    partner = (node.get("partner") or "").strip()
+    if not partner or partner == label:
+        return None
+    return partner
 
 
 def _shared_players(entries: list[dict], event: str, node: dict) -> list[str]:
@@ -90,6 +104,7 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
                 # Collapse a match shared by two tracked friends into one line,
                 # attributed to the pair. Projected nodes have no stable
                 # opponent/time signature, so leave them per-player.
+                partner = None
                 if n["state"] in ("scheduled", "done"):
                     shared = [p for p in _shared_players(entries, e["event"], n)
                               if not players or p in players]
@@ -99,10 +114,14 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
                     seen.add(key)
                     label = " / ".join(shared) if shared else e["player"]
                     sort_key = (0, n.get("time") or "")
+                    # Name the partner only when the label is a single player —
+                    # a tracked pair ("Chau / Vu Luu") already names both.
+                    if len(shared) <= 1:
+                        partner = _partner_of(n, label)
                 else:
                     label = e["player"]
                     sort_key = (1, n.get("day") or n.get("session") or "")
-                rows.append((sort_key, _line(label, e["event"], n, fields)))
+                rows.append((sort_key, _line(label, e["event"], n, fields, partner)))
         if rows:
             rows.sort(key=lambda r: r[0])
             out.append(f"🏸 {t['name']}")
@@ -131,10 +150,15 @@ def next_match_per_player(upcoming: dict) -> list[dict]:
                 continue
             seen.add(key)
             shared = _shared_players(entries, event, node)
+            is_pair = len(shared) > 1
+            label = " / ".join(shared) if is_pair else e.get("player", "")
             rows.append({
                 "tournament": t.get("name", ""),
                 "tournament_guid": t.get("tournament_guid"),
-                "player": " / ".join(shared) if len(shared) > 1 else e.get("player", ""),
+                "player": label,
+                # Untracked partner (e.g. Nga Pham); None for a tracked pair,
+                # which already names both players.
+                "partner": None if is_pair else _partner_of(node, label),
                 "event": event,
                 "node": node,
             })

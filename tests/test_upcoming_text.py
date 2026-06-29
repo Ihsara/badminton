@@ -156,6 +156,44 @@ def test_chat_export_collapses_shared_match_to_one_line():
     assert "Chau / Vu Luu" in out
 
 
+def _upc_untracked_partner():
+    """Chau partners Nga Pham, who is NOT a tracked player (no entry of her
+    own). The match shows under just 'Chau' and should name the partner."""
+    return {"tournaments": [{
+        "name": "Stadin",
+        "entries": [
+            {"player": "Chau", "event": "MD Hobby B", "path": [
+                {"round": "R1", "state": "scheduled", "partner": "Nga Pham",
+                 "opponent": "Lasse / Kaleva", "time": "2026-07-04T09:00:00+03:00"}]},
+        ],
+    }]}
+
+
+def test_chat_export_names_untracked_partner():
+    out = format_chat_text(_upc_untracked_partner(), {"horizon": "next", "fields": {"opponent"}})
+    assert "Nga Pham" in out          # partner is visible
+    assert "w/ Nga Pham" in out       # rendered as a "with" suffix
+
+
+def test_chat_export_omits_partner_suffix_when_match_is_a_tracked_pair():
+    # Chau / Vu Luu already names both friends; don't also append "w/ ...".
+    out = format_chat_text(_upc_shared(), {"horizon": "next", "fields": {"opponent"}})
+    assert "w/" not in out
+
+
+def test_next_match_exposes_untracked_partner():
+    rows = next_match_per_player(_upc_untracked_partner())
+    assert len(rows) == 1
+    assert rows[0]["player"] == "Chau"
+    assert rows[0]["partner"] == "Nga Pham"
+
+
+def test_next_match_no_partner_field_for_tracked_pair():
+    # The merged "Chau / Vu Luu" row carries no separate partner.
+    rows = next_match_per_player(_upc_shared())
+    assert rows[0].get("partner") in (None, "")
+
+
 def _upc_out_of_order():
     """Entries arrive in scrape order (late match first), so the chat export
     must re-sort lines chronologically within the tournament."""
