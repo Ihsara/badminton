@@ -29,9 +29,24 @@ $rSettings = New-ScheduledTaskSettingsSet -StartWhenAvailable
 Register-ScheduledTask -TaskName "BadmintonBrosRedeploy" -Action $rAction -Trigger $rTrigger `
   -Settings $rSettings -Description "Auto-redeploy the Badminton Bros server on new commits" -Force | Out-Null
 
-Write-Host "Installed two tasks:"
-Write-Host "  BadmintonBros         - starts the server when you log in."
-Write-Host "  BadmintonBrosRedeploy - checks for new code every 5 min and redeploys (log: $log)."
+# --- 3) Publish live upcoming.json to the public repo every 5 min ----------
+# Fast-forward-only pull first; skips gracefully if diverged; privacy-gates
+# the file before pushing; stages ONLY web/upcoming.json.
+$publish = Join-Path $PSScriptRoot "publish-upcoming.bat"
+$pubLog  = Join-Path $PSScriptRoot "publish-upcoming.log"
+$pAction  = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c `"`"$publish`" >> `"$pubLog`" 2>&1`""
+$pTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date) `
+  -RepetitionInterval (New-TimeSpan -Minutes 5) -RepetitionDuration ([TimeSpan]::MaxValue)
+$pSettings = New-ScheduledTaskSettingsSet -StartWhenAvailable
+
+Register-ScheduledTask -TaskName "BadmintonPublishUpcoming" -Action $pAction -Trigger $pTrigger `
+  -Settings $pSettings -Description "Publish the live upcoming.json to the public repo every 5 min" -Force | Out-Null
+
+Write-Host "Installed three tasks:"
+Write-Host "  BadmintonBros             - starts the server when you log in."
+Write-Host "  BadmintonBrosRedeploy     - checks for new code every 5 min and redeploys (log: $log)."
+Write-Host "  BadmintonPublishUpcoming  - publishes live upcoming.json every 5 min (log: $pubLog)."
 Write-Host "Remove later with:"
 Write-Host "  Unregister-ScheduledTask -TaskName BadmintonBros -Confirm:`$false"
 Write-Host "  Unregister-ScheduledTask -TaskName BadmintonBrosRedeploy -Confirm:`$false"
+Write-Host "  Unregister-ScheduledTask -TaskName BadmintonPublishUpcoming -Confirm:`$false"
