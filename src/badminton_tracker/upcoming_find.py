@@ -41,3 +41,26 @@ def find_upcoming_tournaments(html: str, today_iso: str, horizon_days: int) -> l
         seen.add(guid.lower())
         out.append({"name": name, "guid": guid, "start_date": start, "end_date": start})
     return out
+
+
+def fetch_upcoming_tournaments(  # pragma: no cover
+    page, base_url, today_iso, horizon_days, max_pages=20
+):
+    """Paginate the live finder window, de-dupe by GUID, return parsed list."""
+    from .client import dismiss_cookies
+    seen: dict[str, dict] = {}
+    for pg in range(1, max_pages + 1):
+        url = (f"{base_url}/find/tournament?TournamentFilter.DateFilterType=0"
+               f"&page={pg}")
+        page.goto(url, wait_until="domcontentloaded")
+        dismiss_cookies(page)
+        page.wait_for_timeout(700)  # politeness
+        found = find_upcoming_tournaments(page.content(), today_iso, horizon_days)
+        if not found:
+            break
+        before = len(seen)
+        for t in found:
+            seen.setdefault(t["guid"].lower(), t)
+        if len(seen) == before:
+            break  # no new tournaments this page
+    return list(seen.values())

@@ -55,68 +55,83 @@ def _atomic_write(path, data: dict) -> None:
             os.remove(tmp)
 
 
-def run_upcoming() -> dict:  # pragma: no cover - exercised manually (Task 12)
-    """Full scrape: confirmed friends -> upcoming entries -> draws + order-of-play
-    -> per-friend paths -> write public + private JSON. Returns the public dict."""
+def _roster_for_matching():  # pragma: no cover
+    import csv
+
+    from .config import PLAYERS_CSV
+    rows = []
+    with open(PLAYERS_CSV, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            full = (r.get("full_name") or "").strip()
+            nick = (r.get("nickname") or "").strip()
+            if full:  # need a full name to match on
+                rows.append({"nickname": nick, "full_name": full})
+    return rows
+
+
+def run_upcoming(  # pragma: no cover
+    tournament_guids=None, horizon_days=60, max_tournaments=20
+) -> dict:
+    """Tournament-first scrape: discover upcoming tournaments, match friends on each
+    participant list, fetch per-friend scoped schedule pages, write public + private JSON."""
     from datetime import datetime
 
     from playwright.sync_api import sync_playwright
 
     from .client import dismiss_cookies, ensure_login, new_context
-    from .fetch import load_players
-    from .upcoming_parse import find_upcoming_entries, parse_draw
-    from .upcoming_path import build_path
+    from .exclude import load_excludes
+    from .upcoming_find import fetch_upcoming_tournaments
+    from .upcoming_participants import match_friends, parse_participants
+    from .upcoming_schedule_parse import parse_player_schedule
 
     today = datetime.now().astimezone().date().isoformat()
-    players = load_players()
+    roster = _roster_for_matching()
+    exclude = load_excludes()
     raw = {"tournaments": []}
-    tour_index: dict[str, dict] = {}
 
     with sync_playwright() as p:
         browser, ctx = new_context(p)
         page = ensure_login(ctx)
-        for pl in players:
-            page.goto(f"{BASE_URL}/player-profile/{pl['guid']}/tournaments",
-                      wait_until="domcontentloaded")
-            dismiss_cookies(page)
-            page.wait_for_timeout(1200)
-            entries = find_upcoming_entries(page.content(), today)
-            for ent in entries:
-                guid = ent["tournament_guid"]
-                if not guid:
-                    continue
-                t = tour_index.get(guid)
-                if t is None:
-                    # Schedule (order-of-play) is per tournament — load it once.
-                    schedule = _load_schedule(page, guid, ent)
-                    status = "order_published" if schedule else "draw_published"
-                    t = {"name": ent["tournament"], "tournament_guid": guid,
-                         "venue": "", "start_date": ent["start_date"],
-                         "end_date": ent["end_date"], "status": status,
-                         "entries": [], "_schedule": schedule}
-                    tour_index[guid] = t
-                    raw["tournaments"].append(t)
-                # Each event has its OWN draw, so resolve per event. Prefer the
-                # draw index the profile card already carries (ent["draw_index"]);
-                # fall back to matching the draws list only when it's absent.
-                draw_index = ent.get("draw_index")
-                if not draw_index:
-                    _draws_html, draw_index = _resolve_event_draw(page, guid, ent["event"])
-                if draw_index:
-                    draw_url = f"{BASE_URL}/tournament/{guid}/draw/{draw_index}"
-                    draw_rounds = parse_draw(_load(page, draw_url))
-                else:
-                    draw_rounds = []
-                path = build_path(draw_rounds, t["_schedule"],
-                                  pl["nickname"] or pl["full_name"], ent["event"], today)
-                t["entries"].append({"player": pl["nickname"] or pl["full_name"],
-                                     "player_guid": pl["guid"], "event": ent["event"],
-                                     "path": path})
-            page.wait_for_timeout(800)  # politeness
-        browser.close()
 
-    for t in raw["tournaments"]:
-        t.pop("_schedule", None)
+        tours = fetch_upcoming_tournaments(page, BASE_URL, today, horizon_days)
+        for g in (tournament_guids or []):
+            if not any(t["guid"].lower() == g.lower() for t in tours):
+                tours.append({"name": "", "guid": g, "start_date": None, "end_date": None})
+        tours = tours[:max_tournaments]
+
+        for t in tours:
+            guid = t["guid"]
+            page.goto(f"{BASE_URL}/tournament/{guid}/players", wait_until="domcontentloaded")
+            dismiss_cookies(page)
+            page.wait_for_timeout(900)  # politeness
+            friends = match_friends(parse_participants(page.content()), roster, exclude)
+            if not friends:
+                continue
+            entries = []
+            for fr in friends:
+                page.goto(f"{BASE_URL}/tournament/{guid}/player/{fr['player_no']}",
+                          wait_until="domcontentloaded")
+                dismiss_cookies(page)
+                page.wait_for_timeout(700)
+                cards = page.evaluate(
+                    "() => [...document.querySelectorAll('.match')].map(n => n.innerText.trim())"
+                )
+                nodes = parse_player_schedule(cards, fr["full_name"])
+                nodes.sort(key=lambda n: n["time"] or "")
+                # group by event into separate timeline entries
+                by_ev: dict[str, list] = {}
+                for n in nodes:
+                    by_ev.setdefault(n["event"], []).append(n)
+                for ev, path in by_ev.items():
+                    entries.append({"player": fr["nickname"], "player_guid": "",
+                                    "event": ev, "path": path})
+            if entries:
+                raw["tournaments"].append({
+                    "name": t["name"], "tournament_guid": guid, "venue": "",
+                    "start_date": t["start_date"], "end_date": t["end_date"],
+                    "status": "order_published", "entries": entries,
+                })
+        browser.close()
 
     now_iso = datetime.now().astimezone().isoformat(timespec="seconds")
     public = assemble_upcoming(json.loads(json.dumps(raw)), aliases.alias_map(), now_iso)
