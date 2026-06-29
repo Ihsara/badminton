@@ -39,7 +39,7 @@ def test_public_json_has_no_person_id(path):
     assert not PERSON_ID_RE.search(text), f"{path.name} leaks a person_id field"
 
 
-def test_assemble_upcoming_strips_tournament_and_player_guids():
+def test_assemble_upcoming_keeps_tournament_strips_player_guids():
     from badminton_tracker.upcoming_build import assemble_upcoming
 
     raw = {

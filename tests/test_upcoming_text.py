@@ -117,6 +117,7 @@ def test_next_match_per_player_picks_earliest_scheduled_sorted():
     assert rows[0]["node"]["opponent"] == "A / B"
     assert rows[0]["tournament"] == "Stadin"
     assert rows[0]["tournament_guid"] == "1A563200-14BA-4328-955A-922A5EEC6374"
+    assert rows[0]["event"] == "MD Hobby B"
 
 
 def test_next_match_per_player_omits_players_with_no_scheduled():

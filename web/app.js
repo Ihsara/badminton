@@ -698,7 +698,8 @@ function viewUpcoming() {
   window.__upcPoll = setInterval(async () => {
     try {
       let fresh = null;
-      if (API_BASE) fresh = await fetchJSON(API_BASE + "/upcoming.json", 4000);
+      // fetchJSON rejects on failure, so swallow the API attempt to ./ fall back.
+      if (API_BASE) fresh = await fetchJSON(API_BASE + "/upcoming.json", 4000).catch(() => null);
       if (!fresh) fresh = await fetchJSON("./upcoming.json", 4000);
       if (fresh && fresh.generated_at !== (UPC && UPC.generated_at)) {
         UPC = fresh;

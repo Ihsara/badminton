@@ -87,6 +87,11 @@ committed, so history is never lost. The mapping that ties a nickname to a real
 name + profile GUID stays in the **private** `players.csv`; it never reaches the
 public `data.json`.
 
+One exception to "no GUIDs in public files": the **tournament** GUID is a public
+event identifier (the tournament's own page id on tournamentsoftware.com) and is
+deliberately kept in `web/upcoming.json` so the UI can link out with an "open on
+tournamentsoftware" link. Player and profile GUIDs are still always stripped.
+
 ## Layout
 
 ```
