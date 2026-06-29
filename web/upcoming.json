@@ -2,6 +2,7 @@
   "tournaments": [
     {
       "name": "Stadin Sulan kesäkisat 4.7.2026",
+      "tournament_guid": "1A563200-14BA-4328-955A-922A5EEC6374",
       "venue": "",
       "start_date": "2026-07-04",
       "end_date": "2026-07-04",
@@ -248,5 +249,5 @@
       ]
     }
   ],
-  "generated_at": "2026-06-29T13:56:35+03:00"
+  "generated_at": "2026-06-29T14:49:19+03:00"
 }
