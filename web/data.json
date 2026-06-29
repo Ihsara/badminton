@@ -1,9 +1,9 @@
 {
   "group_name": "Badminton Bros",
-  "generated_at": "2026-06-28T23:41:24",
+  "generated_at": "2026-06-29T21:26:48",
   "source": "excel",
   "counts": {
-    "players": 60,
+    "players": 54,
     "matches": 513,
     "tournaments": 60
   },
@@ -20,7 +20,8 @@
       "third_set_games": 20,
       "win_ratio": 0.817,
       "points_per_set": 19.87,
-      "third_set_ratio": 0.192
+      "third_set_ratio": 0.192,
+      "core": true
     },
     {
       "player": "Maila",
@@ -34,7 +35,8 @@
       "third_set_games": 29,
       "win_ratio": 0.534,
       "points_per_set": 17.89,
-      "third_set_ratio": 0.218
+      "third_set_ratio": 0.218,
+      "core": true
     },
     {
       "player": "Junya",
@@ -48,7 +50,8 @@
       "third_set_games": 17,
       "win_ratio": 0.519,
       "points_per_set": 17.62,
-      "third_set_ratio": 0.215
+      "third_set_ratio": 0.215,
+      "core": true
     },
     {
       "player": "Tanisha",
@@ -62,7 +65,8 @@
       "third_set_games": 6,
       "win_ratio": 0.667,
       "points_per_set": 18.84,
-      "third_set_ratio": 0.154
+      "third_set_ratio": 0.154,
+      "core": false
     },
     {
       "player": "Paphon Kasemvudhi",
@@ -76,21 +80,8 @@
       "third_set_games": 3,
       "win_ratio": 0.759,
       "points_per_set": 19.37,
-      "third_set_ratio": 0.103
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "games": 29,
-      "wins": 22,
-      "losses": 7,
-      "sets_won": 40,
-      "sets_lost": 14,
-      "points_for": 1046,
-      "points_against": 772,
-      "third_set_games": 3,
-      "win_ratio": 0.759,
-      "points_per_set": 19.37,
-      "third_set_ratio": 0.103
+      "third_set_ratio": 0.103,
+      "core": false
     },
     {
       "player": "Dao",
@@ -104,7 +95,8 @@
       "third_set_games": 14,
       "win_ratio": 0.377,
       "points_per_set": 16.22,
-      "third_set_ratio": 0.264
+      "third_set_ratio": 0.264,
+      "core": true
     },
     {
       "player": "Thy",
@@ -118,7 +110,8 @@
       "third_set_games": 8,
       "win_ratio": 0.594,
       "points_per_set": 16.94,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": true
     },
     {
       "player": "Thao Le",
@@ -132,7 +125,8 @@
       "third_set_games": 8,
       "win_ratio": 0.692,
       "points_per_set": 19.34,
-      "third_set_ratio": 0.308
+      "third_set_ratio": 0.308,
+      "core": false
     },
     {
       "player": "Nghi Le",
@@ -146,7 +140,8 @@
       "third_set_games": 7,
       "win_ratio": 0.773,
       "points_per_set": 19.39,
-      "third_set_ratio": 0.318
+      "third_set_ratio": 0.318,
+      "core": false
     },
     {
       "player": "Phuc Le Vinh",
@@ -160,7 +155,23 @@
       "third_set_games": 7,
       "win_ratio": 0.773,
       "points_per_set": 19.39,
-      "third_set_ratio": 0.318
+      "third_set_ratio": 0.318,
+      "core": false
+    },
+    {
+      "player": "Tuomas Tiainen",
+      "games": 36,
+      "wins": 16,
+      "losses": 20,
+      "sets_won": 32,
+      "sets_lost": 42,
+      "points_for": 1270,
+      "points_against": 1347,
+      "third_set_games": 6,
+      "win_ratio": 0.444,
+      "points_per_set": 17.16,
+      "third_set_ratio": 0.167,
+      "core": false
     },
     {
       "player": "Hien Köhler",
@@ -174,10 +185,11 @@
       "third_set_games": 11,
       "win_ratio": 0.238,
       "points_per_set": 15.19,
-      "third_set_ratio": 0.175
+      "third_set_ratio": 0.175,
+      "core": false
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "games": 33,
       "wins": 14,
       "losses": 19,
@@ -188,7 +200,8 @@
       "third_set_games": 6,
       "win_ratio": 0.424,
       "points_per_set": 17.03,
-      "third_set_ratio": 0.182
+      "third_set_ratio": 0.182,
+      "core": false
     },
     {
       "player": "Chau",
@@ -202,7 +215,8 @@
       "third_set_games": 11,
       "win_ratio": 0.245,
       "points_per_set": 15.71,
-      "third_set_ratio": 0.208
+      "third_set_ratio": 0.208,
+      "core": true
     },
     {
       "player": "Santeri",
@@ -216,7 +230,8 @@
       "third_set_games": 6,
       "win_ratio": 0.342,
       "points_per_set": 16.51,
-      "third_set_ratio": 0.158
+      "third_set_ratio": 0.158,
+      "core": true
     },
     {
       "player": "Khánh Linh Nguyen",
@@ -230,7 +245,8 @@
       "third_set_games": 7,
       "win_ratio": 0.481,
       "points_per_set": 17.98,
-      "third_set_ratio": 0.259
+      "third_set_ratio": 0.259,
+      "core": false
     },
     {
       "player": "Elias Kvist",
@@ -244,49 +260,8 @@
       "third_set_games": 7,
       "win_ratio": 0.5,
       "points_per_set": 17.94,
-      "third_set_ratio": 0.269
-    },
-    {
-      "player": "Tuomas Tiainen",
-      "games": 27,
-      "wins": 10,
-      "losses": 17,
-      "sets_won": 19,
-      "sets_lost": 35,
-      "points_for": 884,
-      "points_against": 996,
-      "third_set_games": 4,
-      "win_ratio": 0.37,
-      "points_per_set": 16.37,
-      "third_set_ratio": 0.148
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "games": 27,
-      "wins": 10,
-      "losses": 17,
-      "sets_won": 19,
-      "sets_lost": 35,
-      "points_for": 884,
-      "points_against": 996,
-      "third_set_games": 4,
-      "win_ratio": 0.37,
-      "points_per_set": 16.37,
-      "third_set_ratio": 0.148
-    },
-    {
-      "player": "Marja Tianen",
-      "games": 17,
-      "wins": 10,
-      "losses": 7,
-      "sets_won": 20,
-      "sets_lost": 15,
-      "points_for": 652,
-      "points_against": 623,
-      "third_set_games": 3,
-      "win_ratio": 0.588,
-      "points_per_set": 18.63,
-      "third_set_ratio": 0.176
+      "third_set_ratio": 0.269,
+      "core": false
     },
     {
       "player": "Tommi Ruoho",
@@ -300,7 +275,8 @@
       "third_set_games": 2,
       "win_ratio": 1.0,
       "points_per_set": 20.64,
-      "third_set_ratio": 0.2
+      "third_set_ratio": 0.2,
+      "core": false
     },
     {
       "player": "Tommi Heinisaari",
@@ -314,7 +290,8 @@
       "third_set_games": 2,
       "win_ratio": 1.0,
       "points_per_set": 20.64,
-      "third_set_ratio": 0.2
+      "third_set_ratio": 0.2,
+      "core": false
     },
     {
       "player": "Veikko",
@@ -328,7 +305,8 @@
       "third_set_games": 2,
       "win_ratio": 0.5,
       "points_per_set": 17.48,
-      "third_set_ratio": 0.125
+      "third_set_ratio": 0.125,
+      "core": false
     },
     {
       "player": "Matti",
@@ -342,35 +320,8 @@
       "third_set_games": 7,
       "win_ratio": 0.226,
       "points_per_set": 15.69,
-      "third_set_ratio": 0.226
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "games": 31,
-      "wins": 7,
-      "losses": 24,
-      "sets_won": 18,
-      "sets_lost": 50,
-      "points_for": 1067,
-      "points_against": 1315,
-      "third_set_games": 7,
-      "win_ratio": 0.226,
-      "points_per_set": 15.69,
-      "third_set_ratio": 0.226
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "games": 31,
-      "wins": 7,
-      "losses": 24,
-      "sets_won": 18,
-      "sets_lost": 50,
-      "points_for": 1067,
-      "points_against": 1315,
-      "third_set_games": 7,
-      "win_ratio": 0.226,
-      "points_per_set": 15.69,
-      "third_set_ratio": 0.226
+      "third_set_ratio": 0.226,
+      "core": true
     },
     {
       "player": "Nuengruethai Ounjai",
@@ -384,7 +335,8 @@
       "third_set_games": 2,
       "win_ratio": 0.583,
       "points_per_set": 18.23,
-      "third_set_ratio": 0.167
+      "third_set_ratio": 0.167,
+      "core": false
     },
     {
       "player": "Phan Thuc",
@@ -398,7 +350,8 @@
       "third_set_games": 1,
       "win_ratio": 0.636,
       "points_per_set": 18.09,
-      "third_set_ratio": 0.091
+      "third_set_ratio": 0.091,
+      "core": false
     },
     {
       "player": "Tum",
@@ -412,7 +365,8 @@
       "third_set_games": 2,
       "win_ratio": 0.7,
       "points_per_set": 18.41,
-      "third_set_ratio": 0.2
+      "third_set_ratio": 0.2,
+      "core": false
     },
     {
       "player": "Phương Anh Lê",
@@ -426,7 +380,8 @@
       "third_set_games": 3,
       "win_ratio": 0.5,
       "points_per_set": 17.19,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": false
     },
     {
       "player": "Bom",
@@ -440,7 +395,8 @@
       "third_set_games": 2,
       "win_ratio": 0.75,
       "points_per_set": 19.5,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": false
     },
     {
       "player": "Pihla Mäkelä",
@@ -454,7 +410,8 @@
       "third_set_games": 4,
       "win_ratio": 0.385,
       "points_per_set": 18.17,
-      "third_set_ratio": 0.308
+      "third_set_ratio": 0.308,
+      "core": false
     },
     {
       "player": "Mehdi FARSIMADAN",
@@ -468,7 +425,8 @@
       "third_set_games": 2,
       "win_ratio": 0.833,
       "points_per_set": 19.64,
-      "third_set_ratio": 0.333
+      "third_set_ratio": 0.333,
+      "core": false
     },
     {
       "player": "Lien Tran",
@@ -482,7 +440,8 @@
       "third_set_games": 0,
       "win_ratio": 0.333,
       "points_per_set": 14.79,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Quan Tran",
@@ -496,7 +455,8 @@
       "third_set_games": 0,
       "win_ratio": 0.333,
       "points_per_set": 14.79,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Emilia Ojala",
@@ -510,7 +470,8 @@
       "third_set_games": 3,
       "win_ratio": 0.364,
       "points_per_set": 17.16,
-      "third_set_ratio": 0.273
+      "third_set_ratio": 0.273,
+      "core": false
     },
     {
       "player": "Nga Pham",
@@ -524,7 +485,8 @@
       "third_set_games": 2,
       "win_ratio": 0.364,
       "points_per_set": 17.79,
-      "third_set_ratio": 0.182
+      "third_set_ratio": 0.182,
+      "core": false
     },
     {
       "player": "Toni",
@@ -538,7 +500,8 @@
       "third_set_games": 4,
       "win_ratio": 0.5,
       "points_per_set": 16.25,
-      "third_set_ratio": 0.5
+      "third_set_ratio": 0.5,
+      "core": true
     },
     {
       "player": "Ribo Huang",
@@ -552,7 +515,8 @@
       "third_set_games": 2,
       "win_ratio": 0.667,
       "points_per_set": 19.5,
-      "third_set_ratio": 0.333
+      "third_set_ratio": 0.333,
+      "core": false
     },
     {
       "player": "Leena Puranen",
@@ -566,7 +530,8 @@
       "third_set_games": 0,
       "win_ratio": 0.8,
       "points_per_set": 21.17,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Chathura Yapa",
@@ -580,7 +545,8 @@
       "third_set_games": 2,
       "win_ratio": 0.8,
       "points_per_set": 18.8,
-      "third_set_ratio": 0.4
+      "third_set_ratio": 0.4,
+      "core": false
     },
     {
       "player": "Ceasar Cotting",
@@ -594,7 +560,8 @@
       "third_set_games": 2,
       "win_ratio": 0.8,
       "points_per_set": 18.83,
-      "third_set_ratio": 0.4
+      "third_set_ratio": 0.4,
+      "core": false
     },
     {
       "player": "Yudai",
@@ -608,7 +575,8 @@
       "third_set_games": 1,
       "win_ratio": 1.0,
       "points_per_set": 20.11,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": false
     },
     {
       "player": "Ella Tolonen",
@@ -622,7 +590,8 @@
       "third_set_games": 3,
       "win_ratio": 0.333,
       "points_per_set": 16.05,
-      "third_set_ratio": 0.333
+      "third_set_ratio": 0.333,
+      "core": false
     },
     {
       "player": "Dhirav",
@@ -636,7 +605,8 @@
       "third_set_games": 3,
       "win_ratio": 0.375,
       "points_per_set": 16.0,
-      "third_set_ratio": 0.375
+      "third_set_ratio": 0.375,
+      "core": false
     },
     {
       "player": "Ria Tuominen",
@@ -650,7 +620,8 @@
       "third_set_games": 1,
       "win_ratio": 0.429,
       "points_per_set": 17.53,
-      "third_set_ratio": 0.143
+      "third_set_ratio": 0.143,
+      "core": false
     },
     {
       "player": "Wongsakorn Sertsandee",
@@ -664,21 +635,8 @@
       "third_set_games": 1,
       "win_ratio": 0.5,
       "points_per_set": 18.0,
-      "third_set_ratio": 0.167
-    },
-    {
-      "player": "Wongsakorn SERTSANDEE",
-      "games": 6,
-      "wins": 3,
-      "losses": 3,
-      "sets_won": 4,
-      "sets_lost": 7,
-      "points_for": 198,
-      "points_against": 214,
-      "third_set_games": 1,
-      "win_ratio": 0.5,
-      "points_per_set": 18.0,
-      "third_set_ratio": 0.167
+      "third_set_ratio": 0.167,
+      "core": false
     },
     {
       "player": "Boris",
@@ -692,7 +650,8 @@
       "third_set_games": 1,
       "win_ratio": 0.6,
       "points_per_set": 18.55,
-      "third_set_ratio": 0.2
+      "third_set_ratio": 0.2,
+      "core": true
     },
     {
       "player": "Khai",
@@ -706,7 +665,8 @@
       "third_set_games": 1,
       "win_ratio": 0.6,
       "points_per_set": 18.55,
-      "third_set_ratio": 0.2
+      "third_set_ratio": 0.2,
+      "core": true
     },
     {
       "player": "Jogchum OENEMA",
@@ -720,7 +680,8 @@
       "third_set_games": 2,
       "win_ratio": 0.75,
       "points_per_set": 19.1,
-      "third_set_ratio": 0.5
+      "third_set_ratio": 0.5,
+      "core": false
     },
     {
       "player": "Saifuddin Ferdous",
@@ -734,7 +695,8 @@
       "third_set_games": 0,
       "win_ratio": 1.0,
       "points_per_set": 21.0,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Vu Luu",
@@ -748,7 +710,8 @@
       "third_set_games": 1,
       "win_ratio": 0.286,
       "points_per_set": 14.93,
-      "third_set_ratio": 0.143
+      "third_set_ratio": 0.143,
+      "core": false
     },
     {
       "player": "Abhishek Pandey",
@@ -762,7 +725,8 @@
       "third_set_games": 0,
       "win_ratio": 0.5,
       "points_per_set": 12.67,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Zheng Fan",
@@ -776,7 +740,8 @@
       "third_set_games": 1,
       "win_ratio": 0.5,
       "points_per_set": 19.14,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": false
     },
     {
       "player": "Bonnie",
@@ -790,7 +755,8 @@
       "third_set_games": 1,
       "win_ratio": 1.0,
       "points_per_set": 18.6,
-      "third_set_ratio": 0.5
+      "third_set_ratio": 0.5,
+      "core": false
     },
     {
       "player": "Wallayaniti Polem",
@@ -804,7 +770,8 @@
       "third_set_games": 0,
       "win_ratio": 0.333,
       "points_per_set": 13.0,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     },
     {
       "player": "Gia Quân Trần",
@@ -818,7 +785,8 @@
       "third_set_games": 1,
       "win_ratio": 0.0,
       "points_per_set": 15.11,
-      "third_set_ratio": 0.25
+      "third_set_ratio": 0.25,
+      "core": false
     },
     {
       "player": "Thisara",
@@ -832,7 +800,8 @@
       "third_set_games": 1,
       "win_ratio": 0.0,
       "points_per_set": 16.2,
-      "third_set_ratio": 0.5
+      "third_set_ratio": 0.5,
+      "core": false
     },
     {
       "player": "Oskari Kruth",
@@ -846,7 +815,8 @@
       "third_set_games": 0,
       "win_ratio": 0.0,
       "points_per_set": 21.0,
-      "third_set_ratio": 0.0
+      "third_set_ratio": 0.0,
+      "core": false
     }
   ],
   "tournaments_list": [
@@ -3403,7 +3373,7 @@
       "third_set_ratio": 0.167
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Espoo Women's Open 2024",
       "games": 4,
       "wins": 2,
@@ -3418,7 +3388,7 @@
       "third_set_ratio": 0.25
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Espoo Women's Open 2025",
       "games": 5,
       "wins": 4,
@@ -3433,7 +3403,7 @@
       "third_set_ratio": 0.2
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Keravan Kansalliset 2024",
       "games": 2,
       "wins": 1,
@@ -3448,7 +3418,7 @@
       "third_set_ratio": 0.0
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Keravan Kansalliset 2025",
       "games": 2,
       "wins": 0,
@@ -3463,7 +3433,7 @@
       "third_set_ratio": 0.0
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Kunnon Kevätnelinpeliä 2024",
       "games": 5,
       "wins": 1,
@@ -3478,7 +3448,7 @@
       "third_set_ratio": 0.0
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Kunnon Talvinelinpeliä 2024",
       "games": 4,
       "wins": 1,
@@ -3493,7 +3463,7 @@
       "third_set_ratio": 0.5
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Kunnon Talvinelinpeliä 2025",
       "games": 5,
       "wins": 3,
@@ -3508,7 +3478,7 @@
       "third_set_ratio": 0.2
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Kunnon Talvinelinpeliä 2026",
       "games": 2,
       "wins": 0,
@@ -3523,7 +3493,7 @@
       "third_set_ratio": 0.0
     },
     {
-      "player": "Marja TIAINEN",
+      "player": "Marja Tiainen",
       "tournament": "Stadin Sulan kesäkisat 6.7.2024",
       "games": 4,
       "wins": 2,
@@ -3538,66 +3508,6 @@
       "third_set_ratio": 0.25
     },
     {
-      "player": "Marja Tianen",
-      "tournament": "Espoo Women's Open 2024",
-      "games": 4,
-      "wins": 2,
-      "losses": 2,
-      "sets_won": 5,
-      "sets_lost": 4,
-      "points_for": 169,
-      "points_against": 167,
-      "third_set_games": 1,
-      "win_ratio": 0.5,
-      "points_per_set": 18.78,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Marja Tianen",
-      "tournament": "Espoo Women's Open 2025",
-      "games": 5,
-      "wins": 4,
-      "losses": 1,
-      "sets_won": 8,
-      "sets_lost": 3,
-      "points_for": 217,
-      "points_against": 184,
-      "third_set_games": 1,
-      "win_ratio": 0.8,
-      "points_per_set": 19.73,
-      "third_set_ratio": 0.2
-    },
-    {
-      "player": "Marja Tianen",
-      "tournament": "Kunnon Kevätnelinpeliä 2024",
-      "games": 3,
-      "wins": 1,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 48,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.333,
-      "points_per_set": 12.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Marja Tianen",
-      "tournament": "Kunnon Talvinelinpeliä 2025",
-      "games": 5,
-      "wins": 3,
-      "losses": 2,
-      "sets_won": 7,
-      "sets_lost": 4,
-      "points_for": 218,
-      "points_against": 188,
-      "third_set_games": 1,
-      "win_ratio": 0.6,
-      "points_per_set": 19.82,
-      "third_set_ratio": 0.2
-    },
-    {
       "player": "Matti",
       "tournament": "Aurora Team Tournament 2026",
       "games": 8,
@@ -3734,156 +3644,6 @@
     },
     {
       "player": "Matti",
-      "tournament": "Ystävänpäivän poolikisat",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 68,
-      "points_against": 87,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 17.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Aurora Team Tournament 2026",
-      "games": 8,
-      "wins": 2,
-      "losses": 6,
-      "sets_won": 5,
-      "sets_lost": 12,
-      "points_for": 285,
-      "points_against": 323,
-      "third_set_games": 2,
-      "win_ratio": 0.25,
-      "points_per_set": 16.76,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Clear Kesäyön turnaus 2026",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 28,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Kunnon Kevätnelinpeliä 2026",
-      "games": 5,
-      "wins": 1,
-      "losses": 4,
-      "sets_won": 3,
-      "sets_lost": 9,
-      "points_for": 186,
-      "points_against": 226,
-      "third_set_games": 2,
-      "win_ratio": 0.2,
-      "points_per_set": 15.5,
-      "third_set_ratio": 0.4
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Kunnon Sulkaa 2025",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 33,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 3,
-      "wins": 0,
-      "losses": 3,
-      "sets_won": 0,
-      "sets_lost": 6,
-      "points_for": 58,
-      "points_against": 126,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 9.67,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Kunnon Talvinelinpeliä 2026",
-      "games": 6,
-      "wins": 2,
-      "losses": 4,
-      "sets_won": 5,
-      "sets_lost": 9,
-      "points_for": 249,
-      "points_against": 265,
-      "third_set_games": 2,
-      "win_ratio": 0.333,
-      "points_per_set": 17.79,
-      "third_set_ratio": 0.333
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "RSL Aurora Badminton Tournament",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 48,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 12.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 35,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 8.75,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Matti Yuki WADA",
-      "tournament": "Vantaan Poolikisat - Rajakylä",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 1,
-      "sets_lost": 2,
-      "points_for": 54,
-      "points_against": 59,
-      "third_set_games": 1,
-      "win_ratio": 0.0,
-      "points_per_set": 18.0,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Matti Yuki WADA",
       "tournament": "Ystävänpäivän poolikisat",
       "games": 2,
       "wins": 0,
@@ -4316,156 +4076,6 @@
       "win_ratio": 0.0,
       "points_per_set": 21.0,
       "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Helsinki Open Premier Elite",
-      "games": 3,
-      "wins": 2,
-      "losses": 1,
-      "sets_won": 2,
-      "sets_lost": 2,
-      "points_for": 73,
-      "points_against": 79,
-      "third_set_games": 0,
-      "win_ratio": 0.667,
-      "points_per_set": 18.25,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Kumpoo Stadin Sulan Eliitti 2025",
-      "games": 3,
-      "wins": 2,
-      "losses": 1,
-      "sets_won": 2,
-      "sets_lost": 2,
-      "points_for": 70,
-      "points_against": 60,
-      "third_set_games": 0,
-      "win_ratio": 0.667,
-      "points_per_set": 17.5,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Puistolan Eliitti 2024 - PuiU 95 vuotta!",
-      "games": 3,
-      "wins": 2,
-      "losses": 1,
-      "sets_won": 4,
-      "sets_lost": 2,
-      "points_for": 112,
-      "points_against": 86,
-      "third_set_games": 0,
-      "win_ratio": 0.667,
-      "points_per_set": 18.67,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Puistolan Kansallinen 2025",
-      "games": 2,
-      "wins": 2,
-      "losses": 0,
-      "sets_won": 4,
-      "sets_lost": 0,
-      "points_for": 84,
-      "points_against": 49,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 4,
-      "wins": 4,
-      "losses": 0,
-      "sets_won": 8,
-      "sets_lost": 0,
-      "points_for": 168,
-      "points_against": 83,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Stadin Sulan kesäkisat 6.7.2024",
-      "games": 4,
-      "wins": 4,
-      "losses": 0,
-      "sets_won": 8,
-      "sets_lost": 0,
-      "points_for": 168,
-      "points_against": 92,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Stadin Sulka Easter Games",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 1,
-      "sets_lost": 2,
-      "points_for": 49,
-      "points_against": 59,
-      "third_set_games": 1,
-      "win_ratio": 0.0,
-      "points_per_set": 16.33,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Sulkakauppa ESB Elite 2025",
-      "games": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_won": 3,
-      "sets_lost": 2,
-      "points_for": 90,
-      "points_against": 72,
-      "third_set_games": 1,
-      "win_ratio": 0.5,
-      "points_per_set": 18.0,
-      "third_set_ratio": 0.5
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Sulkakauppa ESB Premier Elite 2025",
-      "games": 4,
-      "wins": 3,
-      "losses": 1,
-      "sets_won": 3,
-      "sets_lost": 2,
-      "points_for": 92,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.75,
-      "points_per_set": 18.4,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Paphon KASEMVUDHI",
-      "tournament": "Tapion Sulka Premier Elite 2025",
-      "games": 3,
-      "wins": 2,
-      "losses": 1,
-      "sets_won": 5,
-      "sets_lost": 2,
-      "points_for": 140,
-      "points_against": 108,
-      "third_set_games": 1,
-      "win_ratio": 0.667,
-      "points_per_set": 20.0,
-      "third_set_ratio": 0.333
     },
     {
       "player": "Paphon Kasemvudhi",
@@ -6448,154 +6058,34 @@
       "third_set_ratio": 0.25
     },
     {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Keravan Kansalliset 2024",
-      "games": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_won": 0,
-      "sets_lost": 2,
-      "points_for": 16,
-      "points_against": 42,
-      "third_set_games": 0,
-      "win_ratio": 0.5,
-      "points_per_set": 8.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Keravan Kansalliset 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 54,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 13.5,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Kunnon Kevätnelinpeliä 2024",
-      "games": 5,
-      "wins": 1,
-      "losses": 4,
-      "sets_won": 0,
-      "sets_lost": 8,
-      "points_for": 97,
-      "points_against": 173,
-      "third_set_games": 0,
-      "win_ratio": 0.2,
-      "points_per_set": 12.12,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 14,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Kunnon Talvinelinpeliä 2024",
-      "games": 4,
-      "wins": 1,
-      "losses": 3,
-      "sets_won": 4,
-      "sets_lost": 6,
-      "points_for": 173,
-      "points_against": 186,
-      "third_set_games": 2,
-      "win_ratio": 0.25,
-      "points_per_set": 17.3,
-      "third_set_ratio": 0.5
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Kunnon Talvinelinpeliä 2025",
-      "games": 5,
-      "wins": 3,
-      "losses": 2,
-      "sets_won": 7,
-      "sets_lost": 4,
-      "points_for": 218,
-      "points_against": 188,
-      "third_set_games": 1,
-      "win_ratio": 0.6,
-      "points_per_set": 19.82,
-      "third_set_ratio": 0.2
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Kunnon Talvinelinpeliä 2026",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 59,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 14.75,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Meilahti lohkokisa toukokuu 2026",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 0,
-      "sets_lost": 2,
-      "points_for": 28,
-      "points_against": 42,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 14.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 24,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Tuomas TIAINEN",
-      "tournament": "Stadin Sulan kesäkisat 6.7.2024",
+      "player": "Tuomas Tiainen",
+      "tournament": "Espoo Women's Open 2024",
       "games": 4,
       "wins": 2,
       "losses": 2,
-      "sets_won": 4,
-      "sets_lost": 5,
-      "points_for": 155,
-      "points_against": 159,
+      "sets_won": 5,
+      "sets_lost": 4,
+      "points_for": 169,
+      "points_against": 167,
       "third_set_games": 1,
       "win_ratio": 0.5,
-      "points_per_set": 17.22,
+      "points_per_set": 18.78,
       "third_set_ratio": 0.25
+    },
+    {
+      "player": "Tuomas Tiainen",
+      "tournament": "Espoo Women's Open 2025",
+      "games": 5,
+      "wins": 4,
+      "losses": 1,
+      "sets_won": 8,
+      "sets_lost": 3,
+      "points_for": 217,
+      "points_against": 184,
+      "third_set_games": 1,
+      "win_ratio": 0.8,
+      "points_per_set": 19.73,
+      "third_set_ratio": 0.2
     },
     {
       "player": "Tuomas Tiainen",
@@ -6883,66 +6373,6 @@
       "third_set_ratio": 0.0
     },
     {
-      "player": "Wongsakorn SERTSANDEE",
-      "tournament": "Kunnon Sulkaa 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 61,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 15.25,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Wongsakorn SERTSANDEE",
-      "tournament": "RSL Aurora Badminton Tournament",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 1,
-      "points_for": 58,
-      "points_against": 56,
-      "third_set_games": 1,
-      "win_ratio": 1.0,
-      "points_per_set": 19.33,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Wongsakorn SERTSANDEE",
-      "tournament": "Sulkakauppa ESB Premier Elite 2025",
-      "games": 2,
-      "wins": 1,
-      "losses": 1,
-      "sets_won": 0,
-      "sets_lost": 2,
-      "points_for": 37,
-      "points_against": 43,
-      "third_set_games": 0,
-      "win_ratio": 0.5,
-      "points_per_set": 18.5,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Wongsakorn SERTSANDEE",
-      "tournament": "Ystävänpäivän poolikisat",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 31,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
       "player": "Wongsakorn Sertsandee",
       "tournament": "Kunnon Sulkaa 2025",
       "games": 2,
@@ -7016,156 +6446,6 @@
       "win_ratio": 1.0,
       "points_per_set": 20.11,
       "third_set_ratio": 0.25
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Aurora Team Tournament 2026",
-      "games": 8,
-      "wins": 2,
-      "losses": 6,
-      "sets_won": 5,
-      "sets_lost": 12,
-      "points_for": 285,
-      "points_against": 323,
-      "third_set_games": 2,
-      "win_ratio": 0.25,
-      "points_per_set": 16.76,
-      "third_set_ratio": 0.25
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Clear Kesäyön turnaus 2026",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 28,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Kunnon Kevätnelinpeliä 2026",
-      "games": 5,
-      "wins": 1,
-      "losses": 4,
-      "sets_won": 3,
-      "sets_lost": 9,
-      "points_for": 186,
-      "points_against": 226,
-      "third_set_games": 2,
-      "win_ratio": 0.2,
-      "points_per_set": 15.5,
-      "third_set_ratio": 0.4
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Kunnon Sulkaa 2025",
-      "games": 1,
-      "wins": 1,
-      "losses": 0,
-      "sets_won": 2,
-      "sets_lost": 0,
-      "points_for": 42,
-      "points_against": 33,
-      "third_set_games": 0,
-      "win_ratio": 1.0,
-      "points_per_set": 21.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Kunnon Syysneluria 2025",
-      "games": 3,
-      "wins": 0,
-      "losses": 3,
-      "sets_won": 0,
-      "sets_lost": 6,
-      "points_for": 58,
-      "points_against": 126,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 9.67,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Kunnon Talvinelinpeliä 2026",
-      "games": 6,
-      "wins": 2,
-      "losses": 4,
-      "sets_won": 5,
-      "sets_lost": 9,
-      "points_for": 249,
-      "points_against": 265,
-      "third_set_games": 2,
-      "win_ratio": 0.333,
-      "points_per_set": 17.79,
-      "third_set_ratio": 0.333
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "RSL Aurora Badminton Tournament",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 48,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 12.0,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Stadin Sulan kesäkisat 2025",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 35,
-      "points_against": 84,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 8.75,
-      "third_set_ratio": 0.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Vantaan Poolikisat - Rajakylä",
-      "games": 1,
-      "wins": 0,
-      "losses": 1,
-      "sets_won": 1,
-      "sets_lost": 2,
-      "points_for": 54,
-      "points_against": 59,
-      "third_set_games": 1,
-      "win_ratio": 0.0,
-      "points_per_set": 18.0,
-      "third_set_ratio": 1.0
-    },
-    {
-      "player": "Yuki Matti Wada",
-      "tournament": "Ystävänpäivän poolikisat",
-      "games": 2,
-      "wins": 0,
-      "losses": 2,
-      "sets_won": 0,
-      "sets_lost": 4,
-      "points_for": 68,
-      "points_against": 87,
-      "third_set_games": 0,
-      "win_ratio": 0.0,
-      "points_per_set": 17.0,
-      "third_set_ratio": 0.0
     },
     {
       "player": "Zheng Fan",
@@ -12303,7 +11583,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Nargiza Djurabekova",
@@ -12320,7 +11600,7 @@
           19
         ]
       ],
-      "id": "315861500563"
+      "id": "3db957f89d26"
     },
     {
       "date": "2025-01-25",
@@ -12330,7 +11610,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Katja Kaakinen",
@@ -12347,7 +11627,7 @@
           12
         ]
       ],
-      "id": "d31504d33bb9"
+      "id": "11425c1b1dcc"
     },
     {
       "date": "2025-01-25",
@@ -12357,7 +11637,7 @@
       "round": "16",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Fatiqa Nadeem",
@@ -12374,7 +11654,7 @@
           9
         ]
       ],
-      "id": "ab76474c3843"
+      "id": "f28fb1a0ca89"
     },
     {
       "date": "2025-01-25",
@@ -12384,7 +11664,7 @@
       "round": "QF",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Riikka Kela",
@@ -12405,7 +11685,7 @@
           13
         ]
       ],
-      "id": "5f18d6f052c7"
+      "id": "39c494353de2"
     },
     {
       "date": "2025-01-25",
@@ -12415,7 +11695,7 @@
       "round": "SF",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Pauliina Niskanen",
@@ -12432,7 +11712,7 @@
           21
         ]
       ],
-      "id": "c95e6063e004"
+      "id": "0e6dda5a0cf1"
     },
     {
       "date": "2025-01-25",
@@ -12524,8 +11804,8 @@
         "Maila"
       ],
       "team2": [
-        "Janne PAPUNEN",
-        "Milla PAPUNEN"
+        "Janne Papunen",
+        "Milla Papunen"
       ],
       "result": "WIN",
       "sets": [
@@ -12542,7 +11822,7 @@
           11
         ]
       ],
-      "id": "0d26ccc3f111"
+      "id": "5409205a5d6b"
     },
     {
       "date": "2025-02-08",
@@ -12552,7 +11832,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
         "Emilia KÖNÖNEN",
@@ -12573,7 +11853,7 @@
           21
         ]
       ],
-      "id": "b1dfccdf0419"
+      "id": "87a1f9d96f94"
     },
     {
       "date": "2025-02-08",
@@ -12587,7 +11867,7 @@
       ],
       "team2": [
         "Jukka JULIN",
-        "Claudia LAUTAKATTO"
+        "Claudia Lautakatto"
       ],
       "result": "WIN",
       "sets": [
@@ -12600,7 +11880,7 @@
           12
         ]
       ],
-      "id": "412df05322c5"
+      "id": "df2f16d4ff58"
     },
     {
       "date": "2025-02-08",
@@ -12610,11 +11890,11 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
-        "Nargiza DJURABEKOVA",
-        "Katri PACEK"
+        "Nargiza Djurabekova",
+        "Katri Pacek"
       ],
       "result": "WIN",
       "sets": [
@@ -12627,7 +11907,7 @@
           18
         ]
       ],
-      "id": "10773e81273d"
+      "id": "cfed7a2797b2"
     },
     {
       "date": "2025-02-08",
@@ -12637,7 +11917,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
         "Subhashree RAUTRAY",
@@ -12654,7 +11934,7 @@
           7
         ]
       ],
-      "id": "9c9195f11a7b"
+      "id": "826b1e401a85"
     },
     {
       "date": "2025-02-08",
@@ -12691,11 +11971,11 @@
       "round": "SF",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
-        "Senja IHALAINEN",
-        "Veronika SOLOVIAN"
+        "Senja Ihalainen",
+        "Veronika Solovian"
       ],
       "result": "WIN",
       "sets": [
@@ -12708,7 +11988,7 @@
           14
         ]
       ],
-      "id": "1e1f9eb577ef"
+      "id": "6d6a6a8ed794"
     },
     {
       "date": "2025-02-08",
@@ -12749,7 +12029,7 @@
       "round": "F",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
         "Emilia KÖNÖNEN",
@@ -12766,7 +12046,7 @@
           24
         ]
       ],
-      "id": "24387c8cd7cd"
+      "id": "a6923909f648"
     },
     {
       "date": "2025-02-15",
@@ -14232,7 +13512,7 @@
       "round": "Pool",
       "team1": [
         "Dao",
-        "Yuki Matti Wada"
+        "Matti"
       ],
       "team2": [
         "Linh Nguyen",
@@ -14249,7 +13529,7 @@
           21
         ]
       ],
-      "id": "7ce5fb2a8596"
+      "id": "b54f19788680"
     },
     {
       "date": "2025-05-31",
@@ -14259,7 +13539,7 @@
       "round": "Pool",
       "team1": [
         "Dao",
-        "Yuki Matti Wada"
+        "Matti"
       ],
       "team2": [
         "Johanna Lopez",
@@ -14276,7 +13556,7 @@
           21
         ]
       ],
-      "id": "6ccf774bf204"
+      "id": "00bf043cc826"
     },
     {
       "date": "2025-05-31",
@@ -14885,7 +14165,7 @@
       "level": "Harraste / Hobby",
       "round": "Pool",
       "team1": [
-        "Yuki Matti Wada",
+        "Matti",
         "Dao"
       ],
       "team2": [
@@ -14903,7 +14183,7 @@
           21
         ]
       ],
-      "id": "c695083a3768"
+      "id": "edff3189b384"
     },
     {
       "date": "2025-06-14",
@@ -14912,7 +14192,7 @@
       "level": "Harraste / Hobby",
       "round": "Pool",
       "team1": [
-        "Yuki Matti Wada",
+        "Matti",
         "Dao"
       ],
       "team2": [
@@ -14930,7 +14210,7 @@
           21
         ]
       ],
-      "id": "c86b6159c96a"
+      "id": "7249cdc724d3"
     },
     {
       "date": "2025-06-14",
@@ -14987,7 +14267,7 @@
         "Junya"
       ],
       "team2": [
-        "Anton SUNDQVIST"
+        "Anton Sundqvist"
       ],
       "result": "WIN",
       "sets": [
@@ -15000,7 +14280,7 @@
           16
         ]
       ],
-      "id": "9ce6fcd29142"
+      "id": "509ba10e2528"
     },
     {
       "date": "2025-08-16",
@@ -15041,7 +14321,7 @@
         "Hien Köhler"
       ],
       "team2": [
-        "Aditri MITTAL"
+        "Aditri Mittal"
       ],
       "result": "LOSS",
       "sets": [
@@ -15058,7 +14338,7 @@
           21
         ]
       ],
-      "id": "840500757264"
+      "id": "e9977931c163"
     },
     {
       "date": "2025-08-16",
@@ -15070,7 +14350,7 @@
         "Hien Köhler"
       ],
       "team2": [
-        "Elma VUORINEN"
+        "Elma Vuorinen"
       ],
       "result": "LOSS",
       "sets": [
@@ -15083,7 +14363,7 @@
           21
         ]
       ],
-      "id": "a3173cc11704"
+      "id": "9ffe8ead1dd4"
     },
     {
       "date": "2025-08-16",
@@ -15095,7 +14375,7 @@
         "Hien Köhler"
       ],
       "team2": [
-        "Riikka VIHONEN"
+        "Riikka Vihonen"
       ],
       "result": "LOSS",
       "sets": [
@@ -15108,7 +14388,7 @@
           21
         ]
       ],
-      "id": "b1d01eb35368"
+      "id": "0e587387dfac"
     },
     {
       "date": "2025-08-16",
@@ -15117,12 +14397,12 @@
       "level": "V",
       "round": "QF",
       "team1": [
-        "Paphon KASEMVUDHI",
+        "Paphon Kasemvudhi",
         "Tong"
       ],
       "team2": [
-        "Lauri FORSS",
-        "Krista FORSS"
+        "Lauri Forss",
+        "Krista Forss"
       ],
       "result": "WIN",
       "sets": [
@@ -15135,7 +14415,7 @@
           10
         ]
       ],
-      "id": "d2c01239e113"
+      "id": "fa343c340772"
     },
     {
       "date": "2025-08-16",
@@ -15147,7 +14427,7 @@
         "Tong"
       ],
       "team2": [
-        "Annika VOKKOLAINEN"
+        "Annika Vokkolainen"
       ],
       "result": "WIN",
       "sets": [
@@ -15160,7 +14440,7 @@
           9
         ]
       ],
-      "id": "f556bdc6f697"
+      "id": "19968d23fb95"
     },
     {
       "date": "2025-08-16",
@@ -15197,7 +14477,7 @@
         "Tong"
       ],
       "team2": [
-        "Yelyzaveta GUSARENKO"
+        "Yelyzaveta Gusarenko"
       ],
       "result": "LOSS",
       "sets": [
@@ -15214,7 +14494,7 @@
           21
         ]
       ],
-      "id": "df58c6858516"
+      "id": "aeae19aada40"
     },
     {
       "date": "2025-08-17",
@@ -15223,7 +14503,7 @@
       "level": "V",
       "round": "SF",
       "team1": [
-        "Paphon KASEMVUDHI",
+        "Paphon Kasemvudhi",
         "Tong"
       ],
       "team2": [
@@ -15245,7 +14525,7 @@
           21
         ]
       ],
-      "id": "941ebb7049cb"
+      "id": "6e9680aa953d"
     },
     {
       "date": "2025-09-13",
@@ -15259,7 +14539,7 @@
       ],
       "team2": [
         "Nik ZAKIRIN",
-        "Laura VOKKOLAINEN"
+        "Laura Vokkolainen"
       ],
       "result": "LOSS",
       "sets": [
@@ -15272,7 +14552,7 @@
           21
         ]
       ],
-      "id": "38d4bfd3f779"
+      "id": "8f0449d3ae39"
     },
     {
       "date": "2025-09-13",
@@ -15285,8 +14565,8 @@
         "Thy"
       ],
       "team2": [
-        "Jani SÖDERLUND",
-        "Thao LE"
+        "Jani Söderlund",
+        "Thao Le"
       ],
       "result": "LOSS",
       "sets": [
@@ -15299,7 +14579,7 @@
           21
         ]
       ],
-      "id": "d8be64027a42"
+      "id": "f23e78249919"
     },
     {
       "date": "2025-09-13",
@@ -15313,7 +14593,7 @@
       ],
       "team2": [
         "Tomi MÄKINEN",
-        "Anna SANDVIK"
+        "Anna Sandvik"
       ],
       "result": "LOSS",
       "sets": [
@@ -15326,7 +14606,7 @@
           21
         ]
       ],
-      "id": "db10e937e2f5"
+      "id": "867743581d33"
     },
     {
       "date": "2025-09-13",
@@ -15357,7 +14637,7 @@
         "Chau"
       ],
       "team2": [
-        "Tommi HEINISAARI",
+        "Tommi Heinisaari",
         "Ilkka LINDBLOM"
       ],
       "result": "LOSS",
@@ -15375,7 +14655,7 @@
           21
         ]
       ],
-      "id": "a9bcd67475db"
+      "id": "143f29a6bfa2"
     },
     {
       "date": "2025-09-13",
@@ -15388,7 +14668,7 @@
         "Chau"
       ],
       "team2": [
-        "Jari ALA-NIKKOLA",
+        "Jari Ala-Nikkola",
         "Aleksi KOSKINEN"
       ],
       "result": "LOSS",
@@ -15402,7 +14682,7 @@
           21
         ]
       ],
-      "id": "4cd5be804957"
+      "id": "5649301ad5f1"
     },
     {
       "date": "2025-09-13",
@@ -15411,7 +14691,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Matti Yuki WADA",
+        "Matti",
         "Dao"
       ],
       "team2": [
@@ -15429,7 +14709,7 @@
           21
         ]
       ],
-      "id": "9c1bb3625d6d"
+      "id": "c3420685a404"
     },
     {
       "date": "2025-09-13",
@@ -15438,12 +14718,12 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Matti Yuki WADA",
+        "Matti",
         "Dao"
       ],
       "team2": [
         "Zhongliang HU",
-        "Qi YU"
+        "Qi Yu"
       ],
       "result": "LOSS",
       "sets": [
@@ -15456,7 +14736,7 @@
           21
         ]
       ],
-      "id": "505e01e92352"
+      "id": "cf906cbc19fa"
     },
     {
       "date": "2025-09-13",
@@ -15465,7 +14745,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Matti Yuki WADA",
+        "Matti",
         "Dao"
       ],
       "team2": [
@@ -15483,7 +14763,7 @@
           21
         ]
       ],
-      "id": "5b04709a989c"
+      "id": "240dc40b4979"
     },
     {
       "date": "2025-09-13",
@@ -15524,11 +14804,11 @@
       ],
       "team2": [
         "Ivan BADIANG",
-        "Janet MICO"
+        "Janet Mico"
       ],
       "result": "WIN",
       "sets": [],
-      "id": "e0fdec6ee3af"
+      "id": "08a51bec959a"
     },
     {
       "date": "2025-09-13",
@@ -17245,7 +16525,7 @@
         "Chau"
       ],
       "team2": [
-        "Loc HOANG",
+        "Loc Hoang",
         "Nguyen NGUYEN"
       ],
       "result": "LOSS",
@@ -17259,7 +16539,7 @@
           21
         ]
       ],
-      "id": "27d11265cd78"
+      "id": "d9ee3c147466"
     },
     {
       "date": "2025-11-01",
@@ -17273,7 +16553,7 @@
       ],
       "team2": [
         "Abhishek JAISWAL",
-        "Abhishek PANDEY"
+        "Abhishek Pandey"
       ],
       "result": "LOSS",
       "sets": [
@@ -17286,7 +16566,7 @@
           21
         ]
       ],
-      "id": "acb2362cc378"
+      "id": "3516125cf38f"
     },
     {
       "date": "2025-11-01",
@@ -17331,7 +16611,7 @@
       ],
       "team2": [
         "Joanne DAGUPAN",
-        "Yu-Shan HUANG"
+        "Yu-Shan Huang"
       ],
       "result": "WIN",
       "sets": [
@@ -17348,7 +16628,7 @@
           10
         ]
       ],
-      "id": "4e2ea5c9a5c2"
+      "id": "0886f59ac0a6"
     },
     {
       "date": "2025-11-01",
@@ -17361,8 +16641,8 @@
         "Dao"
       ],
       "team2": [
-        "Quinn DAO",
-        "Nuengruethai OUNJAI"
+        "Dao",
+        "Nuengruethai Ounjai"
       ],
       "result": "LOSS",
       "sets": [
@@ -17375,7 +16655,7 @@
           21
         ]
       ],
-      "id": "dcbd000249b6"
+      "id": "97c8a4e7f65a"
     },
     {
       "date": "2025-11-01",
@@ -17388,8 +16668,8 @@
         "Dao"
       ],
       "team2": [
-        "Nina KARLSSON",
-        "Marit MELANDER"
+        "Nina Karlsson",
+        "Marit Melander"
       ],
       "result": "WIN",
       "sets": [
@@ -17406,7 +16686,7 @@
           6
         ]
       ],
-      "id": "e6fbd36d345b"
+      "id": "47e1e12a05b2"
     },
     {
       "date": "2025-11-01",
@@ -17415,7 +16695,7 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Wongsakorn SERTSANDEE",
+        "Wongsakorn Sertsandee",
         "Dao"
       ],
       "team2": [
@@ -17433,7 +16713,7 @@
           21
         ]
       ],
-      "id": "afa2eb625fb8"
+      "id": "3a84c7cb1496"
     },
     {
       "date": "2025-11-01",
@@ -17442,12 +16722,12 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Wongsakorn SERTSANDEE",
+        "Wongsakorn Sertsandee",
         "Dao"
       ],
       "team2": [
         "Matti RUUSKANEN",
-        "Sanna LEHIKOINEN"
+        "Sanna Lehikoinen"
       ],
       "result": "LOSS",
       "sets": [
@@ -17460,7 +16740,7 @@
           21
         ]
       ],
-      "id": "9378df95dc28"
+      "id": "23e08893938a"
     },
     {
       "date": "2025-11-02",
@@ -17473,8 +16753,8 @@
         "Dao"
       ],
       "team2": [
-        "Senja IHALAINEN",
-        "Maritta RÄISÄNEN"
+        "Senja Ihalainen",
+        "Maritta Räisänen"
       ],
       "result": "WIN",
       "sets": [
@@ -17487,7 +16767,7 @@
           20
         ]
       ],
-      "id": "c2a7dbb2da42"
+      "id": "d99e2bab74a1"
     },
     {
       "date": "2025-11-02",
@@ -17500,8 +16780,8 @@
         "Dao"
       ],
       "team2": [
-        "Quinn DAO",
-        "Nuengruethai OUNJAI"
+        "Dao",
+        "Nuengruethai Ounjai"
       ],
       "result": "LOSS",
       "sets": [
@@ -17514,7 +16794,7 @@
           21
         ]
       ],
-      "id": "c0306019f1cc"
+      "id": "af41d2282b67"
     },
     {
       "date": "2025-11-08",
@@ -17885,12 +17165,12 @@
       "level": "rento",
       "round": "Pool",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
-        "Phuong TRUONG",
-        "Phuong PHAN"
+        "Phuong Truong",
+        "Phuong Phan"
       ],
       "result": "WIN",
       "sets": [
@@ -17903,7 +17183,7 @@
           13
         ]
       ],
-      "id": "521f3ef1b025"
+      "id": "234591c93454"
     },
     {
       "date": "2024-01-27",
@@ -17912,12 +17192,12 @@
       "level": "rento",
       "round": "Pool",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
         "Otso TIILI",
-        "Vilma KÄMÄRI"
+        "Vilma Kämäri"
       ],
       "result": "LOSS",
       "sets": [
@@ -17930,7 +17210,7 @@
           21
         ]
       ],
-      "id": "49a631d149e5"
+      "id": "b79cd179c0e6"
     },
     {
       "date": "2024-01-27",
@@ -17939,12 +17219,12 @@
       "level": "rento",
       "round": "Pool",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
-        "Pieter VERMEYLEN",
-        "Ada LAITINEN"
+        "Pieter Vermeylen",
+        "Ada Laitinen"
       ],
       "result": "LOSS",
       "sets": [
@@ -17961,7 +17241,7 @@
           21
         ]
       ],
-      "id": "0a99ec23e929"
+      "id": "82fcdde9faac"
     },
     {
       "date": "2024-01-27",
@@ -17970,7 +17250,7 @@
       "level": "rento",
       "round": "QF",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
@@ -17992,7 +17272,7 @@
           21
         ]
       ],
-      "id": "e85b6676748d"
+      "id": "d848f073ed9d"
     },
     {
       "date": "2024-01-27",
@@ -18006,7 +17286,7 @@
       ],
       "team2": [
         "Jan SALMELA",
-        "Veera SALMELA"
+        "Veera Salmela"
       ],
       "result": "WIN",
       "sets": [
@@ -18019,7 +17299,7 @@
           19
         ]
       ],
-      "id": "e9c62e577d11"
+      "id": "112a3dd1b28e"
     },
     {
       "date": "2024-01-27",
@@ -18060,7 +17340,7 @@
       ],
       "team2": [
         "Danial ISID",
-        "Henna HIETAMÄKI"
+        "Henna Hietamäki"
       ],
       "result": "WIN",
       "sets": [
@@ -18073,7 +17353,7 @@
           11
         ]
       ],
-      "id": "ac6a785538d3"
+      "id": "165eaf4a7407"
     },
     {
       "date": "2024-01-27",
@@ -18086,8 +17366,8 @@
         "Tong"
       ],
       "team2": [
-        "Petter KRONELD",
-        "Paula PETÄYS"
+        "Petter Kroneld",
+        "Paula Petäys"
       ],
       "result": "WIN",
       "sets": [
@@ -18104,7 +17384,7 @@
           16
         ]
       ],
-      "id": "75749f27261c"
+      "id": "b7e0d641e03b"
     },
     {
       "date": "2024-01-27",
@@ -18118,7 +17398,7 @@
       ],
       "team2": [
         "Jan SALMELA",
-        "Veera SALMELA"
+        "Veera Salmela"
       ],
       "result": "WIN",
       "sets": [
@@ -18131,7 +17411,7 @@
           12
         ]
       ],
-      "id": "70b338d99d17"
+      "id": "9b195065fd97"
     },
     {
       "date": "2024-02-10",
@@ -18302,7 +17582,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Hien Köhler",
@@ -18319,7 +17599,7 @@
           14
         ]
       ],
-      "id": "5ab010703826"
+      "id": "ba3f4df18bd6"
     },
     {
       "date": "2024-03-16",
@@ -18354,7 +17634,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Pauliina Niskanen",
@@ -18371,7 +17651,7 @@
           21
         ]
       ],
-      "id": "53f1150cc0aa"
+      "id": "7ef5ba56ac7e"
     },
     {
       "date": "2024-03-16",
@@ -18381,7 +17661,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Phuong Phan",
@@ -18398,7 +17678,7 @@
           12
         ]
       ],
-      "id": "58fb4573827e"
+      "id": "8a8ab2162d74"
     },
     {
       "date": "2024-03-16",
@@ -18408,7 +17688,7 @@
       "round": "SF",
       "team1": [
         "Maila",
-        "Marja Tianen"
+        "Marja Tiainen"
       ],
       "team2": [
         "Heli Mäkelä",
@@ -18429,7 +17709,7 @@
           21
         ]
       ],
-      "id": "18207e1a2d11"
+      "id": "f242d77d23ca"
     },
     {
       "date": "2024-03-16",
@@ -19238,7 +18518,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
         "Hannamaija HELANDER",
@@ -19246,7 +18526,7 @@
       ],
       "result": "WIN",
       "sets": [],
-      "id": "5252202dc57b"
+      "id": "b6a8ea45a03a"
     },
     {
       "date": "2024-05-18",
@@ -19256,7 +18536,7 @@
       "round": "Pool",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
         "Dithara ARIYASINGHE",
@@ -19273,7 +18553,7 @@
           21
         ]
       ],
-      "id": "23b5e11e1fc9"
+      "id": "e4337cc89785"
     },
     {
       "date": "2024-05-18",
@@ -19283,10 +18563,10 @@
       "round": "SF",
       "team1": [
         "Maila",
-        "Marja TIAINEN"
+        "Marja Tiainen"
       ],
       "team2": [
-        "Claudia LAUTAKATTO",
+        "Claudia Lautakatto",
         "Jasmin REITTILÄ-LARKIMO"
       ],
       "result": "LOSS",
@@ -19300,7 +18580,7 @@
           21
         ]
       ],
-      "id": "f569f9a5fa15"
+      "id": "88e49157c6d1"
     },
     {
       "date": "2024-05-18",
@@ -19309,12 +18589,12 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
-        "Muthukumar GANESAN",
-        "Janet MICO"
+        "Muthukumar Ganesan",
+        "Janet Mico"
       ],
       "result": "LOSS",
       "sets": [
@@ -19327,7 +18607,7 @@
           21
         ]
       ],
-      "id": "93bf90dc8280"
+      "id": "72f865868b9c"
     },
     {
       "date": "2024-05-18",
@@ -19336,12 +18616,12 @@
       "level": "kunto",
       "round": "Pool",
       "team1": [
-        "Tuomas TIAINEN",
+        "Tuomas Tiainen",
         "Maila"
       ],
       "team2": [
-        "Lasse PETRA",
-        "Vilma KÄMÄRI"
+        "Lasse Petra",
+        "Vilma Kämäri"
       ],
       "result": "LOSS",
       "sets": [
@@ -19354,7 +18634,7 @@
           26
         ]
       ],
-      "id": "120b6e930560"
+      "id": "a357fc47a829"
     },
     {
       "date": "2024-05-25",
@@ -20379,7 +19659,7 @@
         "Hien Köhler"
       ],
       "team2": [
-        "Mirva SALONEN"
+        "Mirva Salonen"
       ],
       "result": "LOSS",
       "sets": [
@@ -20392,7 +19672,7 @@
           21
         ]
       ],
-      "id": "f5910ef7b8c0"
+      "id": "a644947aa6d1"
     },
     {
       "date": "2024-11-23",
