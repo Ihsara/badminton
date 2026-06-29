@@ -65,7 +65,7 @@ def _roster_for_matching():  # pragma: no cover
             full = (r.get("full_name") or "").strip()
             nick = (r.get("nickname") or "").strip()
             if full:  # need a full name to match on
-                rows.append({"nickname": nick, "full_name": full})
+                rows.append({"nickname": nick or full, "full_name": full})
     return rows
 
 
@@ -94,10 +94,10 @@ def run_upcoming(  # pragma: no cover
         page = ensure_login(ctx)
 
         tours = fetch_upcoming_tournaments(page, BASE_URL, today, horizon_days)
+        tours = tours[:max_tournaments]
         for g in (tournament_guids or []):
             if not any(t["guid"].lower() == g.lower() for t in tours):
                 tours.append({"name": "", "guid": g, "start_date": None, "end_date": None})
-        tours = tours[:max_tournaments]
 
         for t in tours:
             guid = t["guid"]
@@ -135,7 +135,7 @@ def run_upcoming(  # pragma: no cover
 
     now_iso = datetime.now().astimezone().isoformat(timespec="seconds")
     public = assemble_upcoming(json.loads(json.dumps(raw)), aliases.alias_map(), now_iso)
-    private = dict(raw)
+    private = json.loads(json.dumps(raw))
     private["generated_at"] = now_iso
     write_outputs(public, private)
     return public
