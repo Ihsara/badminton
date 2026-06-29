@@ -30,6 +30,18 @@ def _dt(s: str | None) -> datetime | None:
         return None
 
 
+def _seconds_until(iso: str, now: datetime) -> float | None:
+    """Seconds from `now` (tz-aware) until `iso`. A naive `iso` is assumed to be
+    in `now`'s local timezone, so the subtraction never mixes naive and aware."""
+    try:
+        mt = datetime.fromisoformat(iso)
+    except (ValueError, TypeError):
+        return None
+    if mt.tzinfo is None:
+        mt = mt.replace(tzinfo=now.tzinfo)
+    return (mt - now).total_seconds()
+
+
 def next_refresh_delay(state: dict, now: datetime) -> int:
     today = now.date()
     best = DAILY
@@ -42,8 +54,8 @@ def next_refresh_delay(state: dict, now: datetime) -> int:
             for node in e.get("path", []):
                 if node.get("state") != "scheduled":
                     continue
-                mt = _dt(node.get("time"))
-                if mt and timedelta(0) <= (mt - now) <= timedelta(hours=2):
+                secs = _seconds_until(node.get("time") or "", now)
+                if secs is not None and 0 <= secs <= 7200:
                     return FIFTEEN_MIN
         # Match day with order published?
         if (t.get("status") == "order_published" and start and end
