@@ -66,3 +66,25 @@ def format_chat_text(upcoming: dict, options: dict) -> str:
             out.append(f"🏸 {t['name']}")
             out.extend(lines)
     return "\n".join(out)
+
+
+def next_match_per_player(upcoming: dict) -> list[dict]:
+    """One row per (tournament, player) = that player's earliest still-scheduled
+    match, sorted by time then player. Players with no scheduled node are omitted.
+    Mirrors the frontend's nextMatchPerPlayer in app.js."""
+    rows: list[dict] = []
+    for t in upcoming.get("tournaments", []):
+        for e in t.get("entries", []):
+            scheduled = [n for n in e.get("path", []) if n.get("state") == "scheduled"]
+            if not scheduled:
+                continue
+            node = min(scheduled, key=lambda n: n.get("time") or "")
+            rows.append({
+                "tournament": t.get("name", ""),
+                "tournament_guid": t.get("tournament_guid"),
+                "player": e.get("player", ""),
+                "event": e.get("event", ""),
+                "node": node,
+            })
+    rows.sort(key=lambda r: (r["node"].get("time") or "", r["player"]))
+    return rows

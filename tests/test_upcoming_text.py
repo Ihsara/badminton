@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from badminton_tracker.upcoming_text import format_chat_text
+from badminton_tracker.upcoming_text import format_chat_text, next_match_per_player
 
 UPCOMING = {
     "tournaments": [{
@@ -89,3 +89,36 @@ def test_next_mode_hides_projected_when_field_off_and_no_scheduled():
     out = format_chat_text(PROJECTED_ONLY, {"players": ["Chau"], "horizon": "next",
                                             "fields": {"court", "opponent"}})
     assert "SF" not in out
+
+
+def _upc():
+    return {"tournaments": [{
+        "name": "Stadin", "tournament_guid": "1A563200-14BA-4328-955A-922A5EEC6374",
+        "entries": [
+            {"player": "Chau", "event": "MD Hobby B", "path": [
+                {"round": "R1", "state": "scheduled", "opponent": "A / B",
+                 "time": "2026-07-04T09:00:00+03:00"},
+                {"round": "R2", "state": "scheduled", "opponent": "C / D",
+                 "time": "2026-07-04T10:00:00+03:00"}]},
+            {"player": "Hien", "event": "WD C", "path": [
+                {"round": "R2", "state": "scheduled", "opponent": "E / F",
+                 "time": "2026-07-04T10:00:00+03:00"}]},
+            {"player": "Done", "event": "MS B", "path": [
+                {"round": "R1", "state": "done", "opponent": "G",
+                 "time": "2026-07-04T08:00:00+03:00"}]},
+        ],
+    }]}
+
+
+def test_next_match_per_player_picks_earliest_scheduled_sorted():
+    rows = next_match_per_player(_upc())
+    assert [r["player"] for r in rows] == ["Chau", "Hien"]   # sorted by time, Chau 09:00 first
+    assert rows[0]["node"]["round"] == "R1"                  # earliest scheduled, not R2
+    assert rows[0]["node"]["opponent"] == "A / B"
+    assert rows[0]["tournament"] == "Stadin"
+    assert rows[0]["tournament_guid"] == "1A563200-14BA-4328-955A-922A5EEC6374"
+
+
+def test_next_match_per_player_omits_players_with_no_scheduled():
+    rows = next_match_per_player(_upc())
+    assert all(r["player"] != "Done" for r in rows)          # only-done player dropped
