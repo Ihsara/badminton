@@ -36,7 +36,8 @@ services:
     build: .
     container_name: badminton-upcoming
     restart: unless-stopped
-    command: ["uv", "run", "badminton", "upcoming", "--watch"]
+    command: ["uv", "run", "badminton", "upcoming", "--watch",
+              "--tournament", "1A563200-14BA-4328-955A-922A5EEC6374"]
     environment:
       # Scraper login — set in .env (compose loads it automatically).
       TOURNAMENTSOFTWARE_USERNAME: ${TOURNAMENTSOFTWARE_USERNAME:-}
@@ -47,3 +48,6 @@ services:
       - ./data:/app/data
       # So the regenerated, GUID-free upcoming.json lands on the host for publishing.
       - ./web:/app/web
+      # Persist the Playwright auth cookie (out/auth_state.json) across restarts,
+      # so the watcher reuses its session instead of re-logging in every boot.
+      - ./out:/app/out
