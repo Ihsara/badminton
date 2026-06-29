@@ -11,7 +11,6 @@ from __future__ import annotations
 import re
 
 _PLAYER_RE = re.compile(r"player=(\d+)")
-_ANCHOR_RE = re.compile(r'<a[^>]*href="[^"]*player\.aspx[^"]*"[^>]*>(.*?)</a>', re.I | re.S)
 
 
 def _tokens(name: str) -> set[str]:
