@@ -26,6 +26,9 @@ def main() -> None:
 
     p_upc = sub.add_parser("upcoming", help="scrape upcoming draws/schedule -> web/upcoming.json")
     p_upc.add_argument("--watch", action="store_true", help="loop, self-pacing the refresh")
+    p_upc.add_argument("--horizon-days", type=int, default=60)
+    p_upc.add_argument("--max-tournaments", type=int, default=20)
+    p_upc.add_argument("--tournament", action="append", default=[], metavar="GUID")
 
     sub.add_parser("identity-seed", help="build people.csv + person_aliases.csv from players.csv")
     sub.add_parser("identity-confirm",
@@ -80,9 +83,9 @@ def main() -> None:
         if args.watch:
             from .upcoming_schedule import watch
 
-            watch(run_upcoming)
+            watch(lambda: run_upcoming(args.tournament, args.horizon_days, args.max_tournaments))
         else:
-            run_upcoming()
+            run_upcoming(args.tournament, args.horizon_days, args.max_tournaments)
 
     elif args.command == "identity-seed":
         from .identity_seed import seed_identity

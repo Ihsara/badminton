@@ -36,6 +36,8 @@ PEOPLE_CSV = DATA_DIR / "people.csv"
 PERSON_ALIASES_CSV = DATA_DIR / "person_aliases.csv"
 # Name-based discovery review queue (human confirms each before it joins identity):
 DISCOVERY_CANDIDATES_CSV = DATA_DIR / "discovery_candidates.csv"
+# Names never matched as friends even on a full-name hit (private):
+EXCLUDE_CSV = DATA_DIR / "exclude.csv"
 
 # Upcoming-tournament pipeline (parallel to the historical one).
 # Public, GUID-free artifact served beside data.json:

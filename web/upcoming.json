@@ -1,0 +1,252 @@
+{
+  "tournaments": [
+    {
+      "name": "Stadin Sulan kesäkisat 4.7.2026",
+      "venue": "",
+      "start_date": "2026-07-04",
+      "end_date": "2026-07-04",
+      "status": "order_published",
+      "entries": [
+        {
+          "player": "Junya",
+          "event": "MS B - Group A",
+          "path": [
+            {
+              "round": "R3",
+              "event": "MS B - Group A",
+              "partner": null,
+              "opponent": "Jere Filatoff",
+              "court": null,
+              "time": "2026-07-04T15:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "MS B - Group A",
+              "partner": null,
+              "opponent": "Jouni Vehkala",
+              "court": null,
+              "time": "2026-07-04T15:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R1",
+              "event": "MS B - Group A",
+              "partner": null,
+              "opponent": "Jarmo Suni",
+              "court": null,
+              "time": "2026-07-04T17:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Maila",
+          "event": "WD C - Group A",
+          "path": [
+            {
+              "round": "R2",
+              "event": "WD C - Group A",
+              "partner": "Thy Nguyen",
+              "opponent": "Joanne Dagupan / Johanna Lopez",
+              "court": null,
+              "time": "2026-07-04T10:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "WD C - Group A",
+              "partner": "Thy Nguyen",
+              "opponent": "Stella Hwang / Iida Vihervuori",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Hien Köhler",
+          "event": "WD C - Group B",
+          "path": [
+            {
+              "round": "R2",
+              "event": "WD C - Group B",
+              "partner": "Nuengruethai Ounjai",
+              "opponent": "Quinn Dao / Thanh-Thao Le",
+              "court": null,
+              "time": "2026-07-04T10:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "WD C - Group B",
+              "partner": "Nuengruethai Ounjai",
+              "opponent": "Yen Vo / Vi Vu",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Vu Luu",
+          "event": "XD Harraste / Hobby - Group D",
+          "path": [
+            {
+              "round": "R1",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
+              "opponent": "Joel Enwald / Nargiza Djurabekova",
+              "court": null,
+              "time": "2026-07-04T16:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
+              "opponent": "Heikki Laaksonen / Minna Pasenius",
+              "court": null,
+              "time": "2026-07-04T17:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
+              "opponent": "Greg Rosca / Ekaterina Glukhova",
+              "court": null,
+              "time": "2026-07-04T18:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Thy",
+          "event": "WD C - Group A",
+          "path": [
+            {
+              "round": "R2",
+              "event": "WD C - Group A",
+              "partner": "Maila Kataja",
+              "opponent": "Joanne Dagupan / Johanna Lopez",
+              "court": null,
+              "time": "2026-07-04T10:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "WD C - Group A",
+              "partner": "Maila Kataja",
+              "opponent": "Stella Hwang / Iida Vihervuori",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Chau",
+          "event": "MD Harraste / Hobby - Group B",
+          "path": [
+            {
+              "round": "R1",
+              "event": "MD Harraste / Hobby - Group B",
+              "partner": "Nga Pham",
+              "opponent": "Lasse Hukka / Kaleva Piha",
+              "court": null,
+              "time": "2026-07-04T09:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "MD Harraste / Hobby - Group B",
+              "partner": "Nga Pham",
+              "opponent": "Johhny Bui / Aleksi Nguyen",
+              "court": null,
+              "time": "2026-07-04T10:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Chau",
+          "event": "XD Harraste / Hobby - Group D",
+          "path": [
+            {
+              "round": "R1",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Joel Enwald / Nargiza Djurabekova",
+              "court": null,
+              "time": "2026-07-04T16:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Heikki Laaksonen / Minna Pasenius",
+              "court": null,
+              "time": "2026-07-04T17:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Greg Rosca / Ekaterina Glukhova",
+              "court": null,
+              "time": "2026-07-04T18:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Dao",
+          "event": "XD Avoin / Open",
+          "path": [
+            {
+              "round": "R1",
+              "event": "XD Avoin / Open",
+              "partner": "Arto Lahtinen",
+              "opponent": "Jarmo Raninen / Anna Vuorenmaa",
+              "court": null,
+              "time": "2026-07-04T12:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "XD Avoin / Open",
+              "partner": "Arto Lahtinen",
+              "opponent": "Matias Siirilä / Carina Nieminen",
+              "court": null,
+              "time": "2026-07-04T14:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-06-29T13:56:35+03:00"
+}

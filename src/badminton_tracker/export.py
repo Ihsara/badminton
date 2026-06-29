@@ -190,7 +190,11 @@ def export_from_excel() -> None:
     aliases.ensure_names(friends)  # seed the editor with the group
     mapping = aliases.alias_map()
     matches = apply_aliases(read_data_matches(), mapping)
-    roster = roster_from_names([aliases.apply(f, mapping) for f in friends])
+    # Several raw spellings can alias to one display name (e.g. "Thy Nguyen" and
+    # "Thy NGUYEN" → "Thy"). De-duplicate the aliased roster so a person gets a
+    # single stats page, not one duplicate row per spelling. Preserve order.
+    display_names = list(dict.fromkeys(aliases.apply(f, mapping) for f in friends))
+    roster = roster_from_names(display_names)
     export_json(matches, roster, source="excel")
 
 

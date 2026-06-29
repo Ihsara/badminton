@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
-from badminton_tracker.upcoming_schedule import next_refresh_delay
+from badminton_tracker.upcoming_schedule import _seconds_until, next_refresh_delay
 
 TZ = timezone(timedelta(hours=2))
 
@@ -41,3 +41,15 @@ def test_friend_match_within_2h_polls_15m():
 def test_finished_tournament_polls_daily():
     now = datetime(2026, 3, 20, 12, 0, tzinfo=TZ)  # after end_date
     assert next_refresh_delay(_state(status="order_published"), now) == 86400
+
+
+def test_naive_iso_against_aware_now_does_not_crash():
+    now = datetime(2026, 7, 4, 8, 0, tzinfo=UTC).astimezone()
+    # naive iso 1h ahead in local time — must return a number, not raise
+    out = _seconds_until("2026-07-04T09:00:00", now)
+    assert out is None or isinstance(out, float)
+
+
+def test_bad_input_returns_none():
+    now = datetime.now().astimezone()
+    assert _seconds_until("not-a-time", now) is None
