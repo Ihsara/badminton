@@ -77,6 +77,10 @@ function relTime(iso) {
   return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
 }
 
+function clearUpcPoll() {
+  if (window.__upcPoll) { clearInterval(window.__upcPoll); window.__upcPoll = null; }
+}
+
 // Mirrors src/badminton_tracker/upcoming_text.py::format_chat_text
 function formatChatText(upc, opts) {
   const players = opts.players || null;
@@ -687,6 +691,21 @@ function viewUpcoming() {
   // Export panel
   document.getElementById("upc-export").addEventListener("click", () =>
     renderUpcExport(allPlayers, sel));
+
+  // Live poll: while this view is mounted, re-fetch upcoming.json every 2 min and
+  // re-render if it changed. Cleared on the next render/route (see clearUpcPoll).
+  clearUpcPoll();
+  window.__upcPoll = setInterval(async () => {
+    try {
+      let fresh = null;
+      if (API_BASE) fresh = await fetchJSON(API_BASE + "/upcoming.json", 4000);
+      if (!fresh) fresh = await fetchJSON("./upcoming.json", 4000);
+      if (fresh && fresh.generated_at !== (UPC && UPC.generated_at)) {
+        UPC = fresh;
+        if ((location.hash.replace(/^#\/?/, "").split("/")[0]) === "upcoming") viewUpcoming();
+      }
+    } catch (_) { /* offline tick — keep the last good UPC, try again next time */ }
+  }, 120000);
 }
 
 function renderUpcExport(allPlayers, sel) {
@@ -721,6 +740,9 @@ function renderUpcExport(allPlayers, sel) {
 
 function router() {
   if (!DB) return;
+  clearUpcPoll();
+  (window.__upcTimers || []).forEach((id) => clearInterval(id));
+  window.__upcTimers = [];
   const parts = location.hash.replace(/^#\/?/, "").split("/").map(decodeURIComponent);
   const [route, a, b] = parts;
   document.querySelectorAll(".nav a").forEach((el) =>
