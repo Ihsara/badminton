@@ -8,6 +8,7 @@ import json
 
 from . import aliases
 from .config import ROOT
+from .core_group import is_core
 from .excel_source import friend_names, read_data_matches
 from .stats import player_stats, tournament_stats
 
@@ -125,6 +126,8 @@ def build_payload(matches: list[dict], roster: list[dict], source: str) -> dict:
             deduped.append(raw)
 
     pstats = player_stats(deduped, roster)
+    for p in pstats:
+        p["core"] = is_core(p["player"])
     tstats = tournament_stats(deduped, roster)
     tournaments = sorted({m["tournament"] for m in deduped if m["tournament"]})
     return {
