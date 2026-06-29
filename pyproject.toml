@@ -38,3 +38,5 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 [tool.ruff.lint.per-file-ignores]
 # FastAPI uses callables (File()/Form()) as argument defaults by design.
 "src/badminton_tracker/server.py" = ["B008"]
+# HTML fixture strings in tests contain long URL lines.
+"tests/test_upcoming_find.py" = ["E501"]
