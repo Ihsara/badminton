@@ -11,6 +11,11 @@ import re
 
 _FI_DT_RE = re.compile(r"(\d{1,2})\.(\d{1,2})\.(\d{4})\s+(\d{1,2})\.(\d{2})")
 _SEED_RE = re.compile(r"\s*\[\d+\]\s*$")
+# Helsinki summer time (EEST); the tournaments are Finnish so times are local +03.
+_TZ_OFFSET = "+03:00"
+# A real court designator carries a digit (K2, A1, Court 5, Field 3). A bare
+# multi-letter word with no digit is the venue name (e.g. "Talihalli"), not a court.
+_COURT_RE = re.compile(r"\d")
 
 
 def _tokens(name: str) -> set[str]:
@@ -34,7 +39,10 @@ def _iso_time(card: str) -> str | None:
     if not m:
         return None
     d, mo, y, hh, mm = m.groups()
-    return f"{int(y):04d}-{int(mo):02d}-{int(d):02d}T{int(hh):02d}:{int(mm):02d}:00"
+    return (
+        f"{int(y):04d}-{int(mo):02d}-{int(d):02d}"
+        f"T{int(hh):02d}:{int(mm):02d}:00{_TZ_OFFSET}"
+    )
 
 
 def parse_player_schedule(cards: list[str], friend_full_name: str) -> list[dict]:
@@ -53,10 +61,13 @@ def parse_player_schedule(cards: list[str], friend_full_name: str) -> list[dict]
                 break
             names.append(ln)
 
-        # Court = the final line of the card if it isn't a date/time line
+        # Court = the final line of the card if it isn't a date/time line AND
+        # it looks like a real court designator (carries a digit, e.g. K2 / Court 5).
+        # The live pool-match cards put the venue name ("Talihalli") here instead,
+        # which is not a court — drop it so the UI doesn't render "Court Talihalli".
         court = None
         last = lines[-1]
-        if not _FI_DT_RE.search(last):
+        if not _FI_DT_RE.search(last) and _COURT_RE.search(last):
             court = last
 
         names = [_strip_seed(n) for n in names]

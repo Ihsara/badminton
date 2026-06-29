@@ -2,270 +2,251 @@
   "tournaments": [
     {
       "name": "Stadin Sulan kesäkisat 4.7.2026",
-      "venue": "Talihalli, Helsinki",
+      "venue": "",
       "start_date": "2026-07-04",
       "end_date": "2026-07-04",
       "status": "order_published",
       "entries": [
         {
-          "player": "Chau",
-          "event": "MD Hobby Grp B",
-          "path": [
-            {
-              "round": "R1",
-              "state": "scheduled",
-              "opponent": "Lasse Hukka / Kaleva Piha",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T09:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            },
-            {
-              "round": "R2",
-              "state": "scheduled",
-              "opponent": "Johhny Bui / Aleksi Nguyen",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T10:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            }
-          ]
-        },
-        {
-          "player": "Chau",
-          "event": "XD Hobby Grp D",
-          "path": [
-            {
-              "round": "R1",
-              "state": "scheduled",
-              "opponent": "Joel Enwald / Nargiza Djurabekova",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T16:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            },
-            {
-              "round": "R2",
-              "state": "scheduled",
-              "opponent": "Heikki Laaksonen / Minna Pasenius",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T17:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            },
-            {
-              "round": "R3",
-              "state": "scheduled",
-              "opponent": "Greg Rosca / Ekaterina Glukhova",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T18:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            }
-          ]
-        },
-        {
-          "player": "Hien",
-          "event": "WD C Grp B",
-          "path": [
-            {
-              "round": "R2",
-              "state": "scheduled",
-              "opponent": "Dao / Thanh-Thao Le",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T10:00:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            },
-            {
-              "round": "R3",
-              "state": "scheduled",
-              "opponent": "Yen Vo / Vi Vu",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T11:30:00",
-              "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
-            }
-          ]
-        },
-        {
           "player": "Junya",
-          "event": "MS B Grp A",
+          "event": "MS B - Group A",
           "path": [
             {
               "round": "R3",
-              "state": "scheduled",
+              "event": "MS B - Group A",
+              "partner": null,
               "opponent": "Jere Filatoff",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T15:00:00",
+              "court": null,
+              "time": "2026-07-04T15:00:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R2",
-              "state": "scheduled",
+              "event": "MS B - Group A",
+              "partner": null,
               "opponent": "Jouni Vehkala",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T15:30:00",
+              "court": null,
+              "time": "2026-07-04T15:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R1",
-              "state": "scheduled",
+              "event": "MS B - Group A",
+              "partner": null,
               "opponent": "Jarmo Suni",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T17:30:00",
+              "court": null,
+              "time": "2026-07-04T17:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             }
           ]
         },
         {
           "player": "Maila",
-          "event": "WD C Grp A",
+          "event": "WD C - Group A",
           "path": [
             {
               "round": "R2",
-              "state": "scheduled",
+              "event": "WD C - Group A",
+              "partner": "Thy Nguyen",
               "opponent": "Joanne Dagupan / Johanna Lopez",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T10:30:00",
+              "court": null,
+              "time": "2026-07-04T10:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R3",
-              "state": "scheduled",
+              "event": "WD C - Group A",
+              "partner": "Thy Nguyen",
               "opponent": "Stella Hwang / Iida Vihervuori",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T11:30:00",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             }
           ]
         },
         {
-          "player": "Dao",
-          "event": "XD Open",
+          "player": "Hien Köhler",
+          "event": "WD C - Group B",
           "path": [
             {
-              "round": "R1",
-              "state": "scheduled",
-              "opponent": "Jarmo Raninen / Anna Vuorenmaa",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T12:30:00",
+              "round": "R2",
+              "event": "WD C - Group B",
+              "partner": "Nuengruethai Ounjai",
+              "opponent": "Quinn Dao / Thanh-Thao Le",
+              "court": null,
+              "time": "2026-07-04T10:00:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R3",
-              "state": "scheduled",
-              "opponent": "Matias Siirilä / Carina Nieminen",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T14:30:00",
+              "event": "WD C - Group B",
+              "partner": "Nuengruethai Ounjai",
+              "opponent": "Yen Vo / Vi Vu",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             }
           ]
         },
         {
           "player": "Vu Luu",
-          "event": "XD Hobby Grp D",
+          "event": "XD Harraste / Hobby - Group D",
           "path": [
             {
               "round": "R1",
-              "state": "scheduled",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
               "opponent": "Joel Enwald / Nargiza Djurabekova",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T16:00:00",
+              "court": null,
+              "time": "2026-07-04T16:00:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R2",
-              "state": "scheduled",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
               "opponent": "Heikki Laaksonen / Minna Pasenius",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T17:00:00",
+              "court": null,
+              "time": "2026-07-04T17:00:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R3",
-              "state": "scheduled",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Long Chau Tran",
               "opponent": "Greg Rosca / Ekaterina Glukhova",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T18:00:00",
+              "court": null,
+              "time": "2026-07-04T18:00:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             }
           ]
         },
         {
           "player": "Thy",
-          "event": "WD C Grp A",
+          "event": "WD C - Group A",
           "path": [
             {
               "round": "R2",
-              "state": "scheduled",
+              "event": "WD C - Group A",
+              "partner": "Maila Kataja",
               "opponent": "Joanne Dagupan / Johanna Lopez",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T10:30:00",
+              "court": null,
+              "time": "2026-07-04T10:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
             },
             {
               "round": "R3",
-              "state": "scheduled",
+              "event": "WD C - Group A",
+              "partner": "Maila Kataja",
               "opponent": "Stella Hwang / Iida Vihervuori",
-              "result": null,
-              "court": "Talihalli",
-              "time": "2026-07-04T11:30:00",
+              "court": null,
+              "time": "2026-07-04T11:30:00+03:00",
               "time_kind": "exact",
-              "day": "2026-07-04",
-              "session": null
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Chau",
+          "event": "MD Harraste / Hobby - Group B",
+          "path": [
+            {
+              "round": "R1",
+              "event": "MD Harraste / Hobby - Group B",
+              "partner": "Nga Pham",
+              "opponent": "Lasse Hukka / Kaleva Piha",
+              "court": null,
+              "time": "2026-07-04T09:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "MD Harraste / Hobby - Group B",
+              "partner": "Nga Pham",
+              "opponent": "Johhny Bui / Aleksi Nguyen",
+              "court": null,
+              "time": "2026-07-04T10:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Chau",
+          "event": "XD Harraste / Hobby - Group D",
+          "path": [
+            {
+              "round": "R1",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Joel Enwald / Nargiza Djurabekova",
+              "court": null,
+              "time": "2026-07-04T16:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R2",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Heikki Laaksonen / Minna Pasenius",
+              "court": null,
+              "time": "2026-07-04T17:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "XD Harraste / Hobby - Group D",
+              "partner": "Vu Luu",
+              "opponent": "Greg Rosca / Ekaterina Glukhova",
+              "court": null,
+              "time": "2026-07-04T18:00:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            }
+          ]
+        },
+        {
+          "player": "Dao",
+          "event": "XD Avoin / Open",
+          "path": [
+            {
+              "round": "R1",
+              "event": "XD Avoin / Open",
+              "partner": "Arto Lahtinen",
+              "opponent": "Jarmo Raninen / Anna Vuorenmaa",
+              "court": null,
+              "time": "2026-07-04T12:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
+            },
+            {
+              "round": "R3",
+              "event": "XD Avoin / Open",
+              "partner": "Arto Lahtinen",
+              "opponent": "Matias Siirilä / Carina Nieminen",
+              "court": null,
+              "time": "2026-07-04T14:30:00+03:00",
+              "time_kind": "exact",
+              "state": "scheduled"
             }
           ]
         }
       ]
     }
   ],
-  "generated_at": "2026-06-28T23:31:27+03:00"
+  "generated_at": "2026-06-29T13:56:35+03:00"
 }
