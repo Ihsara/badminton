@@ -12,8 +12,8 @@ from datetime import date, datetime, timedelta
 
 DAILY = 86400
 SIX_HOURS = 21600
-THIRTY_MIN = 1800
-FIFTEEN_MIN = 900
+TEN_MIN = 600
+FIVE_MIN = 300
 
 
 def _d(s: str | None) -> date | None:
@@ -49,11 +49,11 @@ def next_refresh_delay(state: dict, now: datetime) -> int:
                     continue
                 secs = _seconds_until(node.get("time") or "", now)
                 if secs is not None and 0 <= secs <= 7200:
-                    return FIFTEEN_MIN
+                    return FIVE_MIN
         # Match day with order published?
         if (t.get("status") == "order_published" and start and end
                 and start <= today <= end):
-            best = min(best, THIRTY_MIN)
+            best = min(best, TEN_MIN)
             continue
         # Near tournament, draw not yet published?
         if start and timedelta(0) <= (start - today) <= timedelta(days=3):

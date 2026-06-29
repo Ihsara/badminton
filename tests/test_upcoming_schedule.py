@@ -24,18 +24,18 @@ def test_near_tournament_no_draw_polls_6h():
     assert next_refresh_delay(_state(status="entries"), now) == 21600
 
 
-def test_match_day_order_published_polls_30m():
+def test_match_day_order_published_polls_10m():
     now = datetime(2026, 3, 14, 8, 0, tzinfo=TZ)  # on start day
-    assert next_refresh_delay(_state(status="order_published"), now) == 1800
+    assert next_refresh_delay(_state(status="order_published"), now) == 600
 
 
-def test_friend_match_within_2h_polls_15m():
+def test_friend_match_within_2h_polls_5m():
     now = datetime(2026, 3, 14, 12, 0, tzinfo=TZ)
     st = _state(status="order_published",
                 entries=[{"player": "Chau", "event": "MS B",
                           "path": [{"round": "QF", "state": "scheduled",
                                     "time": "2026-03-14T13:30:00+02:00"}]}])
-    assert next_refresh_delay(st, now) == 900
+    assert next_refresh_delay(st, now) == 300
 
 
 def test_finished_tournament_polls_daily():
