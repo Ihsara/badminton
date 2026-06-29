@@ -61,10 +61,17 @@ def next_refresh_delay(state: dict, now: datetime) -> int:
     return best
 
 
-def watch(run_once) -> None:  # pragma: no cover - thin loop
+def watch(run_once, *, sleep=time.sleep, now_fn=lambda: datetime.now().astimezone()):
     """Repeatedly run `run_once()` (which returns the freshly-built state dict),
-    then sleep until the computed next refresh."""
+    then sleep until the computed next refresh. A failed refresh is logged and
+    backed off (SIX_HOURS) rather than propagated, so the always-on container
+    never crash-loops while the user is away — the last good upcoming.json stays
+    in place and the next tick self-heals."""
     while True:
-        state = run_once()
-        delay = next_refresh_delay(state or {}, datetime.now().astimezone())
-        time.sleep(delay)
+        try:
+            state = run_once()
+            delay = next_refresh_delay(state or {}, now_fn())
+        except Exception as exc:  # noqa: BLE001 - unattended loop must not die
+            print(f"[upcoming] refresh failed: {exc!r}; backing off {SIX_HOURS}s")
+            delay = SIX_HOURS
+        sleep(delay)
