@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 from badminton_tracker.upcoming_find import find_upcoming_tournaments
 
 HTML = """
