@@ -154,3 +154,45 @@ def test_chat_export_collapses_shared_match_to_one_line():
     # The shared match must appear exactly once, attributed to the pair.
     assert out.count("Joel / Nargiza") == 1
     assert "Chau / Vu Luu" in out
+
+
+def _upc_out_of_order():
+    """Entries arrive in scrape order (late match first), so the chat export
+    must re-sort lines chronologically within the tournament."""
+    return {"tournaments": [{
+        "name": "Stadin",
+        "entries": [
+            {"player": "Junya", "event": "MS B", "path": [
+                {"round": "R3", "state": "scheduled", "opponent": "Late Guy",
+                 "time": "2026-07-04T15:00:00+03:00"}]},
+            {"player": "Chau", "event": "MD B", "path": [
+                {"round": "R1", "state": "scheduled", "opponent": "Early Guy",
+                 "time": "2026-07-04T09:00:00+03:00"}]},
+        ],
+    }]}
+
+
+def test_chat_export_lines_sorted_chronologically_within_tournament():
+    out = format_chat_text(_upc_out_of_order(), {"horizon": "next", "fields": {"opponent"}})
+    lines = out.splitlines()
+    early = next(i for i, ln in enumerate(lines) if "Early Guy" in ln)
+    late = next(i for i, ln in enumerate(lines) if "Late Guy" in ln)
+    assert early < late  # 09:00 line precedes 15:00 line despite scrape order
+
+
+def test_chat_export_projected_sorts_after_scheduled():
+    upc = {"tournaments": [{
+        "name": "Stadin",
+        "entries": [
+            {"player": "Chau", "event": "MS B", "path": [
+                {"round": "QF", "state": "scheduled", "opponent": "Now",
+                 "time": "2026-07-04T13:00:00+03:00"},
+                {"round": "SF", "state": "projected", "opponent": "Winner",
+                 "day": "2026-07-05", "session": "afternoon"}]},
+        ],
+    }]}
+    out = format_chat_text(upc, {"horizon": "full", "fields": {"opponent", "projected"}})
+    lines = out.splitlines()
+    sched = next(i for i, ln in enumerate(lines) if "Now" in ln)
+    proj = next(i for i, ln in enumerate(lines) if "Winner" in ln)
+    assert sched < proj  # scheduled node precedes the projected one
