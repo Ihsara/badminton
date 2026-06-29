@@ -23,13 +23,6 @@ def _d(s: str | None) -> date | None:
         return None
 
 
-def _dt(s: str | None) -> datetime | None:
-    try:
-        return datetime.fromisoformat(s) if s else None
-    except ValueError:
-        return None
-
-
 def _seconds_until(iso: str, now: datetime) -> float | None:
     """Seconds from `now` (tz-aware) until `iso`. A naive `iso` is assumed to be
     in `now`'s local timezone, so the subtraction never mixes naive and aware."""
