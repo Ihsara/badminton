@@ -30,6 +30,7 @@ def crawl_live(  # pragma: no cover
     This driver is wired and correct for the enumeration the site exposes; it is
     intentionally NOT exercised by a live run in this branch.
     """
+    # refresh_months: reserved for sub-project C (cache-freshness top-up); not yet wired.
     import datetime as dt
 
     from playwright.sync_api import sync_playwright
@@ -46,7 +47,7 @@ def crawl_live(  # pragma: no cover
         def getter(url: str) -> tuple[str, int]:
             page.goto(url, wait_until="domcontentloaded")
             client.dismiss_cookies(page)
-            page.wait_for_timeout(delay_ms)
+            page.wait_for_timeout(300)
             return page.content(), 200
 
         def fetch_fn(url: str) -> str:
