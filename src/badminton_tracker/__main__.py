@@ -43,6 +43,15 @@ def main() -> None:
     p_dn.add_argument("--max-pages", type=int, default=20,
                       help="cap on participant-list pages fetched (ban-risk guard)")
 
+    p_arch = sub.add_parser(
+        "archive-crawl",
+        help="PRIVATE: crawl all tournaments (year range) into the SQLite archive",
+    )
+    p_arch.add_argument("--year-from", type=int, default=2020)
+    p_arch.add_argument("--year-to", type=int, default=2026)
+    p_arch.add_argument("--refresh-months", type=int, default=None)
+    p_arch.add_argument("--delay-ms", type=int, default=700)
+
     args = parser.parse_args()
 
     if args.command == "discover":
@@ -111,6 +120,17 @@ def main() -> None:
         from .discover_names import run_discover_names
 
         run_discover_names(tournament_guids=args.tournament, go=args.go, max_pages=args.max_pages)
+
+    elif args.command == "archive-crawl":
+        from .archive_crawl import crawl_live
+
+        summary = crawl_live(
+            year_from=args.year_from,
+            year_to=args.year_to,
+            refresh_months=args.refresh_months,
+            delay_ms=args.delay_ms,
+        )
+        print(f"archive-crawl: {summary}")
 
 
 if __name__ == "__main__":
