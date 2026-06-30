@@ -69,6 +69,21 @@ uv run badminton serve     # static-only explorer (no editing)
 
 Set `BADMINTON_EDIT_PASSWORD` in `.env` to enable the **Maintain** tab.
 
+### Private historical archive (backend-only)
+
+`uv run badminton archive-crawl --year-from 2020 --year-to 2026` builds a
+PRIVATE SQLite archive of every Finnish-badminton tournament in the range
+(`data/archive/archive.sqlite` + raw cache under `data/archive/raw/`). It is
+never published: browse it only via the authed endpoints `/api/archive/...`
+(same edit password as the Maintain tab) while the server is running. The
+public `web/data.json` / `web/upcoming.json` are unaffected.
+
+> **Status:** the storage, parsing, resumable state machine and authed
+> endpoints are in place and tested. The live year-range enumeration currently
+> reaches only the site's *upcoming* tournament window — discovery of finished
+> 2020–2025 tournaments needs a different path and is a documented follow-up, so
+> a full historical back-crawl is not yet wired.
+
 ### Deployment & sharing
 
 This packages into a home container + a public GitHub Pages snapshot, with all
