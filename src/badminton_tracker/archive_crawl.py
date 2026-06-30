@@ -102,7 +102,7 @@ def run(
             "name": t.get("name"),
             "year": _year_of(t.get("start_date")),
             "start_date": t.get("start_date"),
-            "end_date": t.get("start_date"),
+            "end_date": t.get("end_date", t.get("start_date")),
             "location": None,
             "region": None,
             "category": None,

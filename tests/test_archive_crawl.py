@@ -50,6 +50,11 @@ def test_run_is_idempotent_and_resumable(tmp_path):
     r1 = archive_crawl.run(conn, tlist, _fake_fetch, now="t")
     assert r1["done"] == 1 and r1["error"] == 0
     n_matches_1 = conn.execute("SELECT COUNT(*) FROM matches").fetchone()[0]
+    # The fake bracket has exactly one Final match; assert it parsed through
+    # (guards against a vacuous pass if parsing silently yields zero matches).
+    assert n_matches_1 == 1
+    # Alice has `match__row has-won` => winner_side 1 (parser ran end-to-end).
+    assert conn.execute("SELECT winner_side FROM matches").fetchone()[0] == 1
     # Re-run: T1 already done → skipped, no duplicate matches.
     r2 = archive_crawl.run(conn, tlist, _fake_fetch, now="t")
     assert r2["done"] == 0  # nothing re-processed
