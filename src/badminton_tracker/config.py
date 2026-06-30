@@ -39,6 +39,13 @@ DISCOVERY_CANDIDATES_CSV = DATA_DIR / "discovery_candidates.csv"
 # Names never matched as friends even on a full-name hit (private):
 EXCLUDE_CSV = DATA_DIR / "exclude.csv"
 
+# ── Private historical archive (sub-project A) ─────────────────────────────
+# Site-wide 2020→now archive. PRIVATE: lives in the data/ repo, gitignored by
+# the public repo. Holds profile GUIDs — never published to web/*.json.
+ARCHIVE_DIR = DATA_DIR / "archive"
+ARCHIVE_DB = ARCHIVE_DIR / "archive.sqlite"
+ARCHIVE_RAW_DIR = ARCHIVE_DIR / "raw"
+
 # Upcoming-tournament pipeline (parallel to the historical one).
 # Public, GUID-free artifact served beside data.json:
 UPCOMING_JSON = ROOT / "web" / "upcoming.json"
