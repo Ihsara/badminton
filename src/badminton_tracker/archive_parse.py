@@ -40,16 +40,44 @@ def parse_draw_list(html: str) -> list[dict]:
 # Bracket
 # ---------------------------------------------------------------------------
 
-# Round labels in finals-first order; round_index = position in this list when
-# matched, else a large fallback so unknown rounds sort as "earliest".
-_ROUND_ORDER = ["final", "semi", "quarter", "r16", "r32", "r64", "round of"]
+_ROUND_OF_N = {16: 3, 32: 4, 64: 5}
+_ROUND_OF_RE = re.compile(r"round\s+of\s*(\d+)", re.I)
+_R_SHORT_RE = re.compile(r"^r(\d+)$", re.I)
 
 
 def _round_index(label: str) -> int:
-    low = label.lower()
-    for i, key in enumerate(_ROUND_ORDER):
-        if key in low:
-            return i
+    """Return a finals-first index for a round label (0=Final, higher=earlier round).
+
+    Canonical mappings:
+      Final               -> 0
+      Semi final / Semi-final / Semifinal -> 1
+      Quarter final / Quarter-final / Quarterfinal -> 2
+      Round of 16 / R16   -> 3
+      Round of 32 / R32   -> 4
+      Round of 64 / R64   -> 5
+      unknown             -> 99
+    """
+    low = label.strip().lower()
+
+    # More-specific checks before bare "final" to avoid substring false-matches.
+    if "semi" in low:
+        return 1
+    if "quarter" in low:
+        return 2
+
+    # "Round of N" long form
+    m = _ROUND_OF_RE.search(low)
+    if m:
+        return _ROUND_OF_N.get(int(m.group(1)), 99)
+
+    # Short form: R16 / R32 / R64
+    m2 = _R_SHORT_RE.match(low)
+    if m2:
+        return _ROUND_OF_N.get(int(m2.group(1)), 99)
+
+    if "final" in low:
+        return 0
+
     return 99
 
 

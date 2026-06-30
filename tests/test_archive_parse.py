@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from badminton_tracker import archive_parse
+from badminton_tracker.archive_parse import _round_index
 
 FIX = Path(__file__).parent / "fixtures" / "archive"
 
@@ -37,11 +38,8 @@ def test_parse_bracket_multi_round_positions_and_ordering():
     assert len(semis) == 2
     assert len(finals) == 1
 
-    # round_index: NOTE — "Semi final" actually matches "final" (index 0) before
-    # "semi" (index 1) in _ROUND_ORDER because "final" is a substring of "Semi final".
-    # This is a known parser ordering concern (FINDING: see task-5-report.md).
-    # Pinned to parser's REAL behaviour; do NOT change without fixing _round_index.
-    assert all(m["round_index"] == 0 for m in semis)
+    # round_index: "Semi final" -> 1, "Final" -> 0 (correct finals-first ordering).
+    assert all(m["round_index"] == 1 for m in semis)
     assert finals[0]["round_index"] == 0
 
     # position resets per round: Semi final matches get 0 and 1;
@@ -59,3 +57,21 @@ def test_parse_bracket_multi_round_positions_and_ordering():
 
     # score_raw is None for all (score markup not yet confirmed against a real fixture)
     assert all(m["score_raw"] is None for m in matches)
+
+
+def test_round_index_orders_real_labels():
+    """_round_index must produce the correct finals-first ordering for real site labels."""
+    assert _round_index("Final") == 0
+    assert _round_index("Semi final") == 1
+    assert _round_index("Semifinal") == 1
+    assert _round_index("Semi-final") == 1
+    assert _round_index("Quarter final") == 2
+    assert _round_index("Quarterfinal") == 2
+    assert _round_index("Quarter-final") == 2
+    assert _round_index("Round of 16") == 3
+    assert _round_index("R16") == 3
+    assert _round_index("Round of 32") == 4
+    assert _round_index("R32") == 4
+    assert _round_index("Round of 64") == 5
+    assert _round_index("R64") == 5
+    assert _round_index("Preliminary") == 99
