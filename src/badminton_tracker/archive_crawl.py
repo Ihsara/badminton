@@ -11,6 +11,71 @@ from . import archive_db, archive_parse
 from .config import BASE_URL
 
 
+def crawl_live(  # pragma: no cover
+    *,
+    year_from: int = 2020,
+    year_to: int = 2026,
+    refresh_months: int | None = None,
+    delay_ms: int = 700,
+    max_pages: int = 40,
+) -> dict:
+    """Drive a live Playwright session to crawl all reachable tournaments into the archive.
+
+    NOTE (confirmed against the live site 2026-06-30): /find/tournament IGNORES
+    the YearNr/date params and only returns the CURRENT upcoming window (~14
+    tournaments), so this year-range enumeration does NOT reach finished
+    historical (2020-2025) tournaments — see the existing upcoming_find.py
+    docstring. Reaching historical tournaments needs a different discovery path
+    (e.g. /tournament/{guid}/players scans), which is a documented follow-up.
+    This driver is wired and correct for the enumeration the site exposes; it is
+    intentionally NOT exercised by a live run in this branch.
+    """
+    import datetime as dt
+
+    from playwright.sync_api import sync_playwright
+
+    from . import archive_enumerate, archive_fetch, client
+
+    now = dt.datetime.now(dt.UTC).isoformat()
+    conn = archive_db.connect()
+    p = sync_playwright().start()
+    browser, ctx = client.new_context(p, headless=True)
+    try:
+        page = client.ensure_login(ctx)
+
+        def getter(url: str) -> tuple[str, int]:
+            page.goto(url, wait_until="domcontentloaded")
+            client.dismiss_cookies(page)
+            page.wait_for_timeout(delay_ms)
+            return page.content(), 200
+
+        def fetch_fn(url: str) -> str:
+            return archive_fetch.fetch(conn, url, getter, now, delay_ms=delay_ms)
+
+        tournaments: dict[str, dict] = {}
+        for year in range(year_from, year_to + 1):
+            for page_num in range(1, max_pages + 1):
+                url = (
+                    f"{BASE_URL}/find/tournament"
+                    f"?YearNr={year}&p={page_num}"
+                )
+                html = fetch_fn(url)
+                items = archive_enumerate.parse_tournament_list(html)
+                if not items:
+                    break
+                for t in items:
+                    key = t["id"].lower()
+                    if key not in tournaments:
+                        tournaments[key] = t
+
+        return run(conn, list(tournaments.values()), fetch_fn, now)
+    finally:
+        ctx.close()
+        browser.close()
+        p.stop()
+        conn.close()
+
+
 def _year_of(start_date: str | None) -> int | None:
     return int(start_date[:4]) if start_date else None
 
