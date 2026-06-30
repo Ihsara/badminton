@@ -20,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 
 from . import aliases, versioning
 from .build import write_matches_mirror
-from .config import EDIT_PASSWORD, MAX_UPLOAD_BYTES, SOURCE_XLSX
+from .config import ARCHIVE_DB, EDIT_PASSWORD, MAX_UPLOAD_BYTES, SOURCE_XLSX
 from .export import WEB_DIR, export_from_excel
 from .validate import ValidationError, validate_alias_rows, validate_workbook_bytes
 
@@ -126,6 +126,46 @@ async def upload_excel(
         "history": versioning.history("matches_mirror.csv", limit=5),
         **_data_counts(),
     }
+
+
+@app.get("/api/archive/tournaments")
+def archive_tournaments(password: str | None = None):
+    _check_password(password)
+    from . import archive_db
+    if not ARCHIVE_DB.exists():
+        return []
+    conn = archive_db.connect(ARCHIVE_DB)
+    try:
+        rows = conn.execute(
+            "SELECT id,name,year,start_date FROM tournaments ORDER BY year DESC, name"
+        ).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+
+@app.get("/api/archive/tournament/{tid}/bracket")
+def archive_bracket(tid: str, password: str | None = None):
+    _check_password(password)
+    from . import archive_db
+    if not ARCHIVE_DB.exists():
+        raise HTTPException(404, "Archive not built")
+    conn = archive_db.connect(ARCHIVE_DB)
+    try:
+        t = conn.execute("SELECT * FROM tournaments WHERE id=?", (tid,)).fetchone()
+        if t is None:
+            raise HTTPException(404, "Unknown tournament")
+        draws = []
+        for d in conn.execute(
+            "SELECT * FROM draws WHERE tournament_id=? ORDER BY ordering", (tid,)
+        ).fetchall():
+            matches = [dict(m) for m in conn.execute(
+                "SELECT * FROM matches WHERE draw_id=? ORDER BY round_index, position",
+                (d["id"],)).fetchall()]
+            draws.append({**dict(d), "matches": matches})
+        return {"tournament": dict(t), "draws": draws}
+    finally:
+        conn.close()
 
 
 # Static explorer LAST so /api/* wins. html=True serves index.html at "/".
