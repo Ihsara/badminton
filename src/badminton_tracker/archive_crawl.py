@@ -1,11 +1,13 @@
 """Resumable crawl state machine.
 
-Ties enumerate→fetch→parse→store together, checkpointing each tournament in
+Ties enumerate->fetch->parse->store together, checkpointing each tournament in
 crawl_state so an interrupted multi-day run resumes cleanly.  The fetch
 function is injected (Playwright live, fake in tests).
 """
 
 from __future__ import annotations
+
+from datetime import datetime
 
 from . import archive_db, archive_parse
 from .config import BASE_URL
@@ -13,6 +15,13 @@ from .config import BASE_URL
 
 def _year_of(start_date: str | None) -> int | None:
     return int(start_date[:4]) if start_date else None
+
+
+def _now_str(now: str | datetime) -> str:
+    """Coerce now to an ISO-8601 string so callers may pass either form."""
+    if isinstance(now, datetime):
+        return now.isoformat()
+    return now
 
 
 def _draws_url(tid: str) -> str:
@@ -27,10 +36,10 @@ def _bracket_url(draw_href: str) -> str:
     return f"{BASE_URL}/{draw_href}"
 
 
-def process_tournament(conn, tid: str, fetch_fn, now: str) -> None:
+def process_tournament(conn, tid: str, fetch_fn, now: str | datetime) -> None:
     """Fetch, parse, and store all draws + matches for one tournament.
 
-    Raises on any fetch/parse/DB error — the caller (run) catches and records
+    Raises on any fetch/parse/DB error -- the caller (run) catches and records
     the error in crawl_state without crashing the loop.
     """
     draws_html = fetch_fn(_draws_url(tid))
@@ -87,41 +96,42 @@ def run(
     conn,
     tournament_ids: list[dict],
     fetch_fn,
-    now: str,
+    now: str | datetime,
 ) -> dict:
     """Upsert tournaments + seed pending state, then process every non-done one.
 
-    Idempotent: tournaments already marked 'done' are skipped.  Errors are
+    Idempotent: tournaments already marked done are skipped.  Errors are
     recorded per tournament; the loop always continues.
 
     Returns {"done": n, "error": m}.
     """
+    now_s = _now_str(now)
     for t in tournament_ids:
         archive_db.upsert_tournament(conn, {
             "id": t["id"],
             "name": t.get("name"),
             "year": _year_of(t.get("start_date")),
             "start_date": t.get("start_date"),
-            "end_date": t.get("start_date"),
+            "end_date": t.get("end_date", t.get("start_date")),
             "location": None,
             "region": None,
             "category": None,
             "source_url": f"{BASE_URL}/sport/tournament?id={t['id']}",
-            "fetched_at": now,
+            "fetched_at": now_s,
         })
         existing = conn.execute(
             "SELECT status FROM crawl_state WHERE tournament_id=?", (t["id"],)
         ).fetchone()
         if existing is None:
-            archive_db.set_state(conn, t["id"], "pending", now=now)
+            archive_db.set_state(conn, t["id"], "pending", now=now_s)
 
     done = err = 0
     for tid in archive_db.pending_tournaments(conn):
         try:
-            process_tournament(conn, tid, fetch_fn, now)
-            archive_db.set_state(conn, tid, "done", now=now)
+            process_tournament(conn, tid, fetch_fn, now_s)
+            archive_db.set_state(conn, tid, "done", now=now_s)
             done += 1
-        except Exception as e:  # noqa: BLE001 — record + continue, never crash the crawl
-            archive_db.set_state(conn, tid, "error", error=str(e), now=now)
+        except Exception as e:  # noqa: BLE001 -- record + continue, never crash the crawl
+            archive_db.set_state(conn, tid, "error", error=str(e), now=now_s)
             err += 1
     return {"done": done, "error": err}
