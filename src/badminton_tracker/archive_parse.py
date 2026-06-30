@@ -118,6 +118,7 @@ class _BracketParser(HTMLParser):
                 "score_raw": None,
                 "winner_side": None,
                 "scheduled_iso": None,
+                # court comes from the schedule page, not the bracket DOM.
                 "court": None,
             }
             self._round_position += 1
