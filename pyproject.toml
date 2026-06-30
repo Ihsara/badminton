@@ -10,7 +10,6 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.32",
     "python-multipart>=0.0.12",
-    "httpx2>=2.5.0",
 ]
 
 [project.scripts]
@@ -27,6 +26,16 @@ packages = ["src/badminton_tracker"]
 dev = [
     "pytest>=9.1.1",
     "ruff>=0.6",
+    # Required by Starlette's TestClient (tests/test_archive_endpoints.py only).
+    "httpx>=0.27",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    # Starlette's TestClient warns that plain httpx is deprecated in favour of
+    # the non-standard `httpx2`. We deliberately keep the audited `httpx`; this
+    # one known StarletteDeprecationWarning is silenced so output stays pristine.
+    "ignore::starlette.exceptions.StarletteDeprecationWarning",
 ]
 
 [tool.ruff]
