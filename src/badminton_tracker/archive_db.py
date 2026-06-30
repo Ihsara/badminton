@@ -114,19 +114,24 @@ def upsert_draw(conn: sqlite3.Connection, d: dict) -> None:
 
 
 def upsert_player(conn: sqlite3.Connection, p: dict) -> int:
+    # Coerce missing profile_guid to '' so the UNIQUE constraint dedupes correctly.
+    # SQLite treats NULL as DISTINCT in UNIQUE indexes, so storing NULL would
+    # create a new row on every upsert.  Non-empty GUIDs are stored as-is.
+    player = dict(p)
+    player["profile_guid"] = p.get("profile_guid") or ""
     conn.execute(
         """INSERT INTO players (tournament_id,display_name,profile_guid,club,seed)
            VALUES (:tournament_id,:display_name,:profile_guid,:club,:seed)
            ON CONFLICT(tournament_id,display_name,profile_guid)
            DO UPDATE SET club=excluded.club, seed=excluded.seed""",
-        p,
+        player,
     )
     conn.commit()
     row = conn.execute(
         """SELECT id FROM players
            WHERE tournament_id=:tournament_id AND display_name=:display_name
-             AND (profile_guid IS :profile_guid OR profile_guid = :profile_guid)""",
-        p,
+             AND profile_guid = :profile_guid""",
+        player,
     ).fetchone()
     return int(row["id"])
 

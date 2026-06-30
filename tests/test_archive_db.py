@@ -60,6 +60,23 @@ def test_insert_match_stores_player_id_lists_as_json(tmp_path):
     conn.close()
 
 
+def test_upsert_player_null_guid_is_idempotent(tmp_path):
+    conn = archive_db.connect(tmp_path / "a.sqlite")
+    archive_db.upsert_tournament(conn, {
+        "id": "T1", "name": "Cup", "year": 2024, "start_date": None,
+        "end_date": None, "location": None, "region": None, "category": None,
+        "source_url": None, "fetched_at": "2026-06-30"})
+    p = {"tournament_id": "T1", "display_name": "No Guid Player",
+         "profile_guid": None, "club": None, "seed": None}
+    a = archive_db.upsert_player(conn, p)
+    b = archive_db.upsert_player(conn, p)
+    c = archive_db.upsert_player(conn, p)
+    assert a == b == c, f"Expected same id each time, got {a}, {b}, {c}"
+    n = conn.execute("SELECT COUNT(*) FROM players").fetchone()[0]
+    assert n == 1, f"Expected 1 row, got {n}"
+    conn.close()
+
+
 def test_set_state_and_pending(tmp_path):
     conn = archive_db.connect(tmp_path / "a.sqlite")
     for tid in ("T1", "T2"):
