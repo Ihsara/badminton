@@ -1,23 +1,14 @@
 """Resumable crawl state machine.
 
-Ties enumerate->fetch->parse->store together, checkpointing each tournament in
+Ties enumerate→fetch→parse→store together, checkpointing each tournament in
 crawl_state so an interrupted multi-day run resumes cleanly.  The fetch
 function is injected (Playwright live, fake in tests).
 """
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from . import archive_db, archive_parse
 from .config import BASE_URL
-
-
-def _now_str(now: str | datetime) -> str:
-    """Coerce now to an ISO-8601 string so callers may pass either form."""
-    if isinstance(now, datetime):
-        return now.isoformat()
-    return now
 
 
 def crawl_live(  # pragma: no cover
@@ -33,7 +24,7 @@ def crawl_live(  # pragma: no cover
     NOTE (confirmed against the live site 2026-06-30): /find/tournament IGNORES
     the YearNr/date params and only returns the CURRENT upcoming window (~14
     tournaments), so this year-range enumeration does NOT reach finished
-    historical (2020-2025) tournaments -- see the existing upcoming_find.py
+    historical (2020-2025) tournaments — see the existing upcoming_find.py
     docstring. Reaching historical tournaments needs a different discovery path
     (e.g. /tournament/{guid}/players scans), which is a documented follow-up.
     This driver is wired and correct for the enumeration the site exposes; it is
@@ -102,13 +93,12 @@ def _bracket_url(draw_href: str) -> str:
     return f"{BASE_URL}/{draw_href}"
 
 
-def process_tournament(conn, tid: str, fetch_fn, now: str | datetime) -> None:
+def process_tournament(conn, tid: str, fetch_fn, now: str) -> None:
     """Fetch, parse, and store all draws + matches for one tournament.
 
-    Raises on any fetch/parse/DB error -- the caller (run) catches and records
+    Raises on any fetch/parse/DB error — the caller (run) catches and records
     the error in crawl_state without crashing the loop.
     """
-    now = _now_str(now)  # normalise datetime -> str once at the top
     draws_html = fetch_fn(_draws_url(tid))
     draws = archive_parse.parse_draw_list(draws_html)
     for d in draws:
@@ -163,16 +153,15 @@ def run(
     conn,
     tournament_ids: list[dict],
     fetch_fn,
-    now: str | datetime,
+    now: str,
 ) -> dict:
     """Upsert tournaments + seed pending state, then process every non-done one.
 
-    Idempotent: tournaments already marked done are skipped.  Errors are
+    Idempotent: tournaments already marked 'done' are skipped.  Errors are
     recorded per tournament; the loop always continues.
 
     Returns {"done": n, "error": m}.
     """
-    now = _now_str(now)  # normalise datetime -> str once at the top
     for t in tournament_ids:
         archive_db.upsert_tournament(conn, {
             "id": t["id"],
@@ -198,7 +187,7 @@ def run(
             process_tournament(conn, tid, fetch_fn, now)
             archive_db.set_state(conn, tid, "done", now=now)
             done += 1
-        except Exception as e:  # noqa: BLE001 -- record + continue, never crash the crawl
+        except Exception as e:  # noqa: BLE001 — record + continue, never crash the crawl
             archive_db.set_state(conn, tid, "error", error=str(e), now=now)
             err += 1
     return {"done": done, "error": err}
