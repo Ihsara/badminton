@@ -1,13 +1,12 @@
 "use strict";
 
-/* Archive panel: private, edit-password gated list of archived tournaments.
-   Only reachable when app.js detected a live, writable container (window.MAINT).
-   No archive data is ever persisted client-side or committed — everything is
-   fetched at runtime from the container's /api/archive/* endpoints. The
-   password itself is kept in sessionStorage (tab-scoped) so it survives
-   re-entering the view, but that's the only thing we stash. */
+/* Archive panel: private list of archived tournaments, served ONLY by the
+   always-on home server (window.MAINT). No archive data is ever persisted
+   client-side or committed — everything is fetched at runtime from the
+   container's /api/archive/* endpoints. Access is bounded by the home server
+   being local/LAN-only, not by an in-app password. */
 
-function viewArchive(app, id, drawId) {
+async function viewArchive(app, id, drawId) {
   if (!window.MAINT) {
     app.innerHTML = `<div class="empty rise" style="padding:64px">
       <h1 class="section-title" style="font-size:1.6rem">Archive is off here</h1><br>
@@ -16,24 +15,33 @@ function viewArchive(app, id, drawId) {
       <a class="tag" href="#/">← back to the group</a></div>`;
     return;
   }
-  // #/archive/{id}/{drawId} -> one event (topic) sub-page; #/archive/{id} -> event
-  // index for the tournament; #/archive -> tournament list (behind the password).
+  // #/archive/{id}/{drawId} -> one event sub-page; #/archive/{id} -> event index;
+  // #/archive -> tournament list. No password: the home server is the boundary.
   if (id && drawId) { showArchiveDraw(id, drawId); return; }
   if (id) { showArchiveTournament(id); return; }
-  renderArchivePasswordForm();
+  const list = await fetchArchiveTournaments();
+  if (list === null) {
+    app.innerHTML = `
+      <h1 class="section-title rise" style="margin:6px 0 4px;font-size:clamp(1.7rem,5vw,2.6rem)">Archive</h1>
+      <div class="empty rise" style="padding:48px">
+        Couldn't reach the archive on the home server.<br><br>
+        <a class="tag" href="#/">← back to the group</a></div>`;
+    stagger();
+    return;
+  }
+  await ensureFriendSet();
+  renderArchiveList(list);
 }
-
-function archPass() { return sessionStorage.getItem("archivePw") || ""; }
 
 // Core friend nicknames, lowercased. Fetched once per unlock from the authed
 // core-names endpoint; never persisted. null = not yet fetched, Set = fetched
 // (possibly empty on failure — highlight is a nice-to-have, not load-bearing).
 let archFriendSet = null;
 
-async function ensureFriendSet(pw) {
+async function ensureFriendSet() {
   if (archFriendSet !== null) return;
   try {
-    const r = await fetch(window.MAINT.base + "/api/archive/core-names?password=" + encodeURIComponent(pw));
+    const r = await fetch(window.MAINT.base + "/api/archive/core-names");
     if (!r.ok) { archFriendSet = new Set(); return; }
     const data = await r.json();
     archFriendSet = new Set((data.names || []).map((n) => n.toLowerCase()));
@@ -42,41 +50,9 @@ async function ensureFriendSet(pw) {
   }
 }
 
-function renderArchivePasswordForm(msg) {
-  app.innerHTML = `
-    <h1 class="section-title rise" style="margin:6px 0 4px;font-size:clamp(1.7rem,5vw,2.6rem)">Archive</h1>
-    <p class="pl-record rise">Browse archived tournament brackets. Password-gated.</p>
-    <section class="block rise"><div class="block__head"><h2 class="section-title">Edit password</h2></div>
-      <div class="card m-card">
-        <span class="m-lab">Shared password</span>
-        <input id="arch-pass" type="password" class="m-input" placeholder="ask Chau" autocomplete="off" />
-        <p class="m-hint">Stored only in this browser tab.</p>
-        ${msg ? `<div class="m-out m-out--err">${esc(msg)}</div>` : ""}
-        <button id="arch-go" class="m-btn">Unlock archive</button>
-      </div>
-    </section>`;
-  stagger();
-  const pass = document.getElementById("arch-pass");
-  document.getElementById("arch-go").onclick = () => loadArchive(pass.value || "");
-  pass.addEventListener("keydown", (e) => { if (e.key === "Enter") loadArchive(pass.value || ""); });
-  pass.focus();
-}
-
-async function loadArchive(pw) {
-  const list = window.MAINT
-    ? await fetchArchiveTournaments(pw)
-    : null;
-  if (list === "auth") { renderArchivePasswordForm("Wrong edit password."); return; }
-  if (list === null) { renderArchivePasswordForm("Couldn't reach the archive."); return; }
-  sessionStorage.setItem("archivePw", pw);
-  await ensureFriendSet(pw);
-  renderArchiveList(list);
-}
-
-async function fetchArchiveTournaments(pw) {
+async function fetchArchiveTournaments() {
   try {
-    const r = await fetch(window.MAINT.base + "/api/archive/tournaments?password=" + encodeURIComponent(pw));
-    if (r.status === 401 || r.status === 403) return "auth";
+    const r = await fetch(window.MAINT.base + "/api/archive/tournaments");
     if (!r.ok) return null;
     return await r.json();
   } catch (_) {
@@ -111,11 +87,10 @@ function renderArchiveList(tournaments) {
 
 /* ---- bracket detail (#/archive/{id}) ---- */
 
-async function fetchArchiveBracket(id, pw) {
+async function fetchArchiveBracket(id) {
   try {
     const r = await fetch(window.MAINT.base + "/api/archive/tournament/" +
-      encodeURIComponent(id) + "/bracket?password=" + encodeURIComponent(pw));
-    if (r.status === 401 || r.status === 403) return "auth";
+      encodeURIComponent(id) + "/bracket");
     if (r.status === 404) return "notfound";
     if (!r.ok) return null;
     return await r.json();
@@ -204,16 +179,14 @@ async function loadTournamentPayload(id) {
   if (archTournamentCache && archTournamentCache.id === id) {
     return archTournamentCache.payload;
   }
-  const pw = archPass();
-  await ensureFriendSet(pw);
-  const payload = await fetchArchiveBracket(id, pw);
+  await ensureFriendSet();
+  const payload = await fetchArchiveBracket(id);
   if (payload && typeof payload === "object") archTournamentCache = { id, payload };
   return payload;
 }
 
 function archBracketError(payload) {
   // Returns HTML for the non-object payloads, or "" when the payload is real.
-  if (payload === "auth") { renderArchivePasswordForm("Wrong edit password."); return null; }
   const back = `<a href="#/archive" class="tag rise">← all tournaments</a>`;
   if (payload === "notfound") {
     return back + `<div class="empty rise" style="padding:48px">Tournament not found.</div>`;
