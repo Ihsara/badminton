@@ -77,7 +77,7 @@ confirmed the design here.
 **Goal of the session:** turn "a bracket viz like badmintonfinland, but
 friend-aware, on a private page" into concrete, buildable decisions.
 
-- [ ] **Step 1: Run the brainstorming skill** with the user, covering at least:
+- [x] **Step 1: Run the brainstorming skill** with the user, covering at least:
   - **Layout:** classic left→right elimination tree (rounds as columns) — confirm. How to render group/round-robin draws (`round_index == 99`) — a standings table, a simple match list, or skip them in v1?
   - **Match box:** what each box shows — both player/pair names, winner highlight (which side won), score (`score_raw`), court/time (`scheduled_iso`)? What when `score_raw`/`winner_side` is null (unplayed/walkover)?
   - **Friend-awareness:** should the friend group's path be highlighted (e.g. bold/colored slots for core nicknames, like the existing "The Bros" tiering)? If yes, where does the friend list come from on a PRIVATE page (it MAY use real names/rosters since it's authed) — reuse the core-group list, or match against the private people/aliases?
@@ -85,17 +85,24 @@ friend-aware, on a private page" into concrete, buildable decisions.
   - **Scope of v1:** smallest thing worth shipping — pick ONE draw type rendered well (elimination) and defer the rest.
   - **Empty/error states:** archive empty (current reality), wrong password, tournament has no draws.
 
-- [ ] **Step 2: Write the decisions back into this plan.** Update Tasks 2–6 below to match what was decided (especially the match-box contents and friend-highlight rule). If the user picks something materially different (e.g. a non-tree layout), revise the affected tasks before proceeding. Commit the plan update:
+- [x] **Step 2: Write the decisions back into this plan.** Update Tasks 2–6 below to match what was decided (especially the match-box contents and friend-highlight rule). If the user picks something materially different (e.g. a non-tree layout), revise the affected tasks before proceeding. Commit the plan update:
 
 ```bash
 git add docs/superpowers/plans/2026-07-01-bracket-visualization.md
 git commit -m "docs(viz): lock bracket design decisions from brainstorming"
 ```
 
-> Tasks 2–6 below are written against the DEFAULT assumption (classic elimination
-> tree, match box = two slots + winner highlight + score, friend slots highlighted
-> via the existing core-nickname list, drill-down nav). If Task 1 confirms these,
-> proceed as written.
+> **BRAINSTORMING DECISIONS LOCKED (2026-07-01).** See
+> [`docs/superpowers/specs/2026-07-01-bracket-visualization-design.md`](../specs/2026-07-01-bracket-visualization-design.md).
+> Confirmed defaults: classic elimination tree; drill-down nav; friend slots
+> highlighted via the public `CORE_NICKNAMES` list; edit-password gate. **Two
+> changes from the original defaults, reflected in Tasks 5–6 below:**
+> 1. **Group / round-robin draws (`round_index == 99`) → a W–L standings table**
+>    (Played / Won / Lost per player-pair, sorted by wins desc, computed from
+>    `winner_side` alone — NOT a plain match list).
+> 2. **Match boxes show court/time** as small muted subtext, ONLY when
+>    `scheduled_iso`/`court` are present (hidden when null). Plus a walkover/unplayed
+>    marker (`—`/`WO`) when `winner_side` is null or a side is empty.
 
 ---
 
@@ -450,22 +457,59 @@ async function fetchBracket(tid) {
 
 function side(slot, isWinner) {
   const names = (slot || []).map((p) => p.name).join(" / ") || "—";
+  // friend highlight: any player name (case-insensitive) in the core list (Task 6)
   return '<div class="slot' + (isWinner ? " slot--won" : "") + '">' + names + "</div>";
 }
 
+// small muted subtext, ONLY when present (locked 2026-07-01)
+function courtTime(m) {
+  const bits = [m.court, m.scheduled_iso].filter(Boolean);
+  return bits.length ? '<div class="match__when">' + bits.join(" · ") + "</div>" : "";
+}
+
 function matchBox(m) {
+  // walkover / unplayed marker when nobody won
+  const unplayed = (m.winner_side !== 1 && m.winner_side !== 2)
+    ? '<div class="match__wo">—</div>' : "";
   return '<div class="match">' +
     side(m.side1, m.winner_side === 1) +
     side(m.side2, m.winner_side === 2) +
-    '<div class="match__score">' + (m.score_raw || "") + "</div></div>";
+    '<div class="match__score">' + (m.score_raw || "") + "</div>" +
+    unplayed + courtTime(m) + "</div>";
+}
+
+// group/round-robin standings (round_index == 99): Played/Won/Lost per pair,
+// sorted by wins desc, from winner_side alone — no score parsing (locked 2026-07-01).
+function standingsTable(matches) {
+  const rows = {}; // key -> {name, p, w, l}
+  const keyOf = (slot) => (slot || []).map((x) => x.name).join(" / ") || "—";
+  const bump = (slot, won) => {
+    const k = keyOf(slot);
+    const r = (rows[k] ||= { name: k, p: 0, w: 0, l: 0 });
+    r.p += 1;
+    if (won === true) r.w += 1;
+    else if (won === false) r.l += 1; // null winner => played, neither W nor L
+  };
+  matches.forEach((m) => {
+    const w1 = m.winner_side === 1 ? true : m.winner_side === 2 ? false : null;
+    const w2 = m.winner_side === 2 ? true : m.winner_side === 1 ? false : null;
+    bump(m.side1, w1);
+    bump(m.side2, w2);
+  });
+  const sorted = Object.values(rows).sort((a, b) => b.w - a.w || a.l - b.l);
+  return '<table class="standings"><thead><tr><th>Player</th><th>P</th><th>W</th>' +
+    "<th>L</th></tr></thead><tbody>" +
+    sorted.map((r) => "<tr><td>" + r.name + "</td><td>" + r.p + "</td><td>" +
+      r.w + "</td><td>" + r.l + "</td></tr>").join("") +
+    "</tbody></table>";
 }
 
 function renderDraw(draw) {
   const elimination = draw.matches.some((m) => m.round_index !== 99);
   if (!elimination) {
-    // group/round-robin: simple match list (per Task-1 decision)
+    // group/round-robin: W–L standings table (locked 2026-07-01)
     return '<div class="draw"><h3>' + draw.name + "</h3>" +
-      draw.matches.map(matchBox).join("") + "</div>";
+      standingsTable(draw.matches) + "</div>";
   }
   // group matches by round_index; columns ordered earliest→Final (desc index → leftmost)
   const byRound = {};
@@ -510,6 +554,12 @@ Match the explorer's existing hash-routing approach.
 .slot { padding: .35rem .6rem; border-bottom: 1px solid var(--border, #eee); }
 .slot--won { font-weight: 700; background: var(--won-bg, #eafbea); }
 .match__score { padding: .2rem .6rem; font-size: .8rem; opacity: .7; }
+.match__when { padding: 0 .6rem .2rem; font-size: .72rem; opacity: .55; }
+.match__wo { padding: 0 .6rem .2rem; font-size: .72rem; opacity: .55; font-style: italic; }
+/* group/round-robin standings table (round_index == 99) */
+.standings { border-collapse: collapse; width: 100%; }
+.standings th, .standings td { padding: .3rem .6rem; text-align: left; border-bottom: 1px solid var(--border, #eee); }
+.standings th:not(:first-child), .standings td:not(:first-child) { text-align: right; width: 3rem; }
 ```
 (Adapt variables/colours to the explorer's existing theme tokens.)
 
@@ -535,21 +585,42 @@ is in the core friend group), plus responsive/empty-state polish. ONLY build wha
 Task 1 confirmed; if friend-highlight was deferred, this task is just the polish.
 
 **Files:**
+- Modify: `src/badminton_tracker/server.py` (tiny authed endpoint exposing the core nickname set)
 - Modify: `web/archive.js`, `web/styles.css`
+- Test: `tests/test_archive_endpoints.py` (assert the endpoint returns the core names behind auth)
 
-**Interfaces:**
-- Consumes: a friend-name list. On this PRIVATE page you MAY use real names. Reuse the existing core-group nickname constant if it is reachable client-side, OR add a tiny authed endpoint that returns the friend display-name set. Decide in Task 1; the plan default is: match slot names (case-insensitive) against the core nickname list already used by the public "The Bros" tiering.
+**Interfaces (LOCKED 2026-07-01):**
+- The friend set is the public **`CORE_NICKNAMES`** (11 nicknames) from
+  `src/badminton_tracker/core_group.py` — the same list that drives the public
+  "The Bros" tiering. It is a **Python constant, NOT reachable client-side**, so
+  expose it via a tiny **authed** endpoint (matches the plan's own fallback wording):
+  - `GET /api/archive/core-names?password=…` → `{"names": ["Junya", "Tong", …]}`
+    (401/403 on wrong password, same `_check_password` posture as the other archive
+    routes). This exposes only nicknames (no GUIDs, no real names) but stays behind
+    the edit password for consistency with the private view.
+- `web/archive.js` fetches this once after unlock, lowercases the set, and matches
+  slot player names case-insensitively.
 
-- [ ] **Step 1: Add friend highlight to slot rendering**
+- [ ] **Step 1a: Add the `core-names` endpoint (TDD)**
 
-In `side(...)`, add a `slot--friend` class when any player name matches the friend
-set (case-insensitive). Style `.slot--friend { color: var(--accent); }`. Keep it
-distinct from `.slot--won` (a friend can lose).
+Write a failing test in `tests/test_archive_endpoints.py` asserting
+`GET /api/archive/core-names?password=secret` returns `{"names": [...]}` containing
+a known core nickname, and returns 401/403 without the password. Then implement the
+route in `server.py`: `from .core_group import CORE_NICKNAMES`; return
+`{"names": sorted(CORE_NICKNAMES)}` after `_check_password`. Run the test to pass;
+`uv run ruff check` clean.
+
+- [ ] **Step 1b: Add friend highlight to slot rendering**
+
+On unlock, `archive.js` fetches `/api/archive/core-names`, stores a lowercased
+`Set`. In `side(...)`, add a `slot--friend` class when any player name (case-
+insensitive) is in that set. Style `.slot--friend { color: var(--accent); }`. Keep
+it distinct from `.slot--won` (a friend can lose — both classes may apply).
 
 - [ ] **Step 2: Empty/responsive polish**
 
 - Horizontal scroll for wide brackets (already via `.bracket{overflow-x:auto}` — confirm on a narrow window).
-- Group-draw (`round_index 99`) rendering matches the Task-1 decision.
+- Group-draw (`round_index 99`) renders as the W–L standings table (built in Task 5).
 - Confirm the empty-archive and wrong-password states still read well.
 
 - [ ] **Step 3: Manual verification (dev-browser)**
