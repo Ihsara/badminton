@@ -10,7 +10,7 @@ from __future__ import annotations
 import re
 
 _TOUR_RE = re.compile(
-    r'<a[^>]*href="[^"]*/sport/tournament\?id=([0-9A-Fa-f-]{36})"[^>]*>(.*?)</a>',
+    r'<a[^>]*href="[^"]*/sport/tournament\?id=([0-9A-Fa-f-]{36})[^"]*"[^>]*>(.*?)</a>',
     re.I | re.S,
 )
 

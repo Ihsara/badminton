@@ -8,6 +8,7 @@ logic is unit-tested; the live wiring lives in archive_crawl.crawl_from_profiles
 from __future__ import annotations
 
 import csv
+import sys
 from pathlib import Path
 
 from . import archive_profile
@@ -31,8 +32,13 @@ def discover_tournament_ids(fetch_fn, profile_guids, base_url) -> list[dict]:
     seen: set[str] = set()
     out: list[dict] = []
     for guid in profile_guids:
-        html = fetch_fn(f"{base_url}/player-profile/{guid}")
-        for t in archive_profile.parse_profile_tournaments(html):
+        try:
+            html = fetch_fn(f"{base_url}/player-profile/{guid}")
+            tours = archive_profile.parse_profile_tournaments(html)
+        except Exception as e:  # noqa: BLE001 — one bad profile must not abort discovery
+            print(f"discover_tournament_ids: skipping profile {guid}: {e}", file=sys.stderr)
+            continue
+        for t in tours:
             key = t["id"].lower()
             if key not in seen:
                 seen.add(key)
