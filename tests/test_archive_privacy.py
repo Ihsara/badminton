@@ -32,3 +32,24 @@ def test_no_archive_import_in_public_pipeline():
         assert "archive_db" not in text
         assert "archive_crawl" not in text
         assert "archive_fetch" not in text
+
+
+def test_committed_fixtures_contain_no_real_profile_guids():
+    import csv
+    root = Path(config.__file__).resolve().parents[2]
+    players = root / "data" / "players.csv"
+    if not players.exists():
+        return  # private data repo not present; skip
+    real = set()
+    with players.open(encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            g = (row.get("profile_guid") or "").strip().lower()
+            if g:
+                real.add(g)
+    if not real:
+        return
+    fixtures = (root / "tests" / "fixtures").rglob("*.html")
+    for fx in fixtures:
+        text = fx.read_text(encoding="utf-8").lower()
+        for g in real:
+            assert g not in text, f"REAL profile GUID {g} leaked into {fx}"

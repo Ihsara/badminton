@@ -81,72 +81,52 @@ def _year_of(start_date: str | None) -> int | None:
     return int(start_date[:4]) if start_date else None
 
 
-def _draws_url(tid: str) -> str:
-    return f"{BASE_URL}/sport/draws.aspx?id={tid}"
+def _matches_url(tid: str) -> str:
+    return f"{BASE_URL}/sport/matches.aspx?id={tid}"
 
 
-def _bracket_url(draw_href: str) -> str:
-    if draw_href.startswith("http"):
-        return draw_href
-    if draw_href.startswith("/"):
-        return f"{BASE_URL}{draw_href}"
-    return f"{BASE_URL}/{draw_href}"
+def process_matches_tournament(conn, tid: str, fetch_fn, now: str) -> None:
+    """Fetch matches.aspx for one tournament; store all draws + matches + players."""
+    html = fetch_fn(_matches_url(tid))
+    parsed = archive_parse.parse_matches_page(html)
 
-
-def process_tournament(conn, tid: str, fetch_fn, now: str) -> None:
-    """Fetch, parse, and store all draws + matches for one tournament.
-
-    Raises on any fetch/parse/DB error — the caller (run) catches and records
-    the error in crawl_state without crashing the loop.
-    """
-    draws_html = fetch_fn(_draws_url(tid))
-    draws = archive_parse.parse_draw_list(draws_html)
-    for d in draws:
-        draw_id = d["id"]
-        archive_db.upsert_draw(conn, {
-            "id": draw_id,
-            "tournament_id": tid,
-            "name": d["name"],
-            "draw_type": d["draw_type"],
-            "ordering": d["ordering"],
-        })
-        bracket_html = fetch_fn(_bracket_url(draw_id))
-        for m in archive_parse.parse_bracket(bracket_html):
-            sides = m["sides"]
-            side1_ids: list[int] = []
-            side2_ids: list[int] = []
-            if len(sides) > 0:
-                for pl in sides[0]:
-                    pid = archive_db.upsert_player(conn, {
-                        "tournament_id": tid,
-                        "display_name": pl["name"],
-                        "profile_guid": pl.get("profile_guid"),
-                        "club": None,
-                        "seed": pl.get("seed"),
-                    })
-                    side1_ids.append(pid)
-            if len(sides) > 1:
-                for pl in sides[1]:
-                    pid = archive_db.upsert_player(conn, {
-                        "tournament_id": tid,
-                        "display_name": pl["name"],
-                        "profile_guid": pl.get("profile_guid"),
-                        "club": None,
-                        "seed": pl.get("seed"),
-                    })
-                    side2_ids.append(pid)
-            archive_db.insert_match(conn, {
-                "draw_id": draw_id,
-                "round_label": m["round_label"],
-                "round_index": m["round_index"],
-                "position": m["position"],
-                "side1_player_ids": side1_ids,
-                "side2_player_ids": side2_ids,
-                "score_raw": m["score_raw"],
-                "winner_side": m["winner_side"],
-                "scheduled_iso": m["scheduled_iso"],
-                "court": m["court"],
+    # upsert each distinct draw once, preserving first-seen order for `ordering`
+    draw_order: dict[str, int] = {}
+    for m in parsed:
+        if m["draw_id"] not in draw_order:
+            draw_order[m["draw_id"]] = len(draw_order)
+            archive_db.upsert_draw(conn, {
+                "id": m["draw_id"],
+                "tournament_id": tid,
+                "name": m["draw_name"],
+                "draw_type": "unknown",
+                "ordering": draw_order[m["draw_id"]],
             })
+
+    for m in parsed:
+        side_ids: list[list[int]] = [[], []]
+        for i, side in enumerate(m["sides"][:2]):
+            for pl in side:
+                pid = archive_db.upsert_player(conn, {
+                    "tournament_id": tid,
+                    "display_name": pl["name"],
+                    "profile_guid": pl.get("profile_guid"),
+                    "club": None,
+                    "seed": pl.get("seed"),
+                })
+                side_ids[i].append(pid)
+        archive_db.insert_match(conn, {
+            "draw_id": m["draw_id"],
+            "round_label": m["round_label"],
+            "round_index": m["round_index"],
+            "position": m["position"],
+            "side1_player_ids": side_ids[0],
+            "side2_player_ids": side_ids[1],
+            "score_raw": m["score_raw"],
+            "winner_side": m["winner_side"],
+            "scheduled_iso": m["scheduled_iso"],
+            "court": None,
+        })
 
 
 def run(
@@ -154,6 +134,7 @@ def run(
     tournament_ids: list[dict],
     fetch_fn,
     now: str,
+    processor=process_matches_tournament,
 ) -> dict:
     """Upsert tournaments + seed pending state, then process every non-done one.
 
@@ -184,10 +165,47 @@ def run(
     done = err = 0
     for tid in archive_db.pending_tournaments(conn):
         try:
-            process_tournament(conn, tid, fetch_fn, now)
+            processor(conn, tid, fetch_fn, now)
             archive_db.set_state(conn, tid, "done", now=now)
             done += 1
         except Exception as e:  # noqa: BLE001 — record + continue, never crash the crawl
             archive_db.set_state(conn, tid, "error", error=str(e), now=now)
             err += 1
     return {"done": done, "error": err}
+
+
+def crawl_from_profiles(*, delay_ms: int = 700) -> dict:  # pragma: no cover
+    """Discover tournaments from core friends' profiles, then crawl matches.aspx.
+
+    Run from the HOST (.env creds); the container has none. Politeness: delay_ms.
+    """
+    import datetime as dt
+
+    from playwright.sync_api import sync_playwright
+
+    from . import archive_discover, archive_fetch, client
+
+    now = dt.datetime.now(dt.UTC).isoformat()
+    conn = archive_db.connect()
+    p = sync_playwright().start()
+    browser, ctx = client.new_context(p, headless=True)
+    try:
+        page = client.ensure_login(ctx)
+
+        def getter(url: str) -> tuple[str, int]:
+            page.goto(url, wait_until="domcontentloaded")
+            client.dismiss_cookies(page)
+            page.wait_for_timeout(400)
+            return page.content(), 200
+
+        def fetch_fn(url: str) -> str:
+            return archive_fetch.fetch(conn, url, getter, now, delay_ms=delay_ms)
+
+        guids = archive_discover.core_profile_guids()
+        tournaments = archive_discover.discover_tournament_ids(fetch_fn, guids, BASE_URL)
+        return run(conn, tournaments, fetch_fn, now, processor=process_matches_tournament)
+    finally:
+        ctx.close()
+        browser.close()
+        p.stop()
+        conn.close()

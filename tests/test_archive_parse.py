@@ -14,49 +14,30 @@ def test_parse_draw_list():
     assert all(d["id"] for d in draws)
 
 
-def test_parse_bracket_final_with_winner():
-    html = (FIX / "bracket_elimination.html").read_text(encoding="utf-8")
-    matches = archive_parse.parse_bracket(html)
-    assert len(matches) == 1
-    m = matches[0]
-    assert m["round_label"] == "Final"
-    assert m["round_index"] == 0
-    assert m["score_raw"] is None
-    assert m["winner_side"] == 1
-    side_names = [[p["name"] for p in side] for side in m["sides"]]
-    assert side_names == [["Alice Smith"], ["Bob Jones"]]
+def test_parse_matches_page_singles_final_with_score_and_winner():
+    html = (FIX / "matches_page.html").read_text(encoding="utf-8")
+    matches = archive_parse.parse_matches_page(html)
+    final = next(m for m in matches if m["round_label"] == "Final")
+    assert final["draw_id"] == "AAAA1111-1111-1111-1111-111111111111:16"
+    assert final["draw_name"] == "MS C"
+    assert final["round_index"] == 0
+    assert final["position"] == 0
+    assert [[p["name"] for p in s] for s in final["sides"]] == [["Alpha One"], ["Beta Two"]]
+    assert final["sides"][1][0]["seed"] == 3            # "[3/4]" -> first number
+    assert final["sides"][0][0]["profile_guid"] == "AAAA1111-1111-1111-1111-111111111111:9"
+    assert final["winner_side"] == 2
+    assert final["score_raw"] == "10-21 6-21"           # side1-side2 per game
 
 
-def test_parse_bracket_multi_round_positions_and_ordering():
-    html = (FIX / "bracket_two_rounds.html").read_text(encoding="utf-8")
-    matches = archive_parse.parse_bracket(html)
-
-    assert len(matches) == 3
-
-    semis = [m for m in matches if m["round_label"] == "Semi final"]
-    finals = [m for m in matches if m["round_label"] == "Final"]
-    assert len(semis) == 2
-    assert len(finals) == 1
-
-    # round_index: "Semi final" -> 1, "Final" -> 0 (correct finals-first ordering).
-    assert all(m["round_index"] == 1 for m in semis)
-    assert finals[0]["round_index"] == 0
-
-    # position resets per round: Semi final matches get 0 and 1;
-    # Final match gets 0 (not 2), confirming per-round reset.
-    semi_positions = sorted(m["position"] for m in semis)
-    assert semi_positions == [0, 1]
-    assert finals[0]["position"] == 0
-
-    # winner_side: Semi A (Alice has-won on side 1), Semi B (Dave has-won on side 2)
-    semi_a = next(m for m in semis if m["position"] == 0)
-    semi_b = next(m for m in semis if m["position"] == 1)
-    assert semi_a["winner_side"] == 1
-    assert semi_b["winner_side"] == 2
-    assert finals[0]["winner_side"] == 1
-
-    # score_raw is None for all (score markup not yet confirmed against a real fixture)
-    assert all(m["score_raw"] is None for m in matches)
+def test_parse_matches_page_doubles_semi_two_players_side1_wins():
+    html = (FIX / "matches_page.html").read_text(encoding="utf-8")
+    matches = archive_parse.parse_matches_page(html)
+    semi = next(m for m in matches if m["round_label"] == "Semi final")
+    assert semi["round_index"] == 1
+    assert [len(s) for s in semi["sides"]] == [2, 1]     # side1 doubles, side2 single (fixture)
+    assert [p["name"] for p in semi["sides"][0]] == ["Alpha One", "Gamma Three"]
+    assert semi["winner_side"] == 1
+    assert semi["score_raw"] == "21-15 21-18"
 
 
 def test_round_index_orders_real_labels():

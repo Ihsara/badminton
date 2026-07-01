@@ -51,6 +51,11 @@ def main() -> None:
     p_arch.add_argument("--year-to", type=int, default=2026)
     p_arch.add_argument("--refresh-months", type=int, default=None)
     p_arch.add_argument("--delay-ms", type=int, default=700)
+    p_arch.add_argument(
+        "--from-profiles", action="store_true",
+        help="PRIVATE: discover finished tournaments from core friends' profiles "
+             "(instead of the dead year-range enumeration)",
+    )
 
     args = parser.parse_args()
 
@@ -122,14 +127,19 @@ def main() -> None:
         run_discover_names(tournament_guids=args.tournament, go=args.go, max_pages=args.max_pages)
 
     elif args.command == "archive-crawl":
-        from .archive_crawl import crawl_live
+        if args.from_profiles:
+            from .archive_crawl import crawl_from_profiles
 
-        summary = crawl_live(
-            year_from=args.year_from,
-            year_to=args.year_to,
-            refresh_months=args.refresh_months,
-            delay_ms=args.delay_ms,
-        )
+            summary = crawl_from_profiles(delay_ms=args.delay_ms)
+        else:
+            from .archive_crawl import crawl_live
+
+            summary = crawl_live(
+                year_from=args.year_from,
+                year_to=args.year_to,
+                refresh_months=args.refresh_months,
+                delay_ms=args.delay_ms,
+            )
         print(f"archive-crawl: {summary}")
 
 
