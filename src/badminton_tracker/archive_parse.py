@@ -7,7 +7,6 @@ HTMLParser style as upcoming_parse._DrawParser for robustness against nested tag
 from __future__ import annotations
 
 import re
-from html.parser import HTMLParser
 
 # ---------------------------------------------------------------------------
 # Draw list
@@ -81,160 +80,96 @@ def _round_index(label: str) -> int:
     return 99
 
 
-class _BracketParser(HTMLParser):
-    """Single-pass depth-tracked parser for knockout bracket HTML.
+_DRAW_HREF_RE = re.compile(r"draw\.aspx\?id=([0-9A-Fa-f-]{36})&(?:amp;)?draw=(\d+)", re.I)
+_PLAYER_HREF_RE = re.compile(r"player\.aspx\?id=([0-9A-Fa-f-]{36})&(?:amp;)?player=(\d+)", re.I)
+_NAME_RE = re.compile(r'nav-link__value">(.*?)</span>', re.S)
+_SEED_RE = re.compile(r"\[(\d+)")
+_MATCH_ITEM_RE = re.compile(
+    r'<div class="match match--list">(.*?)(?=<div class="match match--list">|</ol>|$)', re.S
+)
+_MATCH_ROW_RE = re.compile(
+    r'<div class="match__row( has-won)?\s*">(.*?)'
+    r'(?=<div class="match__row(?: has-won)?\s*">|<div class="match__result"|$)',
+    re.S,
+)
 
-    Mirrors the structure of upcoming_parse._DrawParser:
-    - _capture tracks what text we are currently accumulating ('title' | 'player').
-    - _depth counts how deep inside the capturing element we are, so nested tags
-      do not flush the buffer early.
-    - match containers (bracket-round__match-group) and player rows (match__row)
-      are tracked with flags/stacks rather than nesting depth, since the match-group
-      can contain multiple rows.
+
+def _clean(text: str) -> str:
+    return re.sub(r"<[^>]+>", "", text).strip()
+
+
+def parse_matches_page(html: str) -> list[dict]:
+    """Parse a tournament-scoped /sport/matches.aspx page into per-match dicts.
+
+    Each match self-describes its draw + round via match__header-title; winner is
+    the match__row carrying has-won; score is per-game points cells (side1 first).
     """
+    out: list[dict] = []
+    positions: dict[tuple[str, str], int] = {}
+    for block_m in _MATCH_ITEM_RE.finditer(html):
+        block = block_m.group(0)
+        header, _, rest = block.partition('class="match__body"')
 
-    def __init__(self) -> None:
-        super().__init__()
-        self.matches: list[dict] = []
-        # Current round state
-        self._round_label: str | None = None
-        self._round_position = 0
-        # Current match-group state
-        self._in_match = False
-        self._cur: dict | None = None
-        self._match_depth = 0  # depth inside bracket-round__match-group tag
-        # Current player-row state
-        self._in_row = False
-        self._row_winner = False
-        self._row_depth = 0  # depth inside match__row tag
-        self._cur_side: list[dict] | None = None
-        # Generic text capture ('title' | 'player')
-        self._capture: str | None = None
-        self._buf: list[str] = []
-        self._cap_depth = 0  # depth inside capturing element
+        dm = _DRAW_HREF_RE.search(header)
+        if not dm:
+            continue
+        draw_id = f"{dm.group(1)}:{dm.group(2)}"
+        # draw name = first nav-link__value inside the header
+        hn = _NAME_RE.search(header)
+        draw_name = _clean(hn.group(1)) if hn else ""
+        # round label = title="..." on the 2nd header-title-item
+        titles = re.findall(r'title="([^"]+)"', header)
+        round_label = titles[0] if titles else ""
 
-    # ------------------------------------------------------------------
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        a = dict(attrs)
-        cls = a.get("class") or ""
+        sides: list[list[dict]] = []
+        winner_side: int | None = None
+        for rm in _MATCH_ROW_RE.finditer(rest):
+            is_win = bool(rm.group(1))
+            row = rm.group(2)
+            entrants: list[dict] = []
+            for pm in _PLAYER_HREF_RE.finditer(row):
+                guid, player_no = pm.group(1), pm.group(2)
+                # the name span follows this anchor
+                after = row[pm.end():]
+                nm = _NAME_RE.search(after)
+                raw_name = _clean(nm.group(1)) if nm else ""
+                seed_m = _SEED_RE.search(raw_name)
+                name = re.sub(r"\s*\[.*?\]\s*$", "", raw_name).strip()
+                entrants.append({
+                    "name": name,
+                    "profile_guid": f"{guid}:{player_no}",
+                    "seed": int(seed_m.group(1)) if seed_m else None,
+                })
+            if not entrants:
+                continue
+            sides.append(entrants)
+            if is_win:
+                winner_side = len(sides)
 
-        # Depth tracking for active text capture
-        if self._capture:
-            self._cap_depth += 1
-            # time element inside a match group
-            if tag == "time" and self._cur is not None:
-                dt = a.get("datetime")
-                if dt and self._cur["scheduled_iso"] is None:
-                    self._cur["scheduled_iso"] = dt
-            return
+        if not sides:
+            continue
 
-        if "bracket-round__title" in cls:
-            self._capture, self._buf, self._cap_depth = "title", [], 1
-            return
+        # score: one <ul class="points"> per game; two cells (side1, side2)
+        games: list[str] = []
+        result_seg = rest.partition('class="match__result"')[2]
+        for ul in re.finditer(r'<ul class="points">(.*?)</ul>', result_seg, re.S):
+            cells = re.findall(r'points__cell[^>]*>\s*([0-9]+)\s*<', ul.group(1))
+            if len(cells) >= 2:
+                games.append(f"{cells[0]}-{cells[1]}")
+        score_raw = " ".join(games) if games else None
 
-        if "bracket-round__match-group" in cls and "wrapper" not in cls:
-            self._commit_match()  # commit any previous open match
-            self._in_match = True
-            self._match_depth = 1
-            self._cur = {
-                "round_label": self._round_label or "",
-                "round_index": _round_index(self._round_label or ""),
-                "position": self._round_position,
-                "sides": [],
-                # score markup unconfirmed against a real played bracket;
-                # defaults to None until a real fixture is captured (see plan T5 addendum).
-                "score_raw": None,
-                "winner_side": None,
-                "scheduled_iso": None,
-                # court comes from the schedule page, not the bracket DOM.
-                "court": None,
-            }
-            self._round_position += 1
-            return
-
-        if self._in_match:
-            self._match_depth += 1
-
-            if "match__row" in cls:
-                self._in_row = True
-                self._row_depth = 1
-                self._row_winner = "has-won" in cls
-                self._cur_side = []
-                return
-
-            if self._in_row:
-                if "nav-link__value" in cls:
-                    # Start a text capture; row_depth is NOT incremented here
-                    # because the capture manages its own depth via _cap_depth.
-                    self._capture, self._buf, self._cap_depth = "player", [], 1
-                    return
-                # Track nesting for all other tags inside the row
-                self._row_depth += 1
-
-            if tag == "time" and self._cur is not None:
-                dt = a.get("datetime")
-                if dt and self._cur["scheduled_iso"] is None:
-                    self._cur["scheduled_iso"] = dt
-
-    # ------------------------------------------------------------------
-    def handle_data(self, data: str) -> None:
-        if self._capture:
-            self._buf.append(data)
-
-    # ------------------------------------------------------------------
-    def handle_endtag(self, tag: str) -> None:
-        # Text capture flush (depth-tracked, same pattern as _DrawParser)
-        if self._capture:
-            self._cap_depth -= 1
-            if self._cap_depth > 0:
-                return
-            text = "".join(self._buf).strip()
-            if self._capture == "title":
-                self._commit_match()
-                self._round_label = text
-                self._round_position = 0
-            elif self._capture == "player" and self._cur_side is not None:
-                if text:
-                    self._cur_side.append(
-                        {"name": text, "profile_guid": None, "seed": None}
-                    )
-            self._capture = None
-            return
-
-        if self._in_row:
-            self._row_depth -= 1
-            if self._row_depth <= 0:
-                # Closing the match__row div: commit the side
-                if self._cur_side is not None and self._cur is not None:
-                    self._cur["sides"].append(self._cur_side)
-                    if self._row_winner:
-                        self._cur["winner_side"] = len(self._cur["sides"])
-                self._cur_side = None
-                self._in_row = False
-                self._row_winner = False
-            return
-
-        if self._in_match:
-            self._match_depth -= 1
-            if self._match_depth <= 0:
-                self._commit_match()
-                self._in_match = False
-
-    # ------------------------------------------------------------------
-    def _commit_match(self) -> None:
-        """Flush the current match dict to self.matches if it has any sides."""
-        if self._cur is not None and self._cur["sides"]:
-            self.matches.append(self._cur)
-        self._cur = None
-
-    def finalize(self) -> None:
-        """Call after feed() to flush any trailing open match."""
-        self._commit_match()
-
-
-def parse_bracket(html: str) -> list[dict]:
-    """Parse a knockout draw page and return one dict per match-group."""
-    p = _BracketParser()
-    p.feed(html)
-    p.finalize()
-    return p.matches
+        key = (draw_id, round_label)
+        pos = positions.get(key, 0)
+        positions[key] = pos + 1
+        out.append({
+            "draw_id": draw_id,
+            "draw_name": draw_name,
+            "round_label": round_label,
+            "round_index": _round_index(round_label),
+            "position": pos,
+            "sides": sides,
+            "winner_side": winner_side,
+            "score_raw": score_raw,
+            "scheduled_iso": None,
+        })
+    return out
