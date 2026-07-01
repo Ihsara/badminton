@@ -1024,6 +1024,46 @@ select {
 .standings th:not(:first-child), .standings td:not(:first-child) { text-align: right; width: 3.5rem; }
 .standings tr:last-child td { border-bottom: none; }
 
+/* --- Archive: small-screen adaptive layout --- */
+/* On phones/tablets the horizontal bracket (columns of rounds) becomes a pinched
+   horizontal scroll. Below 640px, stack the rounds vertically instead: each round
+   is a full-width section with its own heading, match boxes fill the width. The
+   draw/event index and standings also relax to comfortable touch spacing. */
+@media (max-width: 640px) {
+  .bracket {
+    flex-direction: column;
+    gap: 22px;
+    overflow-x: visible;      /* no more sideways scroll */
+    padding-bottom: 0;
+  }
+  .round {
+    min-width: 0;             /* was 190px — let it fill */
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+  }
+  .round:first-child { border-top: none; padding-top: 0; }
+  .round__title { font-size: 0.72rem; }
+  .match { width: 100%; }
+  .slot { padding: 10px 12px; }        /* roomier tap targets */
+
+  .draw { margin: 16px 0; }
+  .draw h3 { font-size: 1rem; }
+
+  .arch-item { flex-wrap: wrap; row-gap: 2px; padding: 12px 0; }
+  .arch-item a { font-size: 1.02rem; }
+
+  .standings th, .standings td { padding: 9px 8px; }
+  .standings th:not(:first-child), .standings td:not(:first-child) { width: 2.6rem; }
+}
+/* Very small phones: trim score/subtext so match boxes stay tidy. */
+@media (max-width: 380px) {
+  .match__score, .match__when, .match__wo { font-size: 0.68rem; }
+  .section-title { word-break: break-word; }
+}
+
 /* ── Upcoming timeline ─────────────────────────────────────────── */
 .upc-bar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
 .chips { display:flex; gap:8px; flex-wrap:wrap; }

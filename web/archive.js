@@ -7,7 +7,7 @@
    password itself is kept in sessionStorage (tab-scoped) so it survives
    re-entering the view, but that's the only thing we stash. */
 
-function viewArchive(app, id) {
+function viewArchive(app, id, drawId) {
   if (!window.MAINT) {
     app.innerHTML = `<div class="empty rise" style="padding:64px">
       <h1 class="section-title" style="font-size:1.6rem">Archive is off here</h1><br>
@@ -16,6 +16,9 @@ function viewArchive(app, id) {
       <a class="tag" href="#/">← back to the group</a></div>`;
     return;
   }
+  // #/archive/{id}/{drawId} -> one event (topic) sub-page; #/archive/{id} -> event
+  // index for the tournament; #/archive -> tournament list (behind the password).
+  if (id && drawId) { showArchiveDraw(id, drawId); return; }
   if (id) { showArchiveTournament(id); return; }
   renderArchivePasswordForm();
 }
@@ -172,12 +175,13 @@ function archStandingsTable(matches) {
     "</tbody></table>";
 }
 
-function archRenderDraw(draw) {
+function archRenderDraw(draw, hideHeading) {
+  // hideHeading: the event sub-page already shows the draw name as its <h1>.
+  const head = hideHeading ? "" : "<h3>" + esc(draw.name) + "</h3>";
   const elimination = draw.matches.some((m) => m.round_index !== 99);
   if (!elimination) {
     // group/round-robin: W-L standings table
-    return '<div class="draw rise"><h3>' + esc(draw.name) + "</h3>" +
-      archStandingsTable(draw.matches) + "</div>";
+    return '<div class="draw rise">' + head + archStandingsTable(draw.matches) + "</div>";
   }
   // group matches by round_index; columns ordered earliest->Final (desc index -> leftmost)
   const byRound = {};
@@ -189,30 +193,94 @@ function archRenderDraw(draw) {
     return '<div class="round"><div class="round__title">' + label + "</div>" +
       ms.map(archMatchBox).join("") + "</div>";
   }).join("");
-  return '<div class="draw rise"><h3>' + esc(draw.name) + '</h3><div class="bracket">' + cols + "</div></div>";
+  return '<div class="draw rise">' + head + '<div class="bracket">' + cols + "</div></div>";
 }
 
-async function showArchiveTournament(id) {
+// One in-memory cache of the last tournament payload, so moving between the
+// event index and an event sub-page (or back) doesn't re-hit the endpoint.
+let archTournamentCache = null; // { id, payload }
+
+async function loadTournamentPayload(id) {
+  if (archTournamentCache && archTournamentCache.id === id) {
+    return archTournamentCache.payload;
+  }
   const pw = archPass();
   await ensureFriendSet(pw);
   const payload = await fetchArchiveBracket(id, pw);
-  if (payload === "auth") { renderArchivePasswordForm("Wrong edit password."); return; }
+  if (payload && typeof payload === "object") archTournamentCache = { id, payload };
+  return payload;
+}
+
+function archBracketError(payload) {
+  // Returns HTML for the non-object payloads, or "" when the payload is real.
+  if (payload === "auth") { renderArchivePasswordForm("Wrong edit password."); return null; }
+  const back = `<a href="#/archive" class="tag rise">← all tournaments</a>`;
   if (payload === "notfound") {
-    app.innerHTML = `<a href="#/archive" class="tag">← all tournaments</a>
-      <div class="empty rise" style="padding:48px">Tournament not found.</div>`;
-    stagger();
-    return;
+    return back + `<div class="empty rise" style="padding:48px">Tournament not found.</div>`;
   }
   if (payload === null) {
-    app.innerHTML = `<a href="#/archive" class="tag">← all tournaments</a>
-      <div class="empty rise" style="padding:48px">Couldn't load the bracket.</div>`;
-    stagger();
-    return;
+    return back + `<div class="empty rise" style="padding:48px">Couldn't load the bracket.</div>`;
   }
+  return ""; // real payload
+}
+
+// A short "MS C" / "Group A" style code for the draw when its name has a suffix.
+function archDrawKind(draw) {
+  const ms = draw.matches || [];
+  if (!ms.length) return { tag: "empty", n: 0 };
+  const isGroup = ms.every((m) => m.round_index === 99);
+  return { tag: isGroup ? "group" : "bracket", n: ms.length };
+}
+
+// Tournament page = the EVENT INDEX (one row per draw/topic), not every bracket
+// stacked. Each event links to its own sub-page #/archive/{id}/{drawId}.
+async function showArchiveTournament(id) {
+  const payload = await loadTournamentPayload(id);
+  const err = archBracketError(payload);
+  if (err === null) return;      // auth -> password form already rendered
+  if (err) { app.innerHTML = err; stagger(); return; }
+
+  const draws = payload.draws || [];
+  const index = draws.length
+    ? `<section class="block rise"><ul class="arch-list">
+        ${draws.map((d) => {
+          const k = archDrawKind(d);
+          return `<li class="arch-item">
+            <a href="#/archive/${encodeURIComponent(id)}/${encodeURIComponent(d.id)}">${esc(d.name || d.id)}</a>
+            <span class="muted">${k.n} match${k.n === 1 ? "" : "es"}${k.tag === "group" ? " · group" : ""}</span>
+          </li>`;
+        }).join("")}
+      </ul></section>`
+    : `<div class="empty rise" style="padding:40px">No events (draws) archived for this tournament yet.</div>`;
+
   app.innerHTML = `
     <a href="#/archive" class="tag rise">← all tournaments</a>
     <h1 class="section-title rise" style="margin:10px 0 4px;font-size:clamp(1.7rem,5vw,2.6rem)">
       ${esc(payload.tournament.name || id)}</h1>
-    ${payload.draws.map(archRenderDraw).join("")}`;
+    <p class="pl-record rise">${draws.length} event${draws.length === 1 ? "" : "s"} — pick one to see its bracket.</p>
+    ${index}`;
+  stagger();
+}
+
+// Event sub-page = ONE draw's bracket/standings, reached from the event index.
+async function showArchiveDraw(id, drawId) {
+  const payload = await loadTournamentPayload(id);
+  const err = archBracketError(payload);
+  if (err === null) return;
+  if (err) { app.innerHTML = err; stagger(); return; }
+
+  const draw = (payload.draws || []).find((d) => d.id === drawId);
+  const tourHref = `#/archive/${encodeURIComponent(id)}`;
+  if (!draw) {
+    app.innerHTML = `<a href="${tourHref}" class="tag rise">← all events</a>
+      <div class="empty rise" style="padding:48px">That event wasn't found in this tournament.</div>`;
+    stagger();
+    return;
+  }
+  app.innerHTML = `
+    <a href="${tourHref}" class="tag rise">← ${esc(payload.tournament.name || "all events")}</a>
+    <h1 class="section-title rise" style="margin:10px 0 4px;font-size:clamp(1.5rem,4.5vw,2.2rem)">
+      ${esc(draw.name || drawId)}</h1>
+    ${archRenderDraw(draw, true)}`;
   stagger();
 }
