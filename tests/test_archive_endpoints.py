@@ -29,3 +29,31 @@ def test_tournaments_lists_with_password(tmp_path, monkeypatch):
     r = c.get("/api/archive/tournaments", params={"password": "secret"})
     assert r.status_code == 200
     assert any(t["id"] == "T1" for t in r.json())
+
+
+def test_bracket_includes_player_names(tmp_path, monkeypatch):
+    from badminton_tracker import archive_db
+
+    c = _client(tmp_path, monkeypatch)
+    conn = archive_db.connect(tmp_path / "a.sqlite")
+    archive_db.upsert_draw(conn, {
+        "id": "D1", "tournament_id": "T1", "name": "MS",
+        "draw_type": "elimination", "ordering": 0})
+    a = archive_db.upsert_player(conn, {
+        "tournament_id": "T1", "display_name": "Alice Smith",
+        "profile_guid": None, "club": None, "seed": None})
+    b = archive_db.upsert_player(conn, {
+        "tournament_id": "T1", "display_name": "Bob Jones",
+        "profile_guid": None, "club": None, "seed": None})
+    archive_db.insert_match(conn, {
+        "draw_id": "D1", "round_label": "Final", "round_index": 0, "position": 0,
+        "side1_player_ids": [a], "side2_player_ids": [b],
+        "score_raw": "21-15 21-18", "winner_side": 1,
+        "scheduled_iso": None, "court": None})
+    conn.close()
+
+    r = c.get("/api/archive/tournament/T1/bracket", params={"password": "secret"})
+    assert r.status_code == 200
+    m = r.json()["draws"][0]["matches"][0]
+    assert [p["name"] for p in m["side1"]] == ["Alice Smith"]
+    assert [p["name"] for p in m["side2"]] == ["Bob Jones"]

@@ -155,13 +155,26 @@ def archive_bracket(tid: str, password: str | None = None):
         t = conn.execute("SELECT * FROM tournaments WHERE id=?", (tid,)).fetchone()
         if t is None:
             raise HTTPException(404, "Unknown tournament")
+        players = {r["id"]: r["display_name"] for r in conn.execute(
+            "SELECT id, display_name FROM players WHERE tournament_id=?", (tid,)
+        ).fetchall()}
+
+        def _side(raw):
+            ids = json.loads(raw) if raw else []
+            return [{"id": pid, "name": players.get(pid, "?")} for pid in ids]
+
         draws = []
         for d in conn.execute(
             "SELECT * FROM draws WHERE tournament_id=? ORDER BY ordering", (tid,)
         ).fetchall():
-            matches = [dict(m) for m in conn.execute(
+            matches = []
+            for m in conn.execute(
                 "SELECT * FROM matches WHERE draw_id=? ORDER BY round_index, position",
-                (d["id"],)).fetchall()]
+                (d["id"],)).fetchall():
+                md = dict(m)
+                md["side1"] = _side(md["side1_player_ids"])
+                md["side2"] = _side(md["side2_player_ids"])
+                matches.append(md)
             draws.append({**dict(d), "matches": matches})
         return {"tournament": dict(t), "draws": draws}
     finally:
