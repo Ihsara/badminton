@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from . import aliases, versioning
 from .build import write_matches_mirror
 from .config import ARCHIVE_DB, EDIT_PASSWORD, MAX_UPLOAD_BYTES, SOURCE_XLSX
+from .core_group import CORE_NICKNAMES
 from .export import WEB_DIR, export_from_excel
 from .validate import ValidationError, validate_alias_rows, validate_workbook_bytes
 
@@ -142,6 +143,12 @@ def archive_tournaments(password: str | None = None):
         return [dict(r) for r in rows]
     finally:
         conn.close()
+
+
+@app.get("/api/archive/core-names")
+def archive_core_names(password: str | None = None):
+    _check_password(password)
+    return {"names": sorted(CORE_NICKNAMES)}
 
 
 @app.get("/api/archive/tournament/{tid}/bracket")

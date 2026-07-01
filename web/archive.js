@@ -22,6 +22,23 @@ function viewArchive(app, id) {
 
 function archPass() { return sessionStorage.getItem("archivePw") || ""; }
 
+// Core friend nicknames, lowercased. Fetched once per unlock from the authed
+// core-names endpoint; never persisted. null = not yet fetched, Set = fetched
+// (possibly empty on failure — highlight is a nice-to-have, not load-bearing).
+let archFriendSet = null;
+
+async function ensureFriendSet(pw) {
+  if (archFriendSet !== null) return;
+  try {
+    const r = await fetch(window.MAINT.base + "/api/archive/core-names?password=" + encodeURIComponent(pw));
+    if (!r.ok) { archFriendSet = new Set(); return; }
+    const data = await r.json();
+    archFriendSet = new Set((data.names || []).map((n) => n.toLowerCase()));
+  } catch (_) {
+    archFriendSet = new Set();
+  }
+}
+
 function renderArchivePasswordForm(msg) {
   app.innerHTML = `
     <h1 class="section-title rise" style="margin:6px 0 4px;font-size:clamp(1.7rem,5vw,2.6rem)">Archive</h1>
@@ -49,6 +66,7 @@ async function loadArchive(pw) {
   if (list === "auth") { renderArchivePasswordForm("Wrong edit password."); return; }
   if (list === null) { renderArchivePasswordForm("Couldn't reach the archive."); return; }
   sessionStorage.setItem("archivePw", pw);
+  await ensureFriendSet(pw);
   renderArchiveList(list);
 }
 
@@ -105,7 +123,10 @@ async function fetchArchiveBracket(id, pw) {
 
 function archSide(slot, isWinner) {
   const names = esc((slot || []).map((p) => p.name).join(" / ") || "—");
-  return '<div class="slot' + (isWinner ? " slot--won" : "") + '">' + names + "</div>";
+  const isFriend = (archFriendSet || new Set()).size > 0 &&
+    (slot || []).some((p) => archFriendSet.has((p.name || "").toLowerCase()));
+  const cls = "slot" + (isWinner ? " slot--won" : "") + (isFriend ? " slot--friend" : "");
+  return '<div class="' + cls + '">' + names + "</div>";
 }
 
 // small muted subtext, ONLY when present
@@ -173,6 +194,7 @@ function archRenderDraw(draw) {
 
 async function showArchiveTournament(id) {
   const pw = archPass();
+  await ensureFriendSet(pw);
   const payload = await fetchArchiveBracket(id, pw);
   if (payload === "auth") { renderArchivePasswordForm("Wrong edit password."); return; }
   if (payload === "notfound") {

@@ -1013,6 +1013,7 @@ select {
 .slot { padding: 8px 10px; border-bottom: 1px solid var(--line); color: var(--chalk); }
 .slot:last-of-type { border-bottom: 1px solid var(--line); }
 .slot--won { font-weight: 700; background: var(--lime-dim); }
+.slot--friend { color: var(--gold); }
 .match__score { padding: 4px 10px; font-size: 0.78rem; color: var(--muted); font-family: "Space Mono", monospace; }
 .match__when, .match__wo { padding: 0 10px 6px; font-size: 0.7rem; color: var(--muted-2); }
 .match__wo { font-style: italic; }
