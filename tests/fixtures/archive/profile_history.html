@@ -1,8 +1,13 @@
 <!--
   SANITIZED faithful snapshot of a real /player-profile/{guid} page (captured
-  2026-07-01). FAKE GUIDs. The first card is the profile header (no tournament
-  link) and must be skipped. Finished tournaments appear as /sport/tournament?id=
-  links; each also has draw links (not needed for discovery).
+  2026-07-01, corrected 2026-07-02 against the LIVE DOM). FAKE GUIDs. The first
+  card is the profile header (no tournament link) and must be skipped. Finished
+  tournaments appear as /sport/tournament?id= links; each also has draw links.
+  REAL DOM DETAIL (the DDDD card below): each tournament card has TWO anchors to
+  the same tournament — an image anchor (class="media__img", NO text) that comes
+  FIRST, then the real title anchor inside <h4 class="media__title"> carrying the
+  name in a title= attr AND a nav-link__value span. The parser must take the name
+  from the titled anchor, not the empty image anchor.
 -->
 <div class="content">
   <div class="module module--card">   <!-- profile header: NO tournament link -->
@@ -13,6 +18,19 @@
     <h4 class="media__title"><a href="/sport/tournament?id=BBBB2222-2222-2222-2222-222222222222" class="media__link"><span class="nav-link__value">Spring Open 2025</span></a></h4>
     <a href="/sport/draw.aspx?id=BBBB2222-2222-2222-2222-222222222222&amp;draw=4" class="nav-link"><span class="nav-link__value">MS C</span></a>
   </div>
+
+  <!-- REAL-DOM card: image anchor (empty text) FIRST, then titled name anchor -->
+  <li class="list__item"><div class="media"><div class="media__wrapper">
+    <a href="/sport/tournament?id=DDDD4444-4444-4444-4444-444444444444" class="media__img">
+      <img src="//content.example.com/images/club/fake.jpg" class="media__img-element" alt="Autumn Slam 2023">
+    </a>
+    <div class="media__content">
+      <h4 class="media__title media__title--medium">
+        <a href="/sport/tournament?id=DDDD4444-4444-4444-4444-444444444444" title="Autumn Slam 2023" class="media__link">
+          <span class="nav-link__value">Autumn Slam 2023</span></a>
+      </h4>
+    </div>
+  </div></div></li>
 
   <div class="module module--card">
     <h4 class="media__title"><a href="/sport/tournament?id=CCCC3333-3333-3333-3333-333333333333" class="media__link"><span class="nav-link__value">Winter Cup 2021</span></a></h4>
