@@ -210,7 +210,6 @@ function archDrawKind(draw) {
 async function showArchiveTournament(id) {
   const payload = await loadTournamentPayload(id);
   const err = archBracketError(payload);
-  if (err === null) return;      // auth -> password form already rendered
   if (err) { app.innerHTML = err; stagger(); return; }
 
   const draws = payload.draws || [];
@@ -239,7 +238,6 @@ async function showArchiveTournament(id) {
 async function showArchiveDraw(id, drawId) {
   const payload = await loadTournamentPayload(id);
   const err = archBracketError(payload);
-  if (err === null) return;
   if (err) { app.innerHTML = err; stagger(); return; }
 
   const draw = (payload.draws || []).find((d) => d.id === drawId);
