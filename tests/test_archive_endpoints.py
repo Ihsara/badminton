@@ -19,19 +19,14 @@ def _client(tmp_path, monkeypatch, password="secret"):
     return TestClient(server.app)
 
 
-def test_tournaments_requires_password(tmp_path, monkeypatch):
+def test_tournaments_lists_without_password(tmp_path, monkeypatch):
     c = _client(tmp_path, monkeypatch)
-    assert c.get("/api/archive/tournaments").status_code in (401, 403)
-
-
-def test_tournaments_lists_with_password(tmp_path, monkeypatch):
-    c = _client(tmp_path, monkeypatch)
-    r = c.get("/api/archive/tournaments", params={"password": "secret"})
+    r = c.get("/api/archive/tournaments")
     assert r.status_code == 200
     assert any(t["id"] == "T1" for t in r.json())
 
 
-def test_bracket_includes_player_names(tmp_path, monkeypatch):
+def test_bracket_includes_player_names_without_password(tmp_path, monkeypatch):
     from badminton_tracker import archive_db
 
     c = _client(tmp_path, monkeypatch)
@@ -52,25 +47,27 @@ def test_bracket_includes_player_names(tmp_path, monkeypatch):
         "scheduled_iso": None, "court": None})
     conn.close()
 
-    r = c.get("/api/archive/tournament/T1/bracket", params={"password": "secret"})
+    r = c.get("/api/archive/tournament/T1/bracket")
     assert r.status_code == 200
     m = r.json()["draws"][0]["matches"][0]
     assert [p["name"] for p in m["side1"]] == ["Alice Smith"]
     assert [p["name"] for p in m["side2"]] == ["Bob Jones"]
 
 
-def test_core_names_requires_password(tmp_path, monkeypatch):
-    c = _client(tmp_path, monkeypatch)
-    assert c.get("/api/archive/core-names").status_code in (401, 403)
-
-
-def test_core_names_returns_core_set(tmp_path, monkeypatch):
+def test_core_names_returns_core_set_without_password(tmp_path, monkeypatch):
     from badminton_tracker.core_group import CORE_NICKNAMES
 
     c = _client(tmp_path, monkeypatch)
-    r = c.get("/api/archive/core-names", params={"password": "secret"})
+    r = c.get("/api/archive/core-names")
     assert r.status_code == 200
     names = r.json()["names"]
     assert isinstance(names, list)
     assert "Chau" in names
     assert set(names) == set(CORE_NICKNAMES)
+
+
+def test_edit_endpoint_still_requires_password(tmp_path, monkeypatch):
+    # Mutation auth boundary is unchanged: no password -> 401/403.
+    c = _client(tmp_path, monkeypatch)
+    r = c.post("/api/nicknames", json={"rows": []})
+    assert r.status_code in (401, 403)
