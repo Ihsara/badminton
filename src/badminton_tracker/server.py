@@ -130,8 +130,7 @@ async def upload_excel(
 
 
 @app.get("/api/archive/tournaments")
-def archive_tournaments(password: str | None = None):
-    _check_password(password)
+def archive_tournaments():
     from . import archive_db
     if not ARCHIVE_DB.exists():
         return []
@@ -146,14 +145,12 @@ def archive_tournaments(password: str | None = None):
 
 
 @app.get("/api/archive/core-names")
-def archive_core_names(password: str | None = None):
-    _check_password(password)
+def archive_core_names():
     return {"names": sorted(CORE_NICKNAMES)}
 
 
 @app.get("/api/archive/tournament/{tid}/bracket")
-def archive_bracket(tid: str, password: str | None = None):
-    _check_password(password)
+def archive_bracket(tid: str):
     from . import archive_db
     if not ARCHIVE_DB.exists():
         raise HTTPException(404, "Archive not built")
